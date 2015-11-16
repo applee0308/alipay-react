@@ -1,0 +1,100 @@
+@import '../base/vars';
+@import '../base/util';
+
+
+.restaurant-list {
+  .card-body {
+    padding: $gutter;
+  }
+
+  &-item {
+    display: block;
+    margin-bottom: $gutter;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &-top {
+      position: relative;
+      height: 0;
+      padding-bottom: 60%;
+      overflow: hidden;
+      background: $borderGray;
+    }
+
+    &-img {
+      display: block;
+      width: 100%;
+    }
+
+    &-mask {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to bottom, transparent, black);
+      display: flex;
+      align-items: center;
+      padding: $gutter/2 $gutter;
+      @include fontColor(white);
+
+      &-left {
+        flex: 1;
+      }
+    }
+
+    &-name {
+      @include clipText;
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+
+    &-location {
+      font-size: 14px;
+      i {
+        position: relative;
+        top: -1.5px;
+      }
+    }
+
+    &-discount {
+      &-num {
+        font-size: 40px;
+        margin-right: 3px;
+        position: relative;
+        top: 2px;
+      }
+    }
+
+    &-bottom {
+      padding: $gutter/2 $gutter;
+      color: $fontBlack;
+      font-size: 14px;
+      border: 1px solid $borderGray;
+      border-top: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    &-meta {
+      width: 60%;
+      @include clipText;
+    }
+
+    &-badges {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+
+      &-item {
+        margin-right: $gutter/2;
+        color: $fontGray;
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

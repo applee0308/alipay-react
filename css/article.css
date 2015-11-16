@@ -1,0 +1,59 @@
+.article {
+  font-size: 14px;
+}
+
+.article .card-body {
+  padding: 15px;
+}
+
+.article article h1, .article article h2, .article article h3, .article article h4, .article article h5, .article article h6 {
+  margin-top: 0;
+}
+
+.article article p {
+  margin-top: 0;
+}
+
+.article article img {
+  max-width: 100%;
+}
+
+.showcase .slick-slide {
+  padding: 7.5px;
+}
+
+.showcase-item {
+  display: block;
+  border: 5px solid white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.showcase-item img {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (min-width: 641px) {
+  .showcase-item {
+    margin-right: 7.5px;
+  }
+}
+
+.showcase .slick-dots {
+  bottom: 25px;
+}
+
+.showcase .slick-dots li {
+  margin-right: 5px;
+  border: 1px solid white;
+  background: transparent;
+  border-radius: 50%;
+}
+
+.showcase .slick-dots li:last-of-type {
+  margin-right: 0;
+}
+
+.showcase .slick-dots li.slick-active {
+  background: white;
+}

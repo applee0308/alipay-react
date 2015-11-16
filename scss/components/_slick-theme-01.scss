@@ -1,0 +1,40 @@
+@import '../base/vars';
+@import '../base/util';
+
+
+.showcase {
+  &-item {
+    display: block;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    @include media-md-up {
+      margin-right: $gutter / 2;
+    };
+  }
+
+  .slick {
+    &-dots {
+      bottom: 5px;
+
+      li {
+        margin-right: 5px;
+        border: 1px solid white;
+        background: transparent;
+        border-radius: 50%;
+
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+
+        &.slick-active {
+          background: white;
+        }
+      }
+    }
+  }
+}

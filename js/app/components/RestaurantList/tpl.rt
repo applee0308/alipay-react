@@ -1,0 +1,45 @@
+<section class="card restaurant-list">
+  <div class="container">
+    <div class="card-header">
+      <div class="card-header-title">热门餐饮</div>
+    </div>
+    <div class="card-body">
+
+      <a class="restaurant-list-item"
+        rt-repeat="item in this.items"
+        href="{item.href}" >
+          <div class="restaurant-list-item-top">
+            <img class="restaurant-list-item-img" src="{item.img}" alt="">
+            <div class="restaurant-list-item-mask">
+              <div class="restaurant-list-item-mask-left">
+                <div class="restaurant-list-item-name">{item.name}</div>
+                <div class="restaurant-list-item-location">
+                  <i class="fa fa-map-marker"></i>
+                  <span>{item.location}</span>
+                </div>
+              </div>
+              <div class="restaurant-list-item-mask-right">
+                <div class="restaurant-list-item-discount">
+                  <span class="restaurant-list-item-discount-num">{item.discount}</span>
+                  <span>折</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="restaurant-list-item-bottom">
+            <div class="restaurant-list-item-meta">{item.meta}</div>
+            <div class="restaurant-list-item-badges">
+              <i class="restaurant-list-item-badges-item fa fa-wifi"></i>
+              <i class="restaurant-list-item-badges-item fa fa-car"></i>
+            </div>
+          </div>
+      </a>
+
+    </div>
+    <div class="card-footer">
+      <div class="card-footer-actions">
+        <a class="card-footer-actions-item restaurant-list-loadTrigger" href="##">查看更多</a>
+      </div>
+    </div>
+  </div>
+</section>

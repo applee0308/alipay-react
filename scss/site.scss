@@ -1,0 +1,28 @@
+@import './base/vars';
+@import './base/util';
+@import './base/reset';
+@import './components/font-awesome';
+@import './components/card';
+@import './components/slick-basic';
+
+.container {
+  // max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+body {
+  font-size: 16px;
+  font-family: Roboto,
+               'HelveticaNeue-Light',
+               'Helvetica Neue Light',
+               'Helvetica Neue',
+               Helvetica,
+               Arial,sans-serif;
+  background: $pageGray;
+  color: $fontBlack;
+  // max-width: 450px;
+  // margin-left: auto;
+  // margin-right: auto;
+}

@@ -1,0 +1,8 @@
+<a href="##" class="brand-profile">
+  <img src="../images/profile-avatar.png" alt="" class="brand-profile-avatar">
+  <div class="brand-profile-name">北京首都机场</div>
+  <div class="brand-profile-location">
+    <i class="fa fa-map-marker"></i>
+    <span> 顺义区机场路1号</span>
+  </div>
+</a>
