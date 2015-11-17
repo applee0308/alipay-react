@@ -5,6 +5,9 @@
 .restaurant-list-item {
   display: block;
   margin-bottom: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  overflow: hidden;
 }
 
 .restaurant-list-item:last-of-type {
@@ -39,7 +42,7 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 7.5px 15px;
+  padding: 10px 15px;
   color: white;
 }
 
@@ -58,30 +61,36 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 18px;
-  margin-bottom: 2px;
+  font-size: 14px;
+  margin-bottom: 6px;
 }
 
 .restaurant-list-item-location {
-  font-size: 14px;
+  font-size: 12px;
+  margin-right: 4px;
 }
 
 .restaurant-list-item-location i {
   position: relative;
-  top: -1.5px;
+  top: -1px;
+  margin-right: 4px;
+}
+
+.restaurant-list-item-discount {
+  font-size: 14px;
 }
 
 .restaurant-list-item-discount-num {
-  font-size: 40px;
-  margin-right: 3px;
+  font-size: 45px;
+  margin-right: 4px;
   position: relative;
   top: 2px;
 }
 
 .restaurant-list-item-bottom {
-  padding: 7.5px 15px;
+  padding: 10px 15px;
   color: black;
-  font-size: 14px;
+  font-size: 12px;
   border: 1px solid #dadada;
   border-top: 0;
   display: -webkit-box;
@@ -117,7 +126,7 @@
 }
 
 .restaurant-list-item-badges-item {
-  margin-right: 7.5px;
+  margin-right: 10px;
   color: #a5a5a5;
 }
 
@@ -363,4 +372,38 @@
 .brand-profile-location i {
   position: relative;
   top: -1.5px;
+}
+
+.layer-01 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.layer-02 {
+  position: relative;
+  z-index: 100;
+  top: 146px;
+}
+
+.layer-03 {
+  background: #EFEFF4;
+}
+
+.card-header {
+  padding-top: 15px;
+  padding-bottom: 0;
+}
+
+.card-body {
+  border-top: 0;
+}
+
+.restaurant-list .card-body {
+  padding-top: 10px;
+}
+
+.recommendation-01-item {
+  padding-top: 15px;
 }

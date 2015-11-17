@@ -19653,9 +19653,9 @@
 	    __webpack_require__(160),
 	    __webpack_require__(179),
 	    __webpack_require__(181),
+	    __webpack_require__(183),
 	    __webpack_require__(185),
-	    __webpack_require__(187),
-	    __webpack_require__(183)
+	    __webpack_require__(187)
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation01, RestaurantList, Nav) {
 	    'use strict';
 	    return function () {
@@ -34139,58 +34139,6 @@
 
 	  render: function render() {
 	    return tpl.call(this);
-	  }
-	});
-
-	module.exports = Elem;
-
-/***/ },
-/* 184 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
-	    __webpack_require__(160),
-	    __webpack_require__(179)
-	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _) {
-	    'use strict';
-	    return function () {
-	        return React.createElement('nav', { 'className': 'site-nav card' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-body' }, React.createElement('div', { 'className': 'row' }, React.createElement('a', {
-	            'href': './restaurant.html',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cutlery' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '餐饮购物')), React.createElement('a', {
-	            'href': './list.html',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-phone' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场电话')), React.createElement('a', {
-	            'href': '##',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-map' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场地图'))), React.createElement('div', { 'className': 'row' }, React.createElement('a', {
-	            'href': '##',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cab' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场交通')), React.createElement('a', {
-	            'href': '##',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务')), React.createElement('a', {
-	            'style': { visibility: 'hidden' },
-	            'href': 'javascript: void(0)',
-	            'className': 'site-nav-item site-nav-item-empty'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务'))))));
-	    };
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ },
-/* 185 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var tpl = __webpack_require__(186);
-
-	var Elem = React.createClass({
-	  displayName: 'Elem',
-
-	  render: function render() {
-	    return tpl.call(this);
 	  },
 
 	  componentDidMount: function componentDidMount() {
@@ -34208,7 +34156,7 @@
 	module.exports = Elem;
 
 /***/ },
-/* 186 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
@@ -34245,13 +34193,13 @@
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
-/* 187 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var tpl = __webpack_require__(188);
+	var tpl = __webpack_require__(186);
 
 	var data = {
 	  "code": 0,
@@ -34306,7 +34254,7 @@
 	module.exports = Elem;
 
 /***/ },
-/* 188 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
@@ -34333,6 +34281,58 @@
 	            'className': 'card-footer-actions-item restaurant-list-loadTrigger',
 	            'href': '##'
 	        }, '查看更多')))));
+	    };
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var tpl = __webpack_require__(188);
+
+	var Elem = React.createClass({
+	  displayName: 'Elem',
+
+	  render: function render() {
+	    return tpl.call(this);
+	  }
+	});
+
+	module.exports = Elem;
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
+	    __webpack_require__(160),
+	    __webpack_require__(179)
+	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _) {
+	    'use strict';
+	    return function () {
+	        return React.createElement('nav', { 'className': 'site-nav card' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-body' }, React.createElement('div', { 'className': 'row' }, React.createElement('a', {
+	            'href': './restaurant.html',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cutlery' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '餐饮购物')), React.createElement('a', {
+	            'href': './list.html',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-phone' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场电话')), React.createElement('a', {
+	            'href': '##',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-map' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场地图'))), React.createElement('div', { 'className': 'row' }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cab' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场交通')), React.createElement('a', {
+	            'href': '##',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务')), React.createElement('a', {
+	            'style': { visibility: 'hidden' },
+	            'href': 'javascript: void(0)',
+	            'className': 'site-nav-item site-nav-item-empty'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务'))))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
