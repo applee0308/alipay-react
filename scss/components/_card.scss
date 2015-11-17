@@ -49,4 +49,11 @@
       }
     }
   }
+
+  @include media-md-up {
+    .container {
+      border-left: 1px solid $borderGray;
+      border-right: 1px solid $borderGray;
+    }
+  };
 }

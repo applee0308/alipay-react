@@ -9,7 +9,7 @@
     padding-top: $gutter/3*2;
     padding-bottom: $gutter/3*2;
     border: 0;
-    background: rgba(black, 0.6);
+    background: rgba(black, 0.5);
   }
 
   .row {
@@ -71,4 +71,10 @@
       @include clipText;
     }
   }
+
+  @include media-md-up {
+    .container {
+      border: 0;
+    }
+  };
 }

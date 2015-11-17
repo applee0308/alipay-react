@@ -109,4 +109,21 @@
       }
     }
   }
+
+  @include media-md-up {
+    .card-body {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-item {
+      margin-right: $gutter;
+      width: calc( (100% - #{$gutter}) / 2 );
+
+      &:nth-of-type(2n) {
+        margin-right: 0;
+      }
+
+    }
+  };
 }
