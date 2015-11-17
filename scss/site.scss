@@ -6,7 +6,7 @@
 @import './components/slick-basic';
 
 .container {
-  // max-width: 640px;
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -22,7 +22,4 @@ body {
                Arial,sans-serif;
   background: $pageGray;
   color: $fontBlack;
-  // max-width: 450px;
-  // margin-left: auto;
-  // margin-right: auto;
 }

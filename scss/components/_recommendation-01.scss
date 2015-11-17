@@ -21,9 +21,11 @@
     &-img {
       width: $imgSize;
       height: $imgSize;
+      border-radius: 50%;
       transition: 300ms;
       margin-bottom: 12px * $scale;
       transform: translateZ(0);
+      background: $borderGray;
     }
   }
 

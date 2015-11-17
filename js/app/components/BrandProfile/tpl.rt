@@ -1,4 +1,5 @@
-<a href="##" class="brand-profile">
+<a href="##" class="brand-profile"
+  style="background-image: url(/images/profile-bg.png)">
   <img src="../images/profile-avatar.png" width="48" height="48" class="brand-profile-avatar">
   <div class="brand-profile-name">北京首都机场</div>
   <div class="brand-profile-location">

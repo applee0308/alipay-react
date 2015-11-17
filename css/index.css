@@ -213,7 +213,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   border: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .site-nav .row {
@@ -331,11 +331,13 @@
 .recommendation-01-item-img {
   width: 80px;
   height: 80px;
+  border-radius: 50%;
   -webkit-transition: 300ms;
           transition: 300ms;
   margin-bottom: 15.6px;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
+  background: #e5e5e5;
 }
 
 .slick-slide.slick-active .recommendation-01-item-img {
@@ -376,7 +378,7 @@
           align-items: center;
   padding-top: 55px;
   height: 275px;
-  background: black url(../images/profile-bg-02.png);
+  background-color: black;
   background-size: 100% 100%;
   position: relative;
 }
@@ -398,6 +400,7 @@
   display: block;
   margin-bottom: 6px;
   border-radius: 50%;
+  background: #e5e5e5;
 }
 
 .brand-profile-name {
