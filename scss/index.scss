@@ -3,6 +3,7 @@
 @import './components/tiles';
 @import './components/nav';
 @import './components/recommendation-01';
+@import './components/recommendation-02';
 @import './components/brand-profile';
 
 .layer-01 {
@@ -20,23 +21,4 @@
 
 .layer-03 {
   background: $pageGray;
-}
-
-.card-header {
-  padding-top: $gutter;
-  padding-bottom: 0;
-}
-
-.card-body {
-  border-top: 0;
-}
-
-.restaurant-list {
-  .card-body {
-    padding-top: 10px;
-    // margin-bottom: -5px;
-  }
-}
-.recommendation-01-item {
-  padding-top: 15px;
 }

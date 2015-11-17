@@ -1,0 +1,36 @@
+@import '../base/vars';
+@import '../base/util';
+
+.recommendation-02 {
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: $gutter/3*2;
+    &-img {
+      width: 100%;
+      background: $borderGray;
+    }
+  }
+
+  .slick-dots {
+    bottom: $gutter/3;
+
+    li {
+      border-radius: 50%;
+      margin-right: 5px;
+      background: $borderGray;
+
+      &.slick-active {
+        background: #919191;
+      }
+    }
+  }
+}
+
+// .no-csscalc {
+//   .recommendation-01 .slick-slide {
+//     margin-right: 60px;
+//   }
+// }

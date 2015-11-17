@@ -5,6 +5,12 @@
 .restaurant-list {
   .card-body {
     padding: $gutter;
+    border-top: 0;
+  }
+
+  .card-header {
+    padding-top: $gutter;
+    padding-bottom: 0;
   }
 
   &-item {

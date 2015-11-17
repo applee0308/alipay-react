@@ -19653,13 +19653,14 @@
 	    __webpack_require__(160),
 	    __webpack_require__(179),
 	    __webpack_require__(181),
+	    __webpack_require__(189),
 	    __webpack_require__(183),
 	    __webpack_require__(185),
 	    __webpack_require__(187)
-	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation01, RestaurantList, Nav) {
+	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation02, Recommendation01, RestaurantList, Nav) {
 	    'use strict';
 	    return function () {
-	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {})), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, {}), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation01, {}), React.createElement(RestaurantList, {}))));
+	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {})), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, {}), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, {}), React.createElement(Recommendation01, {}), React.createElement(RestaurantList, {}))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34341,6 +34342,69 @@
 	            'href': 'javascript: void(0)',
 	            'className': 'site-nav-item site-nav-item-empty'
 	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务'))))));
+	    };
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var tpl = __webpack_require__(190);
+
+	var Elem = React.createClass({
+	  displayName: 'Elem',
+
+	  render: function render() {
+	    return tpl.call(this);
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    $(this.refs.slick).slick({
+	      arrows: false,
+	      dots: true,
+	      // centerMode: true,
+	      slidesToShow: 1,
+	      autoPlay: false
+	    });
+	  }
+	});
+
+	// centerPadding: '100px',
+	// variableWidth: true
+	module.exports = Elem;
+
+/***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
+	    __webpack_require__(160),
+	    __webpack_require__(179)
+	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _) {
+	    'use strict';
+	    return function () {
+	        return React.createElement('section', { 'className': 'card recommendation-02' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-body' }, React.createElement('div', {
+	            'className': 'slick',
+	            'ref': 'slick'
+	        }, React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-02-item' }, React.createElement('img', {
+	            'src': '/images/recommendation-02.png',
+	            'className': 'recommendation-02-item-img'
+	        }))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-02-item' }, React.createElement('img', {
+	            'src': '/images/recommendation-02.png',
+	            'className': 'recommendation-02-item-img'
+	        }))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-02-item' }, React.createElement('img', {
+	            'src': '/images/recommendation-02.png',
+	            'className': 'recommendation-02-item-img'
+	        }))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-02-item' }, React.createElement('img', {
+	            'src': '/images/recommendation-02.png',
+	            'className': 'recommendation-02-item-img'
+	        }))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-02-item' }, React.createElement('img', {
+	            'src': '/images/recommendation-02.png',
+	            'className': 'recommendation-02-item-img'
+	        })))))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 

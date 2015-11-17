@@ -1,4 +1,5 @@
 <rt-require dependency="../../components/BrandProfile/index.jsx" as="BrandProfile"/>
+<rt-require dependency="../../components/Recommendation02/index.jsx" as="Recommendation02"/>
 <rt-require dependency="../../components/Recommendation01/index.jsx" as="Recommendation01"/>
 <rt-require dependency="../../components/RestaurantList/index.jsx" as="RestaurantList"/>
 <rt-require dependency="../../components/Nav/index.jsx" as="Nav"/>
@@ -11,6 +12,7 @@
   <div class="layer-02">
     <Nav />
     <div class="layer-03">
+      <Recommendation02 />
       <Recommendation01 />
       <RestaurantList />
     </div>

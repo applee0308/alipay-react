@@ -1,5 +1,11 @@
 .restaurant-list .card-body {
   padding: 15px;
+  border-top: 0;
+}
+
+.restaurant-list .card-header {
+  padding-top: 15px;
+  padding-bottom: 0;
 }
 
 .restaurant-list-item {
