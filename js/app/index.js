@@ -34145,6 +34145,7 @@
 	  componentDidMount: function componentDidMount() {
 	    $(this.refs.slick).slick({
 	      arrows: false,
+	      dots: true,
 	      centerMode: true,
 	      slidesToShow: 1,
 	      autoPlay: false,

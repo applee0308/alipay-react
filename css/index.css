@@ -5,8 +5,8 @@
 .restaurant-list-item {
   display: block;
   margin-bottom: 15px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   overflow: hidden;
 }
 
@@ -89,15 +89,9 @@
 
 .restaurant-list-item-bottom {
   padding: 10px 15px;
-<<<<<<< HEAD
-  color: black;
-  font-size: 12px;
-  border: 1px solid #dadada;
-=======
   color: #333333;
   font-size: 12px;
   border: 1px solid #e5e5e5;
->>>>>>> refs/heads/desgin2
   border-top: 0;
   display: -webkit-box;
   display: -webkit-flex;
@@ -309,8 +303,7 @@
 }
 
 .recommendation-01 .slick-slide {
-  margin-right: -webkit-calc(50vw - 80px);
-  margin-right: calc(50vw - 80px);
+  margin-right: 60px;
 }
 
 .recommendation-01-item {
@@ -332,7 +325,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding-top: 30px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .recommendation-01-item-img {
@@ -340,7 +333,7 @@
   height: 80px;
   -webkit-transition: 300ms;
           transition: 300ms;
-  margin-bottom: 23px;
+  margin-bottom: 15.6px;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
 }
@@ -350,8 +343,19 @@
           transform: scale(1.3) translateZ(0);
 }
 
-.no-csscalc .recommendation-01 .slick-slide {
-  margin-right: 70px;
+.recommendation-01 .slick-dots {
+  padding-bottom: 15px;
+  position: static;
+}
+
+.recommendation-01 .slick-dots li {
+  border-radius: 50%;
+  margin-right: 5px;
+  background: #e5e5e5;
+}
+
+.recommendation-01 .slick-dots li.slick-active {
+  background: #919191;
 }
 
 .brand-profile {
@@ -382,11 +386,12 @@
 .brand-profile-avatar {
   display: block;
   margin-bottom: 6px;
+  border-radius: 50%;
 }
 
 .brand-profile-name {
   font-size: 14px;
-  margin-bottom: 6px;
+  margin-bottom: 3px;
 }
 
 .brand-profile-location {
@@ -415,40 +420,6 @@
 
 .layer-03 {
   background: #f5f5f9;
-}
-
-.card-header {
-  padding-top: 15px;
-  padding-bottom: 0;
-}
-
-.card-body {
-  border-top: 0;
-}
-
-.restaurant-list .card-body {
-  padding-top: 10px;
-}
-
-.recommendation-01-item {
-  padding-top: 15px;
-}
-
-.layer-01 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.layer-02 {
-  position: relative;
-  z-index: 100;
-  top: 146px;
-}
-
-.layer-03 {
-  background: #EFEFF4;
 }
 
 .card-header {

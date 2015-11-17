@@ -5,8 +5,8 @@
 .restaurant-list-item {
   display: block;
   margin-bottom: 15px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   overflow: hidden;
 }
 
@@ -89,15 +89,9 @@
 
 .restaurant-list-item-bottom {
   padding: 10px 15px;
-<<<<<<< HEAD
-  color: black;
-  font-size: 12px;
-  border: 1px solid #dadada;
-=======
   color: #333333;
   font-size: 12px;
   border: 1px solid #e5e5e5;
->>>>>>> refs/heads/desgin2
   border-top: 0;
   display: -webkit-box;
   display: -webkit-flex;

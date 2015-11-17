@@ -15,11 +15,12 @@
   &-avatar {
     display: block;
     margin-bottom: 6px;
+    border-radius: 50%;
   }
 
   &-name {
     font-size: 14px;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
   }
 
   &-location {
