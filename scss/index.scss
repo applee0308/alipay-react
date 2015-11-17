@@ -5,6 +5,19 @@
 @import './components/recommendation-01';
 @import './components/brand-profile';
 
+.layer-01 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 
+.layer-02 {
+  position: relative;
+  z-index: 100;
+  top: 146px;
+}
 
-
+.layer-03 {
+  background: $pageGray;
+}

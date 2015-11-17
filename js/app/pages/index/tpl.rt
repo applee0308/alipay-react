@@ -4,11 +4,15 @@
 <rt-require dependency="../../components/Nav/index.jsx" as="Nav"/>
 
 <div class="app">
-  <div class="page-header">
+  <div class="layer-01">
     <BrandProfile />
-    <Nav />
   </div>
-  <Recommendation01 />
-  <RestaurantList />
 
+  <div class="layer-02">
+    <Nav />
+    <div class="layer-03">
+      <Recommendation01 />
+      <RestaurantList />
+    </div>
+  </div>
 </div>

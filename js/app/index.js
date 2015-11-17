@@ -19653,13 +19653,13 @@
 	    __webpack_require__(160),
 	    __webpack_require__(179),
 	    __webpack_require__(181),
+	    __webpack_require__(183),
 	    __webpack_require__(185),
-	    __webpack_require__(187),
-	    __webpack_require__(183)
+	    __webpack_require__(187)
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation01, RestaurantList, Nav) {
 	    'use strict';
 	    return function () {
-	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'page-header' }, React.createElement(BrandProfile, {}), React.createElement(Nav, {})), React.createElement(Recommendation01, {}), React.createElement(RestaurantList, {}));
+	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {})), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, {}), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation01, {}), React.createElement(RestaurantList, {}))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34119,9 +34119,10 @@
 	            'className': 'brand-profile'
 	        }, React.createElement('img', {
 	            'src': '../images/profile-avatar.png',
-	            'alt': true,
+	            'width': '48',
+	            'height': '48',
 	            'className': 'brand-profile-avatar'
-	        }), React.createElement('div', { 'className': 'brand-profile-name' }, '北京首都机场'), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, ' 顺义区机场路1号')));
+	        }), React.createElement('div', { 'className': 'brand-profile-name' }, '北京首都机场'), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, '顺义区机场路1号')));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34133,58 +34134,6 @@
 
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(184);
-
-	var Elem = React.createClass({
-	  displayName: 'Elem',
-
-	  render: function render() {
-	    return tpl.call(this);
-	  }
-	});
-
-	module.exports = Elem;
-
-/***/ },
-/* 184 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
-	    __webpack_require__(160),
-	    __webpack_require__(179)
-	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _) {
-	    'use strict';
-	    return function () {
-	        return React.createElement('nav', { 'className': 'site-nav card' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-body' }, React.createElement('div', { 'className': 'row' }, React.createElement('a', {
-	            'href': './restaurant.html',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cutlery' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '餐饮购物')), React.createElement('a', {
-	            'href': './list.html',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-phone' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场电话')), React.createElement('a', {
-	            'href': '##',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-map' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场地图'))), React.createElement('div', { 'className': 'row' }, React.createElement('a', {
-	            'href': '##',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cab' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场交通')), React.createElement('a', {
-	            'href': '##',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务')), React.createElement('a', {
-	            'style': { visibility: 'hidden' },
-	            'href': 'javascript: void(0)',
-	            'className': 'site-nav-item site-nav-item-empty'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务'))))));
-	    };
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ },
-/* 185 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var tpl = __webpack_require__(186);
 
 	var Elem = React.createClass({
 	  displayName: 'Elem',
@@ -34208,7 +34157,7 @@
 	module.exports = Elem;
 
 /***/ },
-/* 186 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
@@ -34222,36 +34171,41 @@
 	            'ref': 'slick'
 	        }, React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一')))))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
-/* 187 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var tpl = __webpack_require__(188);
+	var tpl = __webpack_require__(186);
 
 	var data = {
 	  "code": 0,
@@ -34306,7 +34260,7 @@
 	module.exports = Elem;
 
 /***/ },
-/* 188 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
@@ -34333,6 +34287,58 @@
 	            'className': 'card-footer-actions-item restaurant-list-loadTrigger',
 	            'href': '##'
 	        }, '查看更多')))));
+	    };
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var tpl = __webpack_require__(188);
+
+	var Elem = React.createClass({
+	  displayName: 'Elem',
+
+	  render: function render() {
+	    return tpl.call(this);
+	  }
+	});
+
+	module.exports = Elem;
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
+	    __webpack_require__(160),
+	    __webpack_require__(179)
+	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _) {
+	    'use strict';
+	    return function () {
+	        return React.createElement('nav', { 'className': 'site-nav card' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-body' }, React.createElement('div', { 'className': 'row' }, React.createElement('a', {
+	            'href': './restaurant.html',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cutlery' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '餐饮购物')), React.createElement('a', {
+	            'href': './list.html',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-phone' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场电话')), React.createElement('a', {
+	            'href': '##',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-map' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场地图'))), React.createElement('div', { 'className': 'row' }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cab' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场交通')), React.createElement('a', {
+	            'href': '##',
+	            'className': 'site-nav-item'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务')), React.createElement('a', {
+	            'style': { visibility: 'hidden' },
+	            'href': 'javascript: void(0)',
+	            'className': 'site-nav-item site-nav-item-empty'
+	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务'))))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 

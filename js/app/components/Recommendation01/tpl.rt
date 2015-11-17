@@ -8,35 +8,35 @@
       <div class="slick" ref="slick">
         <div class="slick-slide">
           <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" alt="" class="recommendation-01-item-img">
+            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
             <div class="recommendation-01-item-text">买一送一</div>
           </div>
         </div>
 
         <div class="slick-slide">
           <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" alt="" class="recommendation-01-item-img">
+            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
             <div class="recommendation-01-item-text">买一送一</div>
           </div>
         </div>
 
         <div class="slick-slide">
           <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" alt="" class="recommendation-01-item-img">
+            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
             <div class="recommendation-01-item-text">买一送一</div>
           </div>
         </div>
 
         <div class="slick-slide">
           <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" alt="" class="recommendation-01-item-img">
+            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
             <div class="recommendation-01-item-text">买一送一</div>
           </div>
         </div>
 
         <div class="slick-slide">
           <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" alt="" class="recommendation-01-item-img">
+            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
             <div class="recommendation-01-item-text">买一送一</div>
           </div>
         </div>
