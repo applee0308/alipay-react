@@ -5,6 +5,9 @@
 .restaurant-list-item {
   display: block;
   margin-bottom: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  overflow: hidden;
 }
 
 .restaurant-list-item:last-of-type {
@@ -63,7 +66,7 @@
 }
 
 .restaurant-list-item-location {
-  font-size: 13px;
+  font-size: 12px;
   margin-right: 4px;
 }
 
@@ -87,7 +90,7 @@
 .restaurant-list-item-bottom {
   padding: 10px 15px;
   color: #333333;
-  font-size: 13px;
+  font-size: 12px;
   border: 1px solid #e5e5e5;
   border-top: 0;
   display: -webkit-box;

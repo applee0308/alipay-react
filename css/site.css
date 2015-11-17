@@ -242,10 +242,6 @@ td, th {
   padding: 0;
 }
 
-html {
-  line-height: 1;
-}
-
 *, *:before, *:after {
   box-sizing: border-box;
 }

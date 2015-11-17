@@ -10,6 +10,9 @@
   &-item {
     display: block;
     margin-bottom: $gutter;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
 
     &:last-of-type {
       margin-bottom: 0;
@@ -51,7 +54,7 @@
     }
 
     &-location {
-      font-size: 13px;
+      font-size: 12px;
       margin-right: 4px;
       i {
         position: relative;
@@ -73,7 +76,7 @@
     &-bottom {
       padding: $gutter/3*2 $gutter;
       color: $fontBlack;
-      font-size: 13px;
+      font-size: 12px;
       border: 1px solid $borderGray;
       border-top: 0;
       display: flex;
