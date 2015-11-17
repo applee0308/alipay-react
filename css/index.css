@@ -1,5 +1,6 @@
 .restaurant-list .card-body {
   padding: 15px;
+  padding-top: 10px;
   border-top: 0;
 }
 
@@ -232,14 +233,18 @@
 }
 
 .site-nav {
-  margin-bottom: 0;
+  position: absolute;
+  width: 100%;
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 
 .site-nav .card-body {
   padding-top: 10px;
   padding-bottom: 10px;
   border: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .site-nav .row {
@@ -455,7 +460,7 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 55px;
+  padding-top: 60px;
   height: 275px;
   background-color: black;
   background-size: cover;
@@ -469,8 +474,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.8));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.8));
 }
 
 .brand-profile-avatar {
@@ -513,7 +518,7 @@
 .layer-02 {
   position: relative;
   z-index: 100;
-  top: 156px;
+  top: 275px;
 }
 
 .layer-03 {

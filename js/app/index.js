@@ -34118,7 +34118,7 @@
 	        return React.createElement('a', {
 	            'href': '##',
 	            'className': 'brand-profile',
-	            'style': { backgroundImage: 'url(/images/profile-bg.png)' }
+	            'style': { backgroundImage: 'url(/images/profile-bg-02.png)' }
 	        }, React.createElement('img', {
 	            'src': '../images/profile-avatar.png',
 	            'width': '48',
