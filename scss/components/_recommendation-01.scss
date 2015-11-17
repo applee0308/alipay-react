@@ -35,6 +35,8 @@
     padding-bottom: $gutter;
     position: static;
     li {
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       margin-right: 5px;
       background: $borderGray;
