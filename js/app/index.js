@@ -19659,7 +19659,7 @@
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation01, RestaurantList, Nav) {
 	    'use strict';
 	    return function () {
-	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'page-header' }, React.createElement(BrandProfile, {}), React.createElement(Nav, {})), React.createElement(Recommendation01, {}), React.createElement(RestaurantList, {}));
+	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {})), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, {}), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation01, {}), React.createElement(RestaurantList, {}))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34119,9 +34119,10 @@
 	            'className': 'brand-profile'
 	        }, React.createElement('img', {
 	            'src': '../images/profile-avatar.png',
-	            'alt': true,
+	            'width': '48',
+	            'height': '48',
 	            'className': 'brand-profile-avatar'
-	        }), React.createElement('div', { 'className': 'brand-profile-name' }, '北京首都机场'), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, ' 顺义区机场路1号')));
+	        }), React.createElement('div', { 'className': 'brand-profile-name' }, '北京首都机场'), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, '顺义区机场路1号')));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34170,23 +34171,28 @@
 	            'ref': 'slick'
 	        }, React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'slick-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
-	            'alt': true,
+	            'width': '80',
+	            'height': '80',
 	            'className': 'recommendation-01-item-img'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一')))))));
 	    };

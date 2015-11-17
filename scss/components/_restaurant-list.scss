@@ -10,6 +10,9 @@
   &-item {
     display: block;
     margin-bottom: $gutter;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
 
     &:last-of-type {
       margin-bottom: 0;
@@ -36,7 +39,7 @@
       background: linear-gradient(to bottom, transparent, black);
       display: flex;
       align-items: center;
-      padding: $gutter/2 $gutter;
+      padding: $gutter/3*2 $gutter;
       @include fontColor(white);
 
       &-left {
@@ -46,31 +49,34 @@
 
     &-name {
       @include clipText;
-      font-size: 18px;
-      margin-bottom: 2px;
+      font-size: 14px;
+      margin-bottom: 6px;
     }
 
     &-location {
-      font-size: 14px;
+      font-size: 12px;
+      margin-right: 4px;
       i {
         position: relative;
-        top: -1.5px;
+        top: -1px;
+        margin-right: 4px;
       }
     }
 
     &-discount {
+      font-size: 14px;
       &-num {
-        font-size: 40px;
-        margin-right: 3px;
+        font-size: 45px;
+        margin-right: 4px;
         position: relative;
         top: 2px;
       }
     }
 
     &-bottom {
-      padding: $gutter/2 $gutter;
+      padding: $gutter/3*2 $gutter;
       color: $fontBlack;
-      font-size: 14px;
+      font-size: 12px;
       border: 1px solid $borderGray;
       border-top: 0;
       display: flex;
@@ -88,7 +94,7 @@
       justify-content: flex-end;
 
       &-item {
-        margin-right: $gutter/2;
+        margin-right: $gutter/3*2;
         color: $fontGray;
 
         &:last-of-type {

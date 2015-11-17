@@ -19,7 +19,7 @@
   height: 0;
   padding-bottom: 60%;
   overflow: hidden;
-  background: #dadada;
+  background: #e5e5e5;
 }
 
 .restaurant-list-item-img {
@@ -89,9 +89,15 @@
 
 .restaurant-list-item-bottom {
   padding: 10px 15px;
+<<<<<<< HEAD
   color: black;
   font-size: 12px;
   border: 1px solid #dadada;
+=======
+  color: #333333;
+  font-size: 12px;
+  border: 1px solid #e5e5e5;
+>>>>>>> refs/heads/desgin2
   border-top: 0;
   display: -webkit-box;
   display: -webkit-flex;
@@ -177,7 +183,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .tiles .row:last-of-type {
@@ -189,7 +195,7 @@
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  border-right: 1px solid #dadada;
+  border-right: 1px solid #e5e5e5;
 }
 
 .tiles-item:nth-of-type(2n) {
@@ -205,10 +211,15 @@
   display: block;
 }
 
+.site-nav {
+  margin-bottom: 0;
+}
+
 .site-nav .card-body {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-top: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .site-nav .row {
@@ -217,9 +228,10 @@
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 15px;
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #e5e5e5;
   padding-bottom: 10px;
   margin-bottom: 10px;
+  border-color: #3e4242;
 }
 
 .site-nav .row:last-of-type {
@@ -250,17 +262,26 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  border-right: 1px solid #dadada;
-  padding-left: 5px;
-  padding-right: 5px;
+  position: relative;
 }
 
-.site-nav-item:last-of-type {
-  border-right: 0;
+.site-nav-item:last-of-type::after {
+  display: none;
+}
+
+.site-nav-item::after {
+  content: '';
+  width: 1px;
+  position: absolute;
+  top: 9px;
+  right: 0;
+  background: #3e4242;
+  height: -webkit-calc(100% - 18px);
+  height: calc(100% - 18px);
 }
 
 .site-nav-item-icon {
-  color: #a5a5a5;
+  color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -273,13 +294,13 @@
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .site-nav-item-text {
   display: block;
-  color: black;
+  color: #989898;
   font-size: 12px;
   max-width: 100%;
   overflow: hidden;
@@ -288,8 +309,8 @@
 }
 
 .recommendation-01 .slick-slide {
-  margin-right: -webkit-calc(50vw - 90px);
-  margin-right: calc(50vw - 90px);
+  margin-right: -webkit-calc(50vw - 80px);
+  margin-right: calc(50vw - 80px);
 }
 
 .recommendation-01-item {
@@ -315,16 +336,18 @@
 }
 
 .recommendation-01-item-img {
+  width: 80px;
+  height: 80px;
   -webkit-transition: 300ms;
           transition: 300ms;
-  margin-bottom: 23.33px;
+  margin-bottom: 23px;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
 }
 
 .slick-slide.slick-active .recommendation-01-item-img {
-  -webkit-transform: scale(1.333) translateZ(0);
-          transform: scale(1.333) translateZ(0);
+  -webkit-transform: scale(1.3) translateZ(0);
+          transform: scale(1.3) translateZ(0);
 }
 
 .no-csscalc .recommendation-01 .slick-slide {
@@ -349,29 +372,66 @@
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: white;
+  padding-top: 40px;
+  padding-bottom: 140px;
   background: black url(../images/profile-bg.png);
   background-size: 100% 100%;
-  color: white;
-  padding-top: 60px;
-  padding-bottom: 40px;
 }
 
 .brand-profile-avatar {
-  margin-bottom: 15px;
+  display: block;
+  margin-bottom: 6px;
 }
 
 .brand-profile-name {
-  font-size: 18px;
-  margin-bottom: 3px;
+  font-size: 14px;
+  margin-bottom: 6px;
 }
 
 .brand-profile-location {
-  font-size: 14px;
+  font-size: 12px;
+  color: #a5a5a5;
 }
 
 .brand-profile-location i {
   position: relative;
   top: -1.5px;
+  margin-right: 4px;
+}
+
+.layer-01 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.layer-02 {
+  position: relative;
+  z-index: 100;
+  top: 146px;
+}
+
+.layer-03 {
+  background: #f5f5f9;
+}
+
+.card-header {
+  padding-top: 15px;
+  padding-bottom: 0;
+}
+
+.card-body {
+  border-top: 0;
+}
+
+.restaurant-list .card-body {
+  padding-top: 10px;
+}
+
+.recommendation-01-item {
+  padding-top: 15px;
 }
 
 .layer-01 {
