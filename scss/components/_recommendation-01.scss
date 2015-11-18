@@ -2,7 +2,7 @@
 @import '../base/util';
 
 .recommendation-01 {
-  $imgSize: 80px;
+  $imgSize: pr(80);
   $scale: 1.3;
 
   .card-header {

@@ -56,19 +56,24 @@
       height: calc(100% - #{$borderOffset * 2});
     }
 
+    @at-root.no-csscalc &::after {
+      top: 0;
+      height: 100%;
+    }
+
     &-icon {
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      margin-bottom: 5px;
+      font-size: pr(18);
+      margin-bottom: pr(5);
     }
 
     &-text {
       display: block;
       color: #989898;
-      font-size: 12px;
+      font-size: pr(12);
       max-width: 100%;
       @include clipText;
     }

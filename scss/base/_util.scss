@@ -104,3 +104,8 @@
     @content;
   }
 }
+
+@function pr($size, $base: 20) {
+  $remSize: $size / $base;
+  @return #{$remSize}rem;
+}

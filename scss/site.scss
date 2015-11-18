@@ -11,16 +11,24 @@
   margin-right: auto;
 }
 
+html {
+  font-size: 20px; // chrome for android ignore font-size < 12
+
+  @include media-md-up {
+    font-size: 20px * 1.2;
+  };
+}
+
 
 body {
-  font-size: 16px;
+  font-size: pr(16);
   font-family: Roboto,
                'HelveticaNeue-Light',
                'Helvetica Neue Light',
                'Helvetica Neue',
                Helvetica,
                Arial,sans-serif;
+  line-height: 1.2;
   background: $pageGray;
   color: $fontBlack;
-  line-height: 1.2;
 }

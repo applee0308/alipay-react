@@ -13,13 +13,13 @@
     border-top: 1px solid $borderGray;
 
     &-title {
-      font-size: 14px;
+      font-size: pr(14);
     }
 
     &-actions {
       &-item {
         color: $fontBlack;
-        font-size: 12px;
+        font-size: pr(12);
         &::after {
           content: '»';
         }
@@ -44,7 +44,7 @@
       &-item {
         padding: $gutter;
         display: block;
-        font-size: 12px;
+        font-size: pr(12);
         color: $fontBlack;
       }
     }
