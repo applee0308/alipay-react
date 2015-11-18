@@ -56,12 +56,12 @@
 
     &-name {
       @include clipText;
-      font-size: 14px;
+      font-size: pr(14);
       margin-bottom: 6px;
     }
 
     &-location {
-      font-size: 12px;
+      font-size: pr(12);
       margin-right: 4px;
       i {
         position: relative;
@@ -71,7 +71,7 @@
     }
 
     &-discount {
-      font-size: 14px;
+      font-size: pr(14);
       &-num {
         font-size: 45px;
         margin-right: 4px;
@@ -83,7 +83,7 @@
     &-bottom {
       padding: $gutter/3*2 $gutter;
       color: $fontBlack;
-      font-size: 12px;
+      font-size: pr(12);
       border: 1px solid $borderGray;
       border-top: 0;
       display: flex;
