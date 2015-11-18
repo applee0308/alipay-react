@@ -7,14 +7,11 @@ var Elem = React.createClass({
   },
 
   componentDidMount: function() {
-    $(this.refs.slick).slick({
-      arrows: false,
-      dots: true,
-      // centerMode: true,
-      slidesToShow: 1,
-      autoPlay: false,
-      // centerPadding: '100px',
-      // variableWidth: true
+    new Swiper(this.refs.swiper, {
+      pagination: this.refs.swiperPagination,
+      paginationClickable: true,
+      loop: true,
+      // autoplay: 2000,
     });
   }
 });

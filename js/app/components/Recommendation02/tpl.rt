@@ -1,37 +1,30 @@
 <section class="card recommendation-02">
   <div class="container">
     <div class="card-body">
-      <div class="slick" ref="slick">
-        <div class="slick-slide">
-          <div class="recommendation-02-item">
-            <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
+      <div class="swiper-container" ref="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a href="##" class="recommendation-02-item">
+              <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
+            </a>
+          </div>
+
+          <div class="swiper-slide">
+            <a href="##" class="recommendation-02-item">
+              <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
+            </a>
+          </div>
+
+          <div class="swiper-slide">
+            <a href="##" class="recommendation-02-item">
+              <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
+            </a>
           </div>
         </div>
 
-        <div class="slick-slide">
-          <div class="recommendation-02-item">
-            <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
-          </div>
-        </div>
-
-        <div class="slick-slide">
-          <div class="recommendation-02-item">
-            <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
-          </div>
-        </div>
-
-        <div class="slick-slide">
-          <div class="recommendation-02-item">
-            <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
-          </div>
-        </div>
-
-        <div class="slick-slide">
-          <div class="recommendation-02-item">
-            <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
-          </div>
-        </div>
+        <div class="swiper-pagination" ref="swiperPagination"></div>
       </div>
+
     </div>
   </div>
 </section>

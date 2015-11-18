@@ -5,41 +5,53 @@
     </div>
 
     <div class="card-body">
-      <div class="slick" ref="slick">
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
+      <div class="swiper-container" ref="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="width: auto;">
+            <a href="##" class="recommendation-01-item">
+              <img src="/images/recommendation-01.png" width="80" height="80" class="  recommendation-01-item-img">
+              <div class="recommendation-01-item-text">买一送一</div>
+            </a>
           </div>
+
+          <div class="swiper-slide" style="width: auto;">
+            <a href="##" class="recommendation-01-item">
+              <img src="/images/recommendation-01-02.png" width="80" height="80" class="  recommendation-01-item-img">
+              <div class="recommendation-01-item-text">买一送一</div>
+            </a>
+          </div>
+
+          <div class="swiper-slide" style="width: auto;">
+            <a href="##" class="recommendation-01-item">
+              <img src="/images/recommendation-01.png" width="80" height="80" class="  recommendation-01-item-img">
+              <div class="recommendation-01-item-text">买一送一</div>
+            </a>
+          </div>
+
+          <div class="swiper-slide" style="width: auto;">
+            <a href="##" class="recommendation-01-item">
+              <img src="/images/recommendation-01-02.png" width="80" height="80" class="  recommendation-01-item-img">
+              <div class="recommendation-01-item-text">买一送一</div>
+            </a>
+          </div>
+
+          <div class="swiper-slide" style="width: auto;">
+            <a href="##" class="recommendation-01-item">
+              <img src="/images/recommendation-01.png" width="80" height="80" class="  recommendation-01-item-img">
+              <div class="recommendation-01-item-text">买一送一</div>
+            </a>
+          </div>
+
+          <div class="swiper-slide" style="width: auto;">
+            <a href="##" class="recommendation-01-item">
+              <img src="/images/recommendation-01-02.png" width="80" height="80" class="  recommendation-01-item-img">
+              <div class="recommendation-01-item-text">买一送一</div>
+            </a>
+          </div>
+
         </div>
 
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
-          </div>
-        </div>
-
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
-          </div>
-        </div>
-
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
-          </div>
-        </div>
-
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
-          </div>
-        </div>
+        <div class="swiper-pagination" ref="swiperPagination"></div>
       </div>
     </div>
   </div>
