@@ -5,39 +5,27 @@
     </div>
 
     <div class="card-body">
-      <div class="slick" ref="slick">
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
+      <div class="swiper-container" ref="swiper" style="width: 80px">
+        <div class="swiper-wrapper">
+          <div class="swipe-slide">
+            <div class="recommendation-01-item">
+              <img src="/images/recommendation-01.png" width="80" height="80" class="  recommendation-01-item-img">
+              <div class="recommendation-01-item-text">买一送一</div>
+            </div>
           </div>
-        </div>
 
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
+          <div class="swipe-slide">
+            <div class="recommendation-01-item">
+              <img src="/images/recommendation-01.png" width="80" height="80" class="  recommendation-01-item-img">
+              <div class="recommendation-01-item-text">买一送一</div>
+            </div>
           </div>
-        </div>
 
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
-          </div>
-        </div>
-
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
-          </div>
-        </div>
-
-        <div class="slick-slide">
-          <div class="recommendation-01-item">
-            <img src="/images/recommendation-01.png" width="80" height="80" class="recommendation-01-item-img">
-            <div class="recommendation-01-item-text">买一送一</div>
+          <div class="swipe-slide">
+            <div class="recommendation-01-item">
+              <img src="/images/recommendation-01.png" width="80" height="80" class="  recommendation-01-item-img">
+              <div class="recommendation-01-item-text">买一送一</div>
+            </div>
           </div>
         </div>
       </div>

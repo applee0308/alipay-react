@@ -7,14 +7,8 @@ var Elem = React.createClass({
   },
 
   componentDidMount: function() {
-    $(this.refs.slick).slick({
-      arrows: false,
-      dots: true,
-      centerMode: true,
-      slidesToShow: 1,
-      autoPlay: false,
-      centerPadding: '100px',
-      variableWidth: true
+    var swiper = new Swiper(this.refs.swiper, {
+
     });
   }
 });

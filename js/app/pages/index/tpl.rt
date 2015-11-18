@@ -13,7 +13,7 @@
     <Nav />
     <div class="layer-03">
       <Recommendation02 />
-      <Recommendation01 />
+      <!-- <Recommendation01 /> -->
       <RestaurantList />
     </div>
   </div>
