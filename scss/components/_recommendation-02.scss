@@ -14,17 +14,7 @@
     }
   }
 
-  .slick-dots {
-    bottom: $gutter/3;
-
-    li {
-      border-radius: 50%;
-      margin-right: 5px;
-      background: $borderGray;
-
-      &.slick-active {
-        background: #919191;
-      }
-    }
+  .swiper-pagination {
+    bottom: 0px;
   }
 }

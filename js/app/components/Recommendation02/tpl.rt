@@ -4,25 +4,25 @@
       <div class="swiper-container" ref="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <div class="recommendation-02-item">
+            <a href="##" class="recommendation-02-item">
               <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
-            </div>
+            </a>
           </div>
 
           <div class="swiper-slide">
-            <div class="recommendation-02-item">
+            <a href="##" class="recommendation-02-item">
               <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
-            </div>
+            </a>
           </div>
 
           <div class="swiper-slide">
-            <div class="recommendation-02-item">
+            <a href="##" class="recommendation-02-item">
               <img src="/images/recommendation-02.png" class="recommendation-02-item-img">
-            </div>
+            </a>
           </div>
         </div>
 
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination" ref="swiperPagination"></div>
       </div>
 
     </div>

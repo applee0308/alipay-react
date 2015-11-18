@@ -19660,7 +19660,7 @@
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation02, Recommendation01, RestaurantList, Nav) {
 	    'use strict';
 	    return function () {
-	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {})), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, {}), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, {})    /*  <Recommendation01 />  */, React.createElement(RestaurantList, {}))));
+	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {})), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, {}), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, {}), React.createElement(Recommendation01, {}), React.createElement(RestaurantList, {}))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34146,7 +34146,7 @@
 
 	  componentDidMount: function componentDidMount() {
 	    new Swiper(this.refs.swiper, {
-	      pagination: '.swiper-pagination',
+	      pagination: this.refs.swiperPagination,
 	      paginationClickable: true,
 	      loop: true
 	    });
@@ -34169,16 +34169,28 @@
 	        return React.createElement('section', { 'className': 'card recommendation-02' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-body' }, React.createElement('div', {
 	            'className': 'swiper-container',
 	            'ref': 'swiper'
-	        }, React.createElement('div', { 'className': 'swiper-wrapper' }, React.createElement('div', { 'className': 'swiper-slide' }, React.createElement('div', { 'className': 'recommendation-02-item' }, React.createElement('img', {
+	        }, React.createElement('div', { 'className': 'swiper-wrapper' }, React.createElement('div', { 'className': 'swiper-slide' }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'recommendation-02-item'
+	        }, React.createElement('img', {
 	            'src': '/images/recommendation-02.png',
 	            'className': 'recommendation-02-item-img'
-	        }))), React.createElement('div', { 'className': 'swiper-slide' }, React.createElement('div', { 'className': 'recommendation-02-item' }, React.createElement('img', {
+	        }))), React.createElement('div', { 'className': 'swiper-slide' }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'recommendation-02-item'
+	        }, React.createElement('img', {
 	            'src': '/images/recommendation-02.png',
 	            'className': 'recommendation-02-item-img'
-	        }))), React.createElement('div', { 'className': 'swiper-slide' }, React.createElement('div', { 'className': 'recommendation-02-item' }, React.createElement('img', {
+	        }))), React.createElement('div', { 'className': 'swiper-slide' }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'recommendation-02-item'
+	        }, React.createElement('img', {
 	            'src': '/images/recommendation-02.png',
 	            'className': 'recommendation-02-item-img'
-	        })))), React.createElement('div', { 'className': 'swiper-pagination' })))));
+	        })))), React.createElement('div', {
+	            'className': 'swiper-pagination',
+	            'ref': 'swiperPagination'
+	        })))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34199,10 +34211,18 @@
 	  },
 
 	  componentDidMount: function componentDidMount() {
-	    var swiper = new Swiper(this.refs.swiper, {});
+	    new Swiper(this.refs.swiper, {
+	      pagination: this.refs.swiperPagination,
+	      slidesPerView: 'auto',
+	      centeredSlides: true,
+	      paginationClickable: true,
+	      spaceBetween: 60,
+	      loop: true
+	    });
 	  }
 	});
 
+	// autoplay: 2000,
 	module.exports = Elem;
 
 /***/ },
@@ -34217,24 +34237,77 @@
 	    return function () {
 	        return React.createElement('section', { 'className': 'card recommendation-01' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-header' }, React.createElement('div', { 'className': 'card-header-title' }, '推荐品牌')), React.createElement('div', { 'className': 'card-body' }, React.createElement('div', {
 	            'className': 'swiper-container',
-	            'ref': 'swiper',
-	            'style': { width: '80px' }
-	        }, React.createElement('div', { 'className': 'swiper-wrapper' }, React.createElement('div', { 'className': 'swipe-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
+	            'ref': 'swiper'
+	        }, React.createElement('div', { 'className': 'swiper-wrapper' }, React.createElement('div', {
+	            'className': 'swiper-slide',
+	            'style': { width: 'auto' }
+	        }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'recommendation-01-item'
+	        }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
 	            'width': '80',
 	            'height': '80',
 	            'className': 'recommendation-01-item-img'
-	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'swipe-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
+	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', {
+	            'className': 'swiper-slide',
+	            'style': { width: 'auto' }
+	        }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'recommendation-01-item'
+	        }, React.createElement('img', {
+	            'src': '/images/recommendation-01-02.png',
+	            'width': '80',
+	            'height': '80',
+	            'className': 'recommendation-01-item-img'
+	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', {
+	            'className': 'swiper-slide',
+	            'style': { width: 'auto' }
+	        }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'recommendation-01-item'
+	        }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
 	            'width': '80',
 	            'height': '80',
 	            'className': 'recommendation-01-item-img'
-	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', { 'className': 'swipe-slide' }, React.createElement('div', { 'className': 'recommendation-01-item' }, React.createElement('img', {
+	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', {
+	            'className': 'swiper-slide',
+	            'style': { width: 'auto' }
+	        }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'recommendation-01-item'
+	        }, React.createElement('img', {
+	            'src': '/images/recommendation-01-02.png',
+	            'width': '80',
+	            'height': '80',
+	            'className': 'recommendation-01-item-img'
+	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', {
+	            'className': 'swiper-slide',
+	            'style': { width: 'auto' }
+	        }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'recommendation-01-item'
+	        }, React.createElement('img', {
 	            'src': '/images/recommendation-01.png',
 	            'width': '80',
 	            'height': '80',
 	            'className': 'recommendation-01-item-img'
-	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))))))));
+	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一'))), React.createElement('div', {
+	            'className': 'swiper-slide',
+	            'style': { width: 'auto' }
+	        }, React.createElement('a', {
+	            'href': '##',
+	            'className': 'recommendation-01-item'
+	        }, React.createElement('img', {
+	            'src': '/images/recommendation-01-02.png',
+	            'width': '80',
+	            'height': '80',
+	            'className': 'recommendation-01-item-img'
+	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, '买一送一')))), React.createElement('div', {
+	            'className': 'swiper-pagination',
+	            'ref': 'swiperPagination'
+	        })))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 

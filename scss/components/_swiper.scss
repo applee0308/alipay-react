@@ -1,15 +1,17 @@
+@import '../base/vars';
+
 /**
  * Swiper 3.2.0
  * Most modern mobile touch slider and framework with hardware accelerated transitions
- * 
+ *
  * http://www.idangero.us/swiper/
- * 
+ *
  * Copyright 2015, Vladimir Kharlampidi
  * The iDangero.us
  * http://www.idangero.us/
- * 
+ *
  * Licensed under MIT
- * 
+ *
  * Released on: November 7, 2015
  */
 .swiper-container {
@@ -449,5 +451,17 @@ button.swiper-pagination-bullet {
 @keyframes swiper-preloader-spin {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.swiper-pagination-bullet {
+  opacity: 1;
+  background: #D3D3D3;
+  width: 6px;
+  height: 6px;
+  margin-left: 0 !important;
+
+  &-active {
+    background: #919191;
   }
 }

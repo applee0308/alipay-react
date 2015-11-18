@@ -8,7 +8,7 @@ var Elem = React.createClass({
 
   componentDidMount: function() {
     new Swiper(this.refs.swiper, {
-      pagination: '.swiper-pagination',
+      pagination: this.refs.swiperPagination,
       paginationClickable: true,
       loop: true,
       // autoplay: 2000,

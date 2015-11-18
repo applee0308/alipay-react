@@ -7,8 +7,14 @@ var Elem = React.createClass({
   },
 
   componentDidMount: function() {
-    var swiper = new Swiper(this.refs.swiper, {
-
+    new Swiper(this.refs.swiper, {
+      pagination: this.refs.swiperPagination,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      paginationClickable: true,
+      spaceBetween: 60,
+      loop: true,
+      // autoplay: 2000,
     });
   }
 });
