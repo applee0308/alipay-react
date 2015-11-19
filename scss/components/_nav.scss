@@ -16,10 +16,9 @@
 
   .row {
     display: flex;
-    margin-bottom: $gutter;
     border-bottom: 1px solid $borderGray;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    padding-bottom: $gutter/3*2;
+    margin-bottom: $gutter/3*2;
     border-color: #3e4242;
 
     &:last-of-type {
@@ -39,6 +38,10 @@
     justify-content: center;
     align-items: center;
     position: relative;
+
+    &--placeholder {
+      visibility: hidden;
+    }
 
     &:last-of-type {
       &::after {
@@ -62,12 +65,8 @@
     }
 
     &-icon {
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: pr(18);
-      margin-bottom: pr(5);
+      height: pr(20);
+      margin-bottom: 3px;
     }
 
     &-text {
