@@ -19660,7 +19660,12 @@
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation02, Recommendation01, RestaurantList, Nav) {
 	    'use strict';
 	    return function () {
-	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {})), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, {}), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, {}), React.createElement(Recommendation01, {}), React.createElement(RestaurantList, {}))));
+	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {
+	            'background': '/images/profile-bg-01.png',
+	            'avatar': '../images/profile-avatar.png',
+	            'name': '北京首都机场',
+	            'location': '顺义区机场路1号'
+	        })), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, {}), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, {}), React.createElement(Recommendation01, {}), React.createElement(RestaurantList, {}))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34118,13 +34123,11 @@
 	        return React.createElement('a', {
 	            'href': '##',
 	            'className': 'brand-profile',
-	            'style': { backgroundImage: 'url(/images/profile-bg-02.png)' }
+	            'style': { backgroundImage: 'url(' + this.props.background + ')' }
 	        }, React.createElement('img', {
-	            'src': '../images/profile-avatar.png',
-	            'width': '48',
-	            'height': '48',
+	            'src': this.props.avatar,
 	            'className': 'brand-profile-avatar'
-	        }), React.createElement('div', { 'className': 'brand-profile-name' }, '北京首都机场'), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, '顺义区机场路1号')));
+	        }), React.createElement('div', { 'className': 'brand-profile-name' }, this.props.name), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, this.props.location)));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 

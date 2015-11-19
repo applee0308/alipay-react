@@ -1,9 +1,9 @@
 <a href="##" class="brand-profile"
-  style="background-image: url(/images/profile-bg-02.png)">
-  <img src="../images/profile-avatar.png" width="48" height="48" class="brand-profile-avatar">
-  <div class="brand-profile-name">北京首都机场</div>
+  style="background-image: url({this.props.background})">
+  <img src="{this.props.avatar}" class="brand-profile-avatar">
+  <div class="brand-profile-name">{this.props.name}</div>
   <div class="brand-profile-location">
     <i class="fa fa-map-marker"></i>
-    <span>顺义区机场路1号</span>
+    <span>{this.props.location}</span>
   </div>
 </a>
