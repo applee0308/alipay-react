@@ -16,8 +16,8 @@
   <div class="layer-02">
     <Nav />
     <div class="layer-03">
-      <Recommendation02 />
-      <Recommendation01 />
+      <Recommendation02 items={this.recommendation02} />
+      <Recommendation01 items={this.recommendation01} />
       <RestaurantList />
     </div>
   </div>
