@@ -6,14 +6,18 @@
 
 <div class="app">
   <div class="layer-01">
-    <BrandProfile />
+    <BrandProfile
+      background={"/images/profile-bg-01.png"}
+      avatar={"../images/profile-avatar.png"}
+      name={"北京首都机场"}
+      location={"顺义区机场路1号"} />
   </div>
 
   <div class="layer-02">
     <Nav />
     <div class="layer-03">
-      <Recommendation02 />
-      <Recommendation01 />
+      <Recommendation02 items={this.recommendation02} />
+      <Recommendation01 items={this.recommendation01} />
       <RestaurantList />
     </div>
   </div>
