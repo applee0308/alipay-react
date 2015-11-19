@@ -32060,7 +32060,7 @@
 	    'use strict';
 	    return function () {
 	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {
-	            'background': '/images/profile-bg-01.png',
+	            'background': '/images/profile-bg-02.png',
 	            'avatar': '../images/profile-avatar.png',
 	            'name': '北京首都机场',
 	            'location': '顺义区机场路1号'
@@ -34395,11 +34395,42 @@
 
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(190);
+	var _ = __webpack_require__(159);
+
+	var items = [{ href: '##', img: '/images/nav-icons/iconfont-baoxian.png', text: '保险' }, { href: '##', img: '/images/nav-icons/iconfont-bus.png', text: '交通' }, { href: '##', img: '/images/nav-icons/iconfont-dianhua.png', text: '电话' }, { href: '##', img: '/images/nav-icons/iconfont-ditu.png', text: '地图' }, { href: '##', img: '/images/nav-icons/iconfont-feiji.png', text: '航班' }];
 
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
 	  render: function render() {
+
+	    var len = items.length;
+	    var size;
+	    if (len < 5) {} else if (len >= 5 && len < 7) {
+	      // 每行3个，需要凑齐6个
+	      var i = 6 - len;
+	      while (i) {
+	        items.push({ isPlaceholder: true });
+	        i--;
+	      }
+	      size = 3;
+	    } else if (len >= 7 && len < 9) {
+	      // 每行3个，需要凑齐8个
+	      var i = 8 - len;
+	      while (i) {
+	        items.push({
+	          isPlaceHolder: true
+	        });
+	        i--;
+	      }
+	      size = 4;
+	    }
+
+	    if (size) {
+	      this.items = _.chunk(items, size);
+	    }
+
+	    console.log(this.items);
 	    return tpl.call(this);
 	  }
 	});
@@ -34415,27 +34446,29 @@
 	    __webpack_require__(159)
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _) {
 	    'use strict';
+	    function repeatItem1(group, groupIndex, item, itemIndex) {
+	        return React.createElement('a', {
+	            'key': item.index,
+	            'href': item.href,
+	            'className': 'site-nav-item' + ' ' + _.keys(_.pick({ 'site-nav-item--placeholder': item.isPlaceholder }, _.identity)).join(' ')
+	        }, React.createElement('img', {
+	            'src': item.img,
+	            'className': 'site-nav-item-icon'
+	        }    /*  <i class="site-nav-item-icon fa fa-cutlery"></i>  */), React.createElement('span', { 'className': 'site-nav-item-text' }, item.text));
+	    }
+	    function repeatGroup2(group, groupIndex) {
+	        return React.createElement.apply(this, [
+	            'div',
+	            { 'className': 'row' },
+	            _.map(group, repeatItem1.bind(this, group, groupIndex))
+	        ]);
+	    }
 	    return function () {
-	        return React.createElement('nav', { 'className': 'site-nav card' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-body' }, React.createElement('div', { 'className': 'row' }, React.createElement('a', {
-	            'href': './restaurant.html',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cutlery' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '餐饮购物')), React.createElement('a', {
-	            'href': './list.html',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-phone' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场电话')), React.createElement('a', {
-	            'href': '##',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-map' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场地图'))), React.createElement('div', { 'className': 'row' }, React.createElement('a', {
-	            'href': '##',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-cab' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '机场交通')), React.createElement('a', {
-	            'href': '##',
-	            'className': 'site-nav-item'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务')), React.createElement('a', {
-	            'style': { visibility: 'hidden' },
-	            'href': 'javascript: void(0)',
-	            'className': 'site-nav-item site-nav-item-empty'
-	        }, React.createElement('i', { 'className': 'site-nav-item-icon fa fa-bookmark' }), React.createElement('span', { 'className': 'site-nav-item-text' }, '便民服务'))))));
+	        return React.createElement('nav', { 'className': 'site-nav card' }, React.createElement('div', { 'className': 'container' }, React.createElement.apply(this, [
+	            'div',
+	            { 'className': 'card-body' },
+	            _.map(this.items, repeatGroup2.bind(this))
+	        ])));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
