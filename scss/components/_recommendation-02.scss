@@ -3,13 +3,10 @@
 
 .recommendation-02 {
   &-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: $gutter/3*2;
+    display: block;
     &-img {
       width: 100%;
+      display: block;
       background: $borderGray;
     }
   }
