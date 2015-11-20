@@ -50,6 +50,7 @@
 	var ReactDOM = __webpack_require__(158);
 	var _ = __webpack_require__(159);
 	var tpl = __webpack_require__(161);
+	var initParallax = __webpack_require__(191);
 
 	var recommendation01 = [];
 	var i = 10;
@@ -74,6 +75,11 @@
 
 	var App = React.createClass({
 	  displayName: 'App',
+
+	  componentDidMount: function componentDidMount() {
+	    // this.refs.parallaxLayer.classList.add('parallax');
+	    // initParallax(this.refs.parallaxLayer);
+	  },
 
 	  render: function render() {
 
@@ -32062,8 +32068,11 @@
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation02, Recommendation01, RestaurantList, Nav) {
 	    'use strict';
 	    return function () {
-	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', { 'className': 'layer-01' }, React.createElement(BrandProfile, {
-	            'background': '/images/profile-bg-02.png',
+	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', {
+	            'className': 'layer-01',
+	            'ref': 'parallaxLayer'
+	        }, React.createElement(BrandProfile, {
+	            'background': '/images/profile-bg-01.jpg',
 	            'avatar': '../images/profile-avatar.png',
 	            'name': '北京首都机场',
 	            'location': '顺义区机场路1号'
@@ -34410,6 +34419,8 @@
 
 	var items = [{ href: '##', img: '/images/nav-icons/iconfont-baoxian.png', text: '保险' }, { href: '##', img: '/images/nav-icons/iconfont-bus.png', text: '交通' }, { href: '##', img: '/images/nav-icons/iconfont-dianhua.png', text: '电话' }, { href: '##', img: '/images/nav-icons/iconfont-ditu.png', text: '地图' }, { href: '##', img: '/images/nav-icons/iconfont-feiji.png', text: '航班' }];
 
+	var placeholder = _.assign({}, items[0], { isPlaceholder: true });
+
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
@@ -34421,7 +34432,7 @@
 	      // 每行3个，需要凑齐6个
 	      var i = 6 - len;
 	      while (i) {
-	        items.push({ isPlaceholder: true });
+	        items.push(placeholder);
 	        i--;
 	      }
 	      size = 3;
@@ -34429,9 +34440,7 @@
 	      // 每行3个，需要凑齐8个
 	      var i = 8 - len;
 	      while (i) {
-	        items.push({
-	          isPlaceHolder: true
-	        });
+	        items.push(placeholder);
 	        i--;
 	      }
 	      size = 4;
@@ -34441,7 +34450,6 @@
 	      this.items = _.chunk(items, size);
 	    }
 
-	    console.log(this.items);
 	    return tpl.call(this);
 	  }
 	});
@@ -34482,6 +34490,56 @@
 	        ])));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+/* 191 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	function getScrollTop() {
+	  return document.documentElement.scrollTop || document.body.scrollTop || 0;
+	}
+
+	module.exports = function (elem) {
+	  var timer;
+	  var startScrolling = false;
+	  window.addEventListener('scroll', function () {
+	    if (!startScrolling) {
+	      startScrolling = true;
+	      startAnimation();
+	    }
+
+	    if (timer) {
+	      clearTimeout(timer);
+	    }
+
+	    timer = setTimeout(function () {
+	      startScrolling = false;
+	    }, 100);
+	  }, false);
+
+	  var height = elem.offsetHeight;
+	  var previewSt;
+	  function startAnimation() {
+	    function loop() {
+	      var st = getScrollTop();
+
+	      if (previewSt != st) {
+	        previewSt = st;
+	        if (st <= height) {
+	          elem.style.transform = 'translateY(' + (-st / 2).toFixed(0) + 'px) translateZ(0)';
+	        }
+	      }
+
+	      if (startScrolling) {
+	        requestAnimationFrame(loop);
+	      }
+	    }
+
+	    requestAnimationFrame(loop);
+	  }
+	};
 
 /***/ }
 /******/ ]);

@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var _ = require('lodash');
 var tpl = require('./tpl.rt');
-
+var initParallax = require('../../utils/parallax.jsx');
 
 var recommendation01 = [];
 var i = 10;
@@ -33,6 +33,11 @@ while (i) {
 
 
 var App = React.createClass({
+  componentDidMount: function() {
+    // this.refs.parallaxLayer.classList.add('parallax');
+    // initParallax(this.refs.parallaxLayer);
+  },
+
   render: function() {
 
     this.recommendation01 = recommendation01;
@@ -41,6 +46,5 @@ var App = React.createClass({
     return tpl.call(this);
   },
 });
-
 
 ReactDOM.render(<App/>, document.querySelector('.app-container'));

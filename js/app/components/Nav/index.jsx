@@ -10,6 +10,7 @@ var items = [
   { href: '##', img: '/images/nav-icons/iconfont-feiji.png', text: '航班' },
 ];
 
+var placeholder = _.assign({}, items[0], { isPlaceholder: true });
 
 
 var Elem = React.createClass({
@@ -22,7 +23,7 @@ var Elem = React.createClass({
       // 每行3个，需要凑齐6个
       var i = 6 - len;
       while (i) {
-        items.push({isPlaceholder: true });
+        items.push(placeholder);
         i--;
       }
       size = 3;
@@ -30,9 +31,7 @@ var Elem = React.createClass({
       // 每行3个，需要凑齐8个
       var i = 8 - len;
       while (i) {
-        items.push({
-          isPlaceHolder: true
-        })
+        items.push(placeholder)
         i--;
       }
       size = 4;
@@ -42,7 +41,6 @@ var Elem = React.createClass({
       this.items = _.chunk(items, size);
     }
 
-    console.log(this.items);
     return tpl.call(this);
   },
 });
