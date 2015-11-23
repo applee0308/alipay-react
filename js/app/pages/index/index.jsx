@@ -3,46 +3,41 @@ var ReactDOM = require('react-dom');
 var _ = require('lodash');
 var tpl = require('./tpl.rt');
 var initParallax = require('../../utils/parallax.jsx');
+var reqwest = require('reqwest');
 
-var recommendation01 = [];
-var i = 10;
-while (i) {
-  recommendation01.push({
-    href: '##',
-    img: i % 2 === 0 ?
-         '/images/recommendation-01-01.png' :
-         '/images/recommendation-01-02.png',
-    text: i % 2 === 0 ?
-          '买一送一' :
-          '满百减三',
-  });
-  i--;
+
+function parallax() {
+  this.refs.parallaxLayer.classList.add('parallax');
+  initParallax(this.refs.parallaxLayer);
 }
-
-var recommendation02 = [];
-var i = 5;
-while (i) {
-  recommendation02.push({
-    href: '##',
-    img: i % 2 === 0 ?
-         '/images/recommendation-02-01.png' :
-         '/images/recommendation-02-02.png',
-  });
-  i--;
-}
-
 
 var App = React.createClass({
+  getInitialState: function() {
+    // 可能使用 immutable，所以 state 多加了一层
+    return {
+      appState: {
+        recommendation01: [],
+        recommendation02: [],
+        brandProfile: {},
+        nav: []
+      }
+    };
+  },
+
   componentDidMount: function() {
-    // this.refs.parallaxLayer.classList.add('parallax');
-    // initParallax(this.refs.parallaxLayer);
+    var self = this;
+    reqwest({url: 'http://localhost:3030/jsonp', type: 'jsonp'}).
+      then(function(res) {
+        var state = self.state.appState;
+        state.recommendation01 = res.recommendation01;
+        state.recommendation02 = res.recommendation02;
+        state.brandProfile = res.brandProfile;
+        state.nav = res.nav;
+        self.setState({ appState: state });
+      });
   },
 
   render: function() {
-
-    this.recommendation01 = recommendation01;
-    this.recommendation02 = recommendation02;
-
     return tpl.call(this);
   },
 });

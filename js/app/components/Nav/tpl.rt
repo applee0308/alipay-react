@@ -5,7 +5,6 @@
         <a rt-repeat="item in group" key={item.index} href={item.href} class="site-nav-item"
         rt-class="{'site-nav-item--placeholder': item.isPlaceholder}">
           <img src={item.img} class="site-nav-item-icon">
-          <!-- <i class="site-nav-item-icon fa fa-cutlery"></i> -->
           <span class="site-nav-item-text">{item.text}</span>
         </a>
       </div>

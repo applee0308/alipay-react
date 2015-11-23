@@ -1,9 +1,9 @@
-<a href="##" class="brand-profile"
-  style="background-image: url({this.props.background})">
-  <img src="{this.props.avatar}" class="brand-profile-avatar">
-  <div class="brand-profile-name">{this.props.name}</div>
+<a href={this.props.payload.href} class="brand-profile"
+  style="background-image: url({this.props.payload.background} || '')">
+  <img src={this.props.payload.avatar} class="brand-profile-avatar">
+  <div class="brand-profile-name">{this.props.payload.name}</div>
   <div class="brand-profile-location">
     <i class="fa fa-map-marker"></i>
-    <span>{this.props.location}</span>
+    <span>{this.props.payload.location}</span>
   </div>
 </a>
