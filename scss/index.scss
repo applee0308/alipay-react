@@ -7,29 +7,37 @@
 @import './components/brand-profile';
 
 .layer-01 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+}
 
-  &.parallax {
+
+.layer-02 {
+  margin-top: pr(-115);
+  position: relative;
+  z-index: 100;
+
+  .site-nav {
+    margin-bottom: 0;
+  }
+}
+
+.parallax {
+  .layer-01 {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: -1;
     transform: translateZ(0);
     will-change: transform;
   }
+
+  .layer-02 {
+    top: pr(275);
+  }
+
+  .layer-03 {
+    background: $pageGray;
+  }
 }
 
-.layer-02 {
-  position: relative;
-  z-index: 100;
-  top: pr(275);
-}
 
-.layer-03 {
-  background: $pageGray;
-}
-
-.site-nav {
-  // display: none;
-}

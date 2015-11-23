@@ -688,15 +688,6 @@ button.swiper-pagination-bullet {
   display: block;
 }
 
-.site-nav {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  -webkit-transform: translateY(-100%);
-      -ms-transform: translateY(-100%);
-          transform: translateY(-100%);
-}
-
 .site-nav .card-body {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -919,27 +910,31 @@ button.swiper-pagination-bullet {
   margin-right: 0.2rem;
 }
 
-.layer-01 {
-  position: absolute;
+.layer-02 {
+  margin-top: -5.75rem;
+  position: relative;
+  z-index: 100;
+}
+
+.layer-02 .site-nav {
+  margin-bottom: 0;
+}
+
+.parallax .layer-01 {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-}
-
-.layer-01.parallax {
-  position: fixed;
   z-index: -1;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
   will-change: transform;
 }
 
-.layer-02 {
-  position: relative;
-  z-index: 100;
+.parallax .layer-02 {
   top: 13.75rem;
 }
 
-.layer-03 {
+.parallax .layer-03 {
   background: #f5f5f9;
 }
