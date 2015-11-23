@@ -2976,12 +2976,6 @@ html {
   font-size: 20px;
 }
 
-@media screen and (min-width: 641px) {
-  html {
-    font-size: 24px;
-  }
-}
-
 body {
   font-size: 0.8rem;
   font-family: Roboto,                'HelveticaNeue-Light',                'Helvetica Neue Light',                'Helvetica Neue',                Helvetica,                Arial,sans-serif;
