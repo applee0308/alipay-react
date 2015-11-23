@@ -5,9 +5,9 @@
 <rt-require dependency="../../components/Nav/index.jsx" as="Nav"/>
 
 <div class="app">
-  <div class="layer-01">
+  <div class="layer-01" ref="parallaxLayer">
     <BrandProfile
-      background={"/images/profile-bg-02.png"}
+      background={"/images/profile-bg-01.jpg"}
       avatar={"../images/profile-avatar.png"}
       name={"北京首都机场"}
       location={"顺义区机场路1号"} />

@@ -11,6 +11,13 @@
   top: 0;
   left: 0;
   width: 100%;
+
+  &.parallax {
+    position: fixed;
+    z-index: -1;
+    transform: translateZ(0);
+    will-change: transform;
+  }
 }
 
 .layer-02 {
@@ -21,4 +28,8 @@
 
 .layer-03 {
   background: $pageGray;
+}
+
+.site-nav {
+  // display: none;
 }
