@@ -1,9 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var _ = require('lodash');
 var tpl = require('./tpl.rt');
 var initParallax = require('../../utils/parallax.jsx');
 var reqwest = require('reqwest');
+var dataSrc = require('../../dataSrc.jsx');
+
 
 var store = {};
 
@@ -30,8 +31,11 @@ var App = React.createClass({
 });
 
 
-reqwest({url: 'http://localhost:3030/jsonp', type: 'jsonp'}).
-  then(function(res) {
-    store = res;
-    ReactDOM.render(<App/>, document.querySelector('.app-container'));
-  });
+Promise.all([
+  reqwest({url: dataSrc.index, type: 'jsonp'}),
+  reqwest({url: dataSrc.restaurantList, type: 'jsonp', data: {page: 1}})
+]).then(function(res) {
+  store = res[0];
+  store.restaurantList = res[1];
+  ReactDOM.render(<App/>, document.querySelector('.app-container'));
+});

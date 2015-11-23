@@ -15,10 +15,6 @@ var Elem = React.createClass({
       // autoplay: 2000,
     });
   },
-
-  shouldComponentUpdate: function() {
-    return false;
-  }
 });
 
 

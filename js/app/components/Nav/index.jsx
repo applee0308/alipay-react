@@ -33,10 +33,6 @@ var Elem = React.createClass({
 
     return tpl.call(this);
   },
-
-  shouldComponentUpdate: function() {
-    return false;
-  }
 });
 
 

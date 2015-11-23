@@ -48,10 +48,10 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var _ = __webpack_require__(159);
 	var tpl = __webpack_require__(161);
 	var initParallax = __webpack_require__(191);
 	var reqwest = __webpack_require__(192);
+	var dataSrc = __webpack_require__(194);
 
 	var store = {};
 
@@ -79,8 +79,9 @@
 	  }
 	});
 
-	reqwest({ url: 'http://localhost:3030/jsonp', type: 'jsonp' }).then(function (res) {
-	  store = res;
+	Promise.all([reqwest({ url: dataSrc.index, type: 'jsonp' }), reqwest({ url: dataSrc.restaurantList, type: 'jsonp', data: { page: 1 } })]).then(function (res) {
+	  store = res[0];
+	  store.restaurantList = res[1];
 	  ReactDOM.render(React.createElement(App, null), document.querySelector('.app-container'));
 	});
 
@@ -34137,10 +34138,6 @@
 
 	  render: function render() {
 	    return tpl.call(this);
-	  },
-
-	  shouldComponentUpdate: function shouldComponentUpdate() {
-	    return false;
 	  }
 	});
 
@@ -34159,7 +34156,7 @@
 	        return React.createElement('a', {
 	            'href': this.props.payload.href,
 	            'className': 'brand-profile',
-	            'style': { backgroundImage: 'url(' + this.props.payload.background + ' || \'\')' }
+	            'style': { backgroundImage: 'url(' + (this.props.payload.background || '') + ')' }
 	        }, React.createElement('img', {
 	            'src': this.props.payload.avatar,
 	            'className': 'brand-profile-avatar'
@@ -34190,14 +34187,10 @@
 	      paginationClickable: true,
 	      loop: true
 	    });
-	  },
-
-	  // autoplay: 2000,
-	  shouldComponentUpdate: function shouldComponentUpdate() {
-	    return false;
 	  }
 	});
 
+	// autoplay: 2000,
 	module.exports = Elem;
 
 /***/ },
@@ -34261,14 +34254,10 @@
 	      spaceBetween: 60,
 	      loop: true
 	    });
-	  },
-
-	  // autoplay: 2000,
-	  shouldComponentUpdate: function shouldComponentUpdate() {
-	    return false;
 	  }
 	});
 
+	// autoplay: 2000,
 	module.exports = Elem;
 
 /***/ },
@@ -34316,23 +34305,43 @@
 
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(188);
-
+	var dataSrc = __webpack_require__(194);
 	var init = false;
+	var reqwest = __webpack_require__(192);
+
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
 	  getInitialState: function getInitialState() {
 	    return {
-	      items: this.props.initialRestaurantList
+	      items: this.props.initialRestaurantList,
+	      loadingStatus: '查看更多',
+	      currentPage: 1
 	    };
+	  },
+
+	  loadMore: function loadMore(event) {
+	    event.preventDefault();
+	    var self = this;
+	    self.setState({
+	      loadingStatus: '加载中...'
+	    });
+
+	    reqwest({
+	      url: dataSrc.restaurantList,
+	      type: 'jsonp',
+	      data: { page: this.state.currentPage + 1 }
+	    }).then(function (res) {
+	      self.setState({
+	        items: self.state.items.concat(res),
+	        currentPage: self.state.currentPage + 1,
+	        loadingStatus: '查看更多'
+	      });
+	    });
 	  },
 
 	  render: function render() {
 	    return tpl.call(this);
-	  },
-
-	  shouldComponentUpdate: function shouldComponentUpdate() {
-	    return false;
 	  }
 	});
 
@@ -34363,9 +34372,11 @@
 	            { 'className': 'card-body' },
 	            _.map(this.state.items, repeatItem1.bind(this))
 	        ]), React.createElement('div', { 'className': 'card-footer' }, React.createElement('div', { 'className': 'card-footer-actions' }, React.createElement('a', {
+	            'ref': 'restaurant-list-loadTrigger',
 	            'className': 'card-footer-actions-item restaurant-list-loadTrigger',
-	            'href': '##'
-	        }, '查看更多')))));
+	            'href': '##',
+	            'onClick': this.loadMore
+	        }, this.state.loadingStatus)))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34410,10 +34421,6 @@
 	    }
 
 	    return tpl.call(this);
-	  },
-
-	  shouldComponentUpdate: function shouldComponentUpdate() {
-	    return false;
 	  }
 	});
 
@@ -35150,6 +35157,19 @@
 /***/ function(module, exports) {
 
 	/* (ignored) */
+
+/***/ },
+/* 194 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var src = {
+	  index: 'http://192.168.0.1:3030/jsonp',
+	  restaurantList: 'http://192.168.0.1:3030/restaurantList'
+	};
+
+	module.exports = src;
 
 /***/ }
 /******/ ]);

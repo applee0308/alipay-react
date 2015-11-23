@@ -1,5 +1,5 @@
 <a href={this.props.payload.href} class="brand-profile"
-  style="background-image: url({this.props.payload.background} || '')">
+  style="background-image: url({this.props.payload.background || ''})">
   <img src={this.props.payload.avatar} class="brand-profile-avatar">
   <div class="brand-profile-name">{this.props.payload.name}</div>
   <div class="brand-profile-location">

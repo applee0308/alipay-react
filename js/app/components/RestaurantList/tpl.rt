@@ -36,7 +36,10 @@
 
     <div class="card-footer">
       <div class="card-footer-actions">
-        <a class="card-footer-actions-item restaurant-list-loadTrigger" href="##">查看更多</a>
+        <a ref="restaurant-list-loadTrigger"
+          class="card-footer-actions-item restaurant-list-loadTrigger"
+          href="##"
+          onClick={this.loadMore}>{this.state.loadingStatus}</a>
       </div>
     </div>
   </div>
