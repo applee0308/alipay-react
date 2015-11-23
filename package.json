@@ -1,7 +1,6 @@
 {
   "name": "alipay-react",
   "version": "1.0.0",
-  "description": "",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +9,19 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^3.10.1",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
     "react-templates": "^0.2.1",
     "react-templates-loader": "^0.2.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackChef/alipay-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blackChef/alipay-react/issues"
+  },
+  "homepage": "https://github.com/blackChef/alipay-react#readme",
+  "description": ""
 }
