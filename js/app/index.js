@@ -53,36 +53,25 @@
 	var initParallax = __webpack_require__(191);
 	var reqwest = __webpack_require__(192);
 
-	function parallax() {
-	  this.refs.parallaxLayer.classList.add('parallax');
-	  initParallax(this.refs.parallaxLayer);
-	}
+	var store = {};
 
 	var App = React.createClass({
 	  displayName: 'App',
 
 	  getInitialState: function getInitialState() {
 	    // 可能使用 immutable，所以 state 多加了一层
-	    return {
-	      appState: {
-	        recommendation01: [],
-	        recommendation02: [],
-	        brandProfile: {},
-	        nav: []
-	      }
-	    };
+	    var ret = {};
+	    ret.recommendation01 = store.recommendation01;
+	    ret.recommendation02 = store.recommendation02;
+	    ret.brandProfile = store.brandProfile;
+	    ret.nav = store.nav;
+	    ret.initialRestaurantList = store.restaurantList;
+
+	    return { appState: ret };
 	  },
 
 	  componentDidMount: function componentDidMount() {
-	    var self = this;
-	    reqwest({ url: 'http://localhost:3030/jsonp', type: 'jsonp' }).then(function (res) {
-	      var state = self.state.appState;
-	      state.recommendation01 = res.recommendation01;
-	      state.recommendation02 = res.recommendation02;
-	      state.brandProfile = res.brandProfile;
-	      state.nav = res.nav;
-	      self.setState({ appState: state });
-	    });
+	    // initParallax(this.refs.parallaxLayer);
 	  },
 
 	  render: function render() {
@@ -90,7 +79,10 @@
 	  }
 	});
 
-	ReactDOM.render(React.createElement(App, null), document.querySelector('.app-container'));
+	reqwest({ url: 'http://localhost:3030/jsonp', type: 'jsonp' }).then(function (res) {
+	  store = res;
+	  ReactDOM.render(React.createElement(App, null), document.querySelector('.app-container'));
+	});
 
 /***/ },
 /* 1 */
@@ -32071,7 +32063,7 @@
 	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', {
 	            'className': 'layer-01',
 	            'ref': 'parallaxLayer'
-	        }, React.createElement(BrandProfile, { 'payload': this.state.appState.brandProfile })), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, { 'payload': this.state.appState.nav }), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, { 'payload': this.state.appState.recommendation02 }), React.createElement(Recommendation01, { 'payload': this.state.appState.recommendation01 }), React.createElement(RestaurantList, {}))));
+	        }, React.createElement(BrandProfile, { 'payload': this.state.appState.brandProfile })), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, { 'payload': this.state.appState.nav }), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, { 'payload': this.state.appState.recommendation02 }), React.createElement(Recommendation01, { 'payload': this.state.appState.recommendation01 }), React.createElement(RestaurantList, { 'initialRestaurantList': this.state.appState.initialRestaurantList }))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34145,6 +34137,10 @@
 
 	  render: function render() {
 	    return tpl.call(this);
+	  },
+
+	  shouldComponentUpdate: function shouldComponentUpdate() {
+	    return false;
 	  }
 	});
 
@@ -34188,21 +34184,17 @@
 	    return tpl.call(this);
 	  },
 
-	  shouldComponentUpdate: function shouldComponentUpdate() {
-	    return !init;
+	  componentDidMount: function componentDidMount() {
+	    new Swiper(this.refs.swiper, {
+	      pagination: this.refs.swiperPagination,
+	      paginationClickable: true,
+	      loop: true
+	    });
 	  },
 
-	  componentDidUpdate: function componentDidUpdate() {
-	    if (!init) {
-	      new Swiper(this.refs.swiper, {
-	        pagination: this.refs.swiperPagination,
-	        paginationClickable: true,
-	        loop: true
-	      });
-
-	      // autoplay: 2000,
-	      init = true;
-	    }
+	  // autoplay: 2000,
+	  shouldComponentUpdate: function shouldComponentUpdate() {
+	    return false;
 	  }
 	});
 
@@ -34253,7 +34245,6 @@
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(186);
 
-	var init = false;
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
@@ -34261,24 +34252,20 @@
 	    return tpl.call(this);
 	  },
 
-	  shouldComponentUpdate: function shouldComponentUpdate() {
-	    return !init;
+	  componentDidMount: function componentDidMount() {
+	    new Swiper(this.refs.swiper, {
+	      pagination: this.refs.swiperPagination,
+	      slidesPerView: 'auto',
+	      centeredSlides: true,
+	      paginationClickable: true,
+	      spaceBetween: 60,
+	      loop: true
+	    });
 	  },
 
-	  componentDidUpdate: function componentDidUpdate() {
-	    if (!init) {
-	      new Swiper(this.refs.swiper, {
-	        pagination: this.refs.swiperPagination,
-	        slidesPerView: 'auto',
-	        centeredSlides: true,
-	        paginationClickable: true,
-	        spaceBetween: 60,
-	        loop: true
-	      });
-
-	      // autoplay: 2000,
-	      init = true;
-	    }
+	  // autoplay: 2000,
+	  shouldComponentUpdate: function shouldComponentUpdate() {
+	    return false;
 	  }
 	});
 
@@ -34330,60 +34317,22 @@
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(188);
 
-	var data = {
-	  "code": 0,
-	  "hasNext": true,
-	  "payload": [{
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "ffff",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }]
-	};
-
+	var init = false;
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
+	  getInitialState: function getInitialState() {
+	    return {
+	      items: this.props.initialRestaurantList
+	    };
+	  },
+
 	  render: function render() {
-	    this.items = data.payload;
 	    return tpl.call(this);
+	  },
+
+	  shouldComponentUpdate: function shouldComponentUpdate() {
+	    return false;
 	  }
 	});
 
@@ -34412,7 +34361,7 @@
 	        return React.createElement('section', { 'className': 'card restaurant-list' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-header' }, React.createElement('div', { 'className': 'card-header-title' }, '热门餐饮')), React.createElement.apply(this, [
 	            'div',
 	            { 'className': 'card-body' },
-	            _.map(this.items, repeatItem1.bind(this))
+	            _.map(this.state.items, repeatItem1.bind(this))
 	        ]), React.createElement('div', { 'className': 'card-footer' }, React.createElement('div', { 'className': 'card-footer-actions' }, React.createElement('a', {
 	            'className': 'card-footer-actions-item restaurant-list-loadTrigger',
 	            'href': '##'
@@ -34461,6 +34410,10 @@
 	    }
 
 	    return tpl.call(this);
+	  },
+
+	  shouldComponentUpdate: function shouldComponentUpdate() {
+	    return false;
 	  }
 	});
 
@@ -34488,7 +34441,10 @@
 	    function repeatGroup2(group, groupIndex) {
 	        return React.createElement.apply(this, [
 	            'div',
-	            { 'className': 'row' },
+	            {
+	                'className': 'row',
+	                'key': group.index
+	            },
 	            _.map(group, repeatItem1.bind(this, group, groupIndex))
 	        ]);
 	    }
@@ -34512,6 +34468,8 @@
 	}
 
 	module.exports = function (elem) {
+	  elem.classList.add('parallax');
+
 	  var timer;
 	  var startScrolling = false;
 	  window.addEventListener('scroll', function () {

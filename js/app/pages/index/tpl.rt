@@ -14,7 +14,7 @@
     <div class="layer-03">
       <Recommendation02 payload={this.state.appState.recommendation02} />
       <Recommendation01 payload={this.state.appState.recommendation01} />
-      <RestaurantList />
+      <RestaurantList initialRestaurantList={this.state.appState.initialRestaurantList} />
     </div>
   </div>
 </div>

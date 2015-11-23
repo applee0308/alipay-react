@@ -5,6 +5,10 @@ var Elem = React.createClass({
   render: function() {
     return tpl.call(this);
   },
+
+  shouldComponentUpdate: function() {
+    return false;
+  }
 });
 
 

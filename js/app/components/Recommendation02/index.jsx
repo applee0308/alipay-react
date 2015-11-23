@@ -7,22 +7,18 @@ var Elem = React.createClass({
     return tpl.call(this);
   },
 
+  componentDidMount: function() {
+    new Swiper(this.refs.swiper, {
+      pagination: this.refs.swiperPagination,
+      paginationClickable: true,
+      loop: true,
+      // autoplay: 2000,
+    });
+  },
+
   shouldComponentUpdate: function() {
-    return !init;
-  },
-
-  componentDidUpdate: function() {
-    if (!init) {
-      new Swiper(this.refs.swiper, {
-        pagination: this.refs.swiperPagination,
-        paginationClickable: true,
-        loop: true,
-        // autoplay: 2000,
-      });
-
-      init = true;
-    }
-  },
+    return false;
+  }
 });
 
 

@@ -2,10 +2,6 @@ var React = require('react');
 var tpl = require('./tpl.rt');
 var _ = require('lodash');
 
-
-
-
-
 var Elem = React.createClass({
   render: function() {
     var items = this.props.payload;
@@ -37,6 +33,10 @@ var Elem = React.createClass({
 
     return tpl.call(this);
   },
+
+  shouldComponentUpdate: function() {
+    return false;
+  }
 });
 
 

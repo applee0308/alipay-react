@@ -5,36 +5,23 @@ var tpl = require('./tpl.rt');
 var initParallax = require('../../utils/parallax.jsx');
 var reqwest = require('reqwest');
 
-
-function parallax() {
-  this.refs.parallaxLayer.classList.add('parallax');
-  initParallax(this.refs.parallaxLayer);
-}
+var store = {};
 
 var App = React.createClass({
   getInitialState: function() {
     // 可能使用 immutable，所以 state 多加了一层
-    return {
-      appState: {
-        recommendation01: [],
-        recommendation02: [],
-        brandProfile: {},
-        nav: []
-      }
-    };
+    var ret = {};
+    ret.recommendation01 = store.recommendation01;
+    ret.recommendation02 = store.recommendation02;
+    ret.brandProfile = store.brandProfile;
+    ret.nav = store.nav;
+    ret.initialRestaurantList = store.restaurantList;
+
+    return { appState: ret };
   },
 
   componentDidMount: function() {
-    var self = this;
-    reqwest({url: 'http://localhost:3030/jsonp', type: 'jsonp'}).
-      then(function(res) {
-        var state = self.state.appState;
-        state.recommendation01 = res.recommendation01;
-        state.recommendation02 = res.recommendation02;
-        state.brandProfile = res.brandProfile;
-        state.nav = res.nav;
-        self.setState({ appState: state });
-      });
+    // initParallax(this.refs.parallaxLayer);
   },
 
   render: function() {
@@ -42,4 +29,9 @@ var App = React.createClass({
   },
 });
 
-ReactDOM.render(<App/>, document.querySelector('.app-container'));
+
+reqwest({url: 'http://localhost:3030/jsonp', type: 'jsonp'}).
+  then(function(res) {
+    store = res;
+    ReactDOM.render(<App/>, document.querySelector('.app-container'));
+  });

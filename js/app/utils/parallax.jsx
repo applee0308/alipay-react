@@ -6,6 +6,8 @@ function getScrollTop() {
 
 
 module.exports = function(elem) {
+  elem.classList.add('parallax');
+
   var timer;
   var startScrolling = false;
   window.addEventListener('scroll', function() {
