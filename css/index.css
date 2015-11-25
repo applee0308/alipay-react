@@ -134,7 +134,7 @@
 
 .restaurant-list-item-badges-item {
   margin-right: 0.5rem;
-  color: #a5a5a5;
+  height: 0.7rem;
 }
 
 .restaurant-list-item-badges-item:last-of-type {
@@ -692,7 +692,7 @@ button.swiper-pagination-bullet {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   border: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .site-nav .row {

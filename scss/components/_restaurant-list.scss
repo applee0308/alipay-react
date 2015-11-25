@@ -102,8 +102,7 @@
 
       &-item {
         margin-right: $gutter/3*2;
-        color: $fontGray;
-
+        height: pr(14);
         &:last-of-type {
           margin-right: 0;
         }

@@ -33232,7 +33232,13 @@
 	    __webpack_require__(173)
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _) {
 	    'use strict';
-	    function repeatItem1(item, itemIndex) {
+	    function repeatBageItem1(item, itemIndex, bageItem, bageItemIndex) {
+	        return React.createElement('img', {
+	            'src': bageItem,
+	            'className': 'restaurant-list-item-badges-item'
+	        });
+	    }
+	    function repeatItem2(item, itemIndex) {
 	        return React.createElement('a', {
 	            'className': 'restaurant-list-item',
 	            'key': item.index,
@@ -33240,13 +33246,17 @@
 	        }, React.createElement('div', { 'className': 'restaurant-list-item-top' }, React.createElement('img', {
 	            'className': 'restaurant-list-item-img',
 	            'src': item.img
-	        }), React.createElement('div', { 'className': 'restaurant-list-item-mask' }, React.createElement('div', { 'className': 'restaurant-list-item-mask-left' }, React.createElement('div', { 'className': 'restaurant-list-item-name' }, item.name), React.createElement('div', { 'className': 'restaurant-list-item-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, item.location))), React.createElement('div', { 'className': 'restaurant-list-item-mask-right' }, React.createElement('div', { 'className': 'restaurant-list-item-discount' }, React.createElement('span', { 'className': 'restaurant-list-item-discount-num' }, item.discount), React.createElement('span', {}, '折'))))), React.createElement('div', { 'className': 'restaurant-list-item-bottom' }, React.createElement('div', { 'className': 'restaurant-list-item-meta' }, item.meta), React.createElement('div', { 'className': 'restaurant-list-item-badges' }, React.createElement('i', { 'className': 'restaurant-list-item-badges-item fa fa-wifi' }), React.createElement('i', { 'className': 'restaurant-list-item-badges-item fa fa-car' }))));
+	        }), React.createElement('div', { 'className': 'restaurant-list-item-mask' }, React.createElement('div', { 'className': 'restaurant-list-item-mask-left' }, React.createElement('div', { 'className': 'restaurant-list-item-name' }, item.name), React.createElement('div', { 'className': 'restaurant-list-item-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, item.location))), React.createElement('div', { 'className': 'restaurant-list-item-mask-right' }, React.createElement('div', { 'className': 'restaurant-list-item-discount' }, React.createElement('span', { 'className': 'restaurant-list-item-discount-num' }, item.discount), React.createElement('span', {}, '折'))))), React.createElement('div', { 'className': 'restaurant-list-item-bottom' }, React.createElement('div', { 'className': 'restaurant-list-item-meta' }, item.meta), React.createElement.apply(this, [
+	            'div',
+	            { 'className': 'restaurant-list-item-badges' },
+	            _.map(item.badges, repeatBageItem1.bind(this, item, itemIndex))
+	        ])));
 	    }
 	    return function () {
 	        return React.createElement('section', { 'className': 'card restaurant-list' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-header' }, React.createElement('div', { 'className': 'card-header-title' }, '热门餐饮')), React.createElement.apply(this, [
 	            'div',
 	            { 'className': 'card-body' },
-	            _.map(this.state.items, repeatItem1.bind(this))
+	            _.map(this.state.items, repeatItem2.bind(this))
 	        ]), React.createElement('div', { 'className': 'card-footer' }, React.createElement('div', { 'className': 'card-footer-actions' }, React.createElement('a', {
 	            'ref': 'restaurant-list-loadTrigger',
 	            'className': 'card-footer-actions-item restaurant-list-loadTrigger',

@@ -27,8 +27,7 @@
         <div class="restaurant-list-item-bottom">
           <div class="restaurant-list-item-meta">{item.meta}</div>
           <div class="restaurant-list-item-badges">
-            <i class="restaurant-list-item-badges-item fa fa-wifi"></i>
-            <i class="restaurant-list-item-badges-item fa fa-car"></i>
+            <img rt-repeat="bageItem in item.badges" src={bageItem} class="restaurant-list-item-badges-item">
           </div>
         </div>
       </a>
@@ -37,9 +36,9 @@
     <div class="card-footer">
       <div class="card-footer-actions">
         <a ref="restaurant-list-loadTrigger"
-          class="card-footer-actions-item restaurant-list-loadTrigger"
-          href="##"
-          onClick={this.loadMore}>{this.state.loadingStatus}</a>
+        class="card-footer-actions-item restaurant-list-loadTrigger"
+        href="##"
+        onClick={this.loadMore}>{this.state.loadingStatus}</a>
       </div>
     </div>
   </div>
