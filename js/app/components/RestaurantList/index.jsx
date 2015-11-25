@@ -1,15 +1,13 @@
 var React = require('react');
 var tpl = require('./tpl.rt');
 var dataSrc = require('../../dataSrc.jsx');
-var init = false;
 var reqwest = require('reqwest');
-
 
 var Elem = React.createClass({
   getInitialState: function() {
     return {
-      items: this.props.initialRestaurantList,
-      loadingStatus: '查看更多',
+      items: [],
+      loadingStatus: '加载中...',
       currentPage: 1
     };
   },
@@ -32,6 +30,13 @@ var Elem = React.createClass({
           loadingStatus: '查看更多'
         });
       });
+  },
+
+  componentWillReceiveProps : function(nextProps) {
+    this.setState({
+      items: nextProps.payload,
+      loadingStatus: '查看更多'
+    });
   },
 
   render: function() {

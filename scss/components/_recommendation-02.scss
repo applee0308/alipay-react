@@ -4,6 +4,8 @@
 .recommendation-02 {
   &-item {
     display: block;
+    padding-bottom: percentage(75/320);
+    height: 0;
     &-img {
       width: 100%;
       display: block;

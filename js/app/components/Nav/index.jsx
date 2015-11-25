@@ -4,8 +4,14 @@ var _ = require('lodash');
 
 
 var Elem = React.createClass({
+  getDefaultProps: function() {
+    return {
+      payload: [],
+    };
+  },
+
   render: function() {
-    var items =  this.props.payload || [];
+    var items =  this.props.payload;
     var len = items.length;
 
     function addPlaceholder(total) {
@@ -17,7 +23,7 @@ var Elem = React.createClass({
       }
     }
 
-    var size;
+    var size = len;
     if(len >= 5 && len < 7) {
       // 每行3个，需要凑齐6个
       size = 3;
@@ -28,10 +34,7 @@ var Elem = React.createClass({
       addPlaceholder(8);
     }
 
-    if (size) {
-      this.items = _.chunk(items, size);
-    }
-
+    this.items = _.chunk(items, size);
     return tpl.call(this);
   },
 });

@@ -37,6 +37,7 @@
 
     &--placeholder {
       visibility: hidden;
+      opacity: 0; // 内容的 visibility 可能不是 hidden
     }
 
     &:last-of-type {

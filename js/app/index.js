@@ -49,9 +49,15 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(153);
 	var tpl = __webpack_require__(154);
-	var initParallax = __webpack_require__(188);
+	// var initParallax = require('../../utils/parallax.jsx');
 	var reqwest = __webpack_require__(184);
 	var dataSrc = __webpack_require__(183);
+
+	document.documentElement.addEventListener('load', function (event) {
+	  if (event.target.tagName == 'IMG') {
+	    event.target.classList.add('loaded');
+	  }
+	}, true);
 
 	var store = {};
 
@@ -60,14 +66,7 @@
 
 	  getInitialState: function getInitialState() {
 	    // 可能使用 immutable，所以 state 多加了一层
-	    var ret = {};
-	    // ret.recommendation01 = store.recommendation01;
-	    // ret.recommendation02 = store.recommendation02;
-	    // ret.brandProfile = store.brandProfile;
-	    // ret.nav = store.nav;
-	    // ret.initialRestaurantList = store.restaurantList;
-
-	    return { appState: ret };
+	    return { appState: {} };
 	  },
 
 	  componentDidMount: function componentDidMount() {
@@ -76,7 +75,7 @@
 	    Promise.all([reqwest({ url: dataSrc.index, type: 'jsonp' }), reqwest({ url: dataSrc.restaurantList, type: 'jsonp', data: { page: 1 } })]).then(function (res) {
 	      var state = res[0];
 	      state.restaurantList = res[1];
-
+	      state.ready = true;
 	      self.setState({ appState: state });
 	    });
 	  },
@@ -19022,11 +19021,7 @@
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation02, Recommendation01, RestaurantList, Nav) {
 	    'use strict';
 	    return function () {
-	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', {
-	            'className': 'layer-01',
-	            'ref': 'parallaxLayer'
-	        }, React.createElement(BrandProfile, { 'payload': this.state.appState.brandProfile })), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, { 'payload': this.state.appState.nav }), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, { 'payload': this.state.appState.recommendation02 })    /*  <Recommendation01 payload={this.state.appState.recommendation01} />  */
-	                                                                                                      /*  <RestaurantList initialRestaurantList={this.state.appState.initialRestaurantList} />  */)));
+	        return React.createElement('div', { 'className': 'app' + ' ' + _.keys(_.pick({ ready: this.state.appState.ready }, _.identity)).join(' ') }, React.createElement('div', { 'className': 'app-header' }, React.createElement(BrandProfile, { 'payload': this.state.appState.brandProfile }), React.createElement(Nav, { 'payload': this.state.appState.nav })), React.createElement('div', { 'className': 'app-body' }, React.createElement(Recommendation02, { 'payload': this.state.appState.recommendation02 }), React.createElement(Recommendation01, { 'payload': this.state.appState.recommendation01 }), React.createElement(RestaurantList, { 'payload': this.state.appState.restaurantList })));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -32984,21 +32979,23 @@
 
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(176);
-	var _ = __webpack_require__(173);
-
-	var defaultModel = {
-	  href: 'javascript: void(0)',
-	  background: '',
-	  avatar: '',
-	  name: '...',
-	  location: '...'
-	};
 
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      payload: {
+	        href: 'javascript: void(0)',
+	        avatar: '',
+	        name: '加载中...',
+	        location: '...',
+	        background: ''
+	      }
+	    };
+	  },
+
 	  render: function render() {
-	    this.model = _.assign({}, defaultModel, this.props.payload);
 	    return tpl.call(this);
 	  }
 	});
@@ -33016,13 +33013,13 @@
 	    'use strict';
 	    return function () {
 	        return React.createElement('a', {
-	            'href': this.model.href,
+	            'href': this.props.payload.href,
 	            'className': 'brand-profile',
-	            'style': { backgroundImage: 'url(' + (this.model.background || '') + ')' }
+	            'style': { backgroundImage: 'url(' + this.props.payload.background + ')' }
 	        }, React.createElement('img', {
-	            'src': this.model.avatar,
+	            'src': this.props.payload.avatar,
 	            'className': 'brand-profile-avatar'
-	        }), React.createElement('div', { 'className': 'brand-profile-name' }, this.model.name), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, this.model.location)));
+	        }), React.createElement('div', { 'className': 'brand-profile-name' }, this.props.payload.name), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, this.props.payload.location)));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -33035,7 +33032,8 @@
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(178);
 
-	var init = false;
+	var swiperInitialized = false;
+
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
@@ -33043,16 +33041,20 @@
 	    return tpl.call(this);
 	  },
 
-	  componentDidMount: function componentDidMount() {
-	    new Swiper(this.refs.swiper, {
-	      pagination: this.refs.swiperPagination,
-	      paginationClickable: true,
-	      loop: true
-	    });
+	  componentDidUpdate: function componentDidUpdate() {
+	    if (this.props.payload && !swiperInitialized) {
+	      new Swiper(this.refs.swiper, {
+	        pagination: this.refs.swiperPagination,
+	        paginationClickable: true,
+	        loop: true
+	      });
+
+	      // autoplay: 2000,
+	      swiperInitialized = true;
+	    }
 	  }
 	});
 
-	// autoplay: 2000,
 	module.exports = Elem;
 
 /***/ },
@@ -33100,6 +33102,8 @@
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(180);
 
+	var swiperInitialized = false;
+
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
@@ -33107,19 +33111,23 @@
 	    return tpl.call(this);
 	  },
 
-	  componentDidMount: function componentDidMount() {
-	    new Swiper(this.refs.swiper, {
-	      pagination: this.refs.swiperPagination,
-	      slidesPerView: 'auto',
-	      centeredSlides: true,
-	      paginationClickable: true,
-	      spaceBetween: 60,
-	      loop: true
-	    });
+	  componentDidUpdate: function componentDidUpdate() {
+	    if (this.props.payload && !swiperInitialized) {
+	      new Swiper(this.refs.swiper, {
+	        pagination: this.refs.swiperPagination,
+	        slidesPerView: 'auto',
+	        centeredSlides: true,
+	        paginationClickable: true,
+	        spaceBetween: 60,
+	        loop: true
+	      });
+
+	      // autoplay: 2000,
+	      swiperInitialized = true;
+	    }
 	  }
 	});
 
-	// autoplay: 2000,
 	module.exports = Elem;
 
 /***/ },
@@ -33168,7 +33176,6 @@
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(182);
 	var dataSrc = __webpack_require__(183);
-	var init = false;
 	var reqwest = __webpack_require__(184);
 
 	var Elem = React.createClass({
@@ -33176,8 +33183,8 @@
 
 	  getInitialState: function getInitialState() {
 	    return {
-	      items: this.props.initialRestaurantList,
-	      loadingStatus: '查看更多',
+	      items: [],
+	      loadingStatus: '加载中...',
 	      currentPage: 1
 	    };
 	  },
@@ -33199,6 +33206,13 @@
 	        currentPage: self.state.currentPage + 1,
 	        loadingStatus: '查看更多'
 	      });
+	    });
+	  },
+
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    this.setState({
+	      items: nextProps.payload,
+	      loadingStatus: '查看更多'
 	    });
 	  },
 
@@ -33910,8 +33924,14 @@
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      payload: []
+	    };
+	  },
+
 	  render: function render() {
-	    var items = this.props.payload || [];
+	    var items = this.props.payload;
 	    var len = items.length;
 
 	    function addPlaceholder(total) {
@@ -33923,7 +33943,7 @@
 	      }
 	    }
 
-	    var size;
+	    var size = len;
 	    if (len >= 5 && len < 7) {
 	      // 每行3个，需要凑齐6个
 	      size = 3;
@@ -33934,10 +33954,7 @@
 	      addPlaceholder(8);
 	    }
 
-	    if (size) {
-	      this.items = _.chunk(items, size);
-	    }
-
+	    this.items = _.chunk(items, size);
 	    return tpl.call(this);
 	  }
 	});
@@ -33981,58 +33998,6 @@
 	        ])));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ },
-/* 188 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	function getScrollTop() {
-	  return document.documentElement.scrollTop || document.body.scrollTop || 0;
-	}
-
-	module.exports = function (elem) {
-	  elem.classList.add('parallax');
-
-	  var timer;
-	  var startScrolling = false;
-	  window.addEventListener('scroll', function () {
-	    if (!startScrolling) {
-	      startScrolling = true;
-	      startAnimation();
-	    }
-
-	    if (timer) {
-	      clearTimeout(timer);
-	    }
-
-	    timer = setTimeout(function () {
-	      startScrolling = false;
-	    }, 100);
-	  }, false);
-
-	  var height = elem.offsetHeight;
-	  var previewSt;
-	  function startAnimation() {
-	    function loop() {
-	      var st = getScrollTop();
-
-	      if (previewSt != st) {
-	        previewSt = st;
-	        if (st <= height) {
-	          elem.style.transform = 'translateY(' + (-st / 2).toFixed(0) + 'px) translateZ(0)';
-	        }
-	      }
-
-	      if (startScrolling) {
-	        requestAnimationFrame(loop);
-	      }
-	    }
-
-	    requestAnimationFrame(loop);
-	  }
-	};
 
 /***/ }
 /******/ ]);

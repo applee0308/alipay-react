@@ -4,17 +4,15 @@
 <rt-require dependency="../../components/RestaurantList/index.jsx" as="RestaurantList"/>
 <rt-require dependency="../../components/Nav/index.jsx" as="Nav"/>
 
-<div class="app">
-  <div class="layer-01" ref="parallaxLayer">
+<div class="app" rt-class="{ready: this.state.appState.ready }">
+  <div class="app-header">
     <BrandProfile payload={this.state.appState.brandProfile} />
+    <Nav payload={this.state.appState.nav} />
   </div>
 
-  <div class="layer-02">
-    <Nav payload={this.state.appState.nav} />
-    <div class="layer-03">
-      <Recommendation02 payload={this.state.appState.recommendation02} />
-      <!-- <Recommendation01 payload={this.state.appState.recommendation01} /> -->
-      <!-- <RestaurantList initialRestaurantList={this.state.appState.initialRestaurantList} /> -->
-    </div>
+  <div class="app-body">
+    <Recommendation02 payload={this.state.appState.recommendation02} />
+    <Recommendation01 payload={this.state.appState.recommendation01} />
+    <RestaurantList payload={this.state.appState.restaurantList} />
   </div>
 </div>
