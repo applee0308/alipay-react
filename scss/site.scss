@@ -14,7 +14,7 @@ html {
   font-size: 20px; // chrome for android ignore font-size < 12
 
   @include media-md-up {
-    // font-size: 20px * 1.2;
+    font-size: 20px * 1.1;
   };
 }
 

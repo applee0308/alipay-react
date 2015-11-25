@@ -33019,7 +33019,21 @@
 	        }, React.createElement('img', {
 	            'src': this.props.payload.avatar,
 	            'className': 'brand-profile-avatar'
-	        }), React.createElement('div', { 'className': 'brand-profile-name' }, this.props.payload.name), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, this.props.payload.location)));
+	        }), React.createElement('div', { 'className': 'brand-profile-name' }, this.props.payload.name), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('svg', {
+	            'version': '1.1',
+	            'xmlns': 'http://www.w3.org/2000/svg',
+	            'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+	            'x': '0px',
+	            'y': '0px',
+	            'viewBox': '0 0 1024 1024',
+	            'enable-background': 'new 0 0 1024 1024',
+	            'xml:space': 'preserve'
+	        }, React.createElement('path', {
+	            'className': 'svgpath',
+	            'data-index': 'path_0',
+	            'fill': '#272636',
+	            'd': 'M512.191367 61.503653c-182.663802 0-330.724891 151.452489-330.724891 338.242459 0 186.799181 330.724891 563.73675 330.724891 563.73675s330.730008-376.937569 330.730008-563.73675C842.921376 212.956142 694.820375 61.503653 512.191367 61.503653L512.191367 61.503653zM512.191367 540.681579c-91.318086 0-165.359887-75.717034-165.359887-169.121741 0-93.394473 74.045895-169.120718 165.359887-169.120718 91.310922 0 165.365004 75.726244 165.365004 169.120718C677.556371 464.964544 603.50229 540.681579 512.191367 540.681579L512.191367 540.681579zM512.191367 540.681579'
+	        })), React.createElement('span', {}, this.props.payload.location)));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -33246,7 +33260,21 @@
 	        }, React.createElement('div', { 'className': 'restaurant-list-item-top' }, React.createElement('img', {
 	            'className': 'restaurant-list-item-img',
 	            'src': item.img
-	        }), React.createElement('div', { 'className': 'restaurant-list-item-mask' }, React.createElement('div', { 'className': 'restaurant-list-item-mask-left' }, React.createElement('div', { 'className': 'restaurant-list-item-name' }, item.name), React.createElement('div', { 'className': 'restaurant-list-item-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, item.location))), React.createElement('div', { 'className': 'restaurant-list-item-mask-right' }, React.createElement('div', { 'className': 'restaurant-list-item-discount' }, React.createElement('span', { 'className': 'restaurant-list-item-discount-num' }, item.discount), React.createElement('span', {}, '折'))))), React.createElement('div', { 'className': 'restaurant-list-item-bottom' }, React.createElement('div', { 'className': 'restaurant-list-item-meta' }, item.meta), React.createElement.apply(this, [
+	        }), React.createElement('div', { 'className': 'restaurant-list-item-mask' }, React.createElement('div', { 'className': 'restaurant-list-item-mask-left' }, React.createElement('div', { 'className': 'restaurant-list-item-name' }, item.name), React.createElement('div', { 'className': 'restaurant-list-item-location' }, React.createElement('svg', {
+	            'version': '1.1',
+	            'xmlns': 'http://www.w3.org/2000/svg',
+	            'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+	            'x': '0px',
+	            'y': '0px',
+	            'viewBox': '0 0 1024 1024',
+	            'enable-background': 'new 0 0 1024 1024',
+	            'xml:space': 'preserve'
+	        }, React.createElement('path', {
+	            'className': 'svgpath',
+	            'data-index': 'path_0',
+	            'fill': '#272636',
+	            'd': 'M512.191367 61.503653c-182.663802 0-330.724891 151.452489-330.724891 338.242459 0 186.799181 330.724891 563.73675 330.724891 563.73675s330.730008-376.937569 330.730008-563.73675C842.921376 212.956142 694.820375 61.503653 512.191367 61.503653L512.191367 61.503653zM512.191367 540.681579c-91.318086 0-165.359887-75.717034-165.359887-169.121741 0-93.394473 74.045895-169.120718 165.359887-169.120718 91.310922 0 165.365004 75.726244 165.365004 169.120718C677.556371 464.964544 603.50229 540.681579 512.191367 540.681579L512.191367 540.681579zM512.191367 540.681579'
+	        })), React.createElement('span', {}, item.location))), React.createElement('div', { 'className': 'restaurant-list-item-mask-right' }, React.createElement('div', { 'className': 'restaurant-list-item-discount' }, React.createElement('span', { 'className': 'restaurant-list-item-discount-num' }, item.discount), React.createElement('span', {}, '折'))))), React.createElement('div', { 'className': 'restaurant-list-item-bottom' }, React.createElement('div', { 'className': 'restaurant-list-item-meta' }, item.meta), React.createElement.apply(this, [
 	            'div',
 	            { 'className': 'restaurant-list-item-badges' },
 	            _.map(item.badges, repeatBageItem1.bind(this, item, itemIndex))

@@ -12,7 +12,9 @@
             <div class="restaurant-list-item-mask-left">
               <div class="restaurant-list-item-name">{item.name}</div>
               <div class="restaurant-list-item-location">
-                <i class="fa fa-map-marker"></i>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" xml:space="preserve">
+                  <path class="svgpath" data-index="path_0" fill="#272636" d="M512.191367 61.503653c-182.663802 0-330.724891 151.452489-330.724891 338.242459 0 186.799181 330.724891 563.73675 330.724891 563.73675s330.730008-376.937569 330.730008-563.73675C842.921376 212.956142 694.820375 61.503653 512.191367 61.503653L512.191367 61.503653zM512.191367 540.681579c-91.318086 0-165.359887-75.717034-165.359887-169.121741 0-93.394473 74.045895-169.120718 165.359887-169.120718 91.310922 0 165.365004 75.726244 165.365004 169.120718C677.556371 464.964544 603.50229 540.681579 512.191367 540.681579L512.191367 540.681579zM512.191367 540.681579" />
+                </svg>
                 <span>{item.location}</span>
               </div>
             </div>

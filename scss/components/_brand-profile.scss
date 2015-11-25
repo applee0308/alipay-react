@@ -46,10 +46,14 @@
     font-size: pr(12);
     color: $fontGray;
 
-    i {
+    svg {
       position: relative;
-      top: -1px;
+      top: 2px;
+      height: pr(14);
       margin-right: pr(4);
+      path {
+        fill: $fontGray;
+      }
     }
   }
 }
