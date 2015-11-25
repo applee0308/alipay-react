@@ -1,6 +1,7 @@
 var React = require('react');
 var tpl = require('./tpl.rt');
 
+var init = false;
 var Elem = React.createClass({
   render: function() {
     return tpl.call(this);
@@ -13,7 +14,7 @@ var Elem = React.createClass({
       loop: true,
       // autoplay: 2000,
     });
-  }
+  },
 });
 
 

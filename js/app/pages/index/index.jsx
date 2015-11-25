@@ -1,50 +1,41 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var _ = require('lodash');
 var tpl = require('./tpl.rt');
 var initParallax = require('../../utils/parallax.jsx');
+var reqwest = require('reqwest');
+var dataSrc = require('../../dataSrc.jsx');
 
-var recommendation01 = [];
-var i = 10;
-while (i) {
-  recommendation01.push({
-    href: '##',
-    img: i % 2 === 0 ?
-         '/images/recommendation-01-01.png' :
-         '/images/recommendation-01-02.png',
-    text: i % 2 === 0 ?
-          '买一送一' :
-          '满百减三',
-  });
-  i--;
-}
 
-var recommendation02 = [];
-var i = 5;
-while (i) {
-  recommendation02.push({
-    href: '##',
-    img: i % 2 === 0 ?
-         '/images/recommendation-02-01.png' :
-         '/images/recommendation-02-02.png',
-  });
-  i--;
-}
-
+var store = {};
 
 var App = React.createClass({
+  getInitialState: function() {
+    // 可能使用 immutable，所以 state 多加了一层
+    var ret = {};
+    ret.recommendation01 = store.recommendation01;
+    ret.recommendation02 = store.recommendation02;
+    ret.brandProfile = store.brandProfile;
+    ret.nav = store.nav;
+    ret.initialRestaurantList = store.restaurantList;
+
+    return { appState: ret };
+  },
+
   componentDidMount: function() {
-    // this.refs.parallaxLayer.classList.add('parallax');
     // initParallax(this.refs.parallaxLayer);
   },
 
   render: function() {
-
-    this.recommendation01 = recommendation01;
-    this.recommendation02 = recommendation02;
-
     return tpl.call(this);
   },
 });
 
-ReactDOM.render(<App/>, document.querySelector('.app-container'));
+
+Promise.all([
+  reqwest({url: dataSrc.index, type: 'jsonp'}),
+  reqwest({url: dataSrc.restaurantList, type: 'jsonp', data: {page: 1}})
+]).then(function(res) {
+  store = res[0];
+  store.restaurantList = res[1];
+  ReactDOM.render(<App/>, document.querySelector('.app-container'));
+});

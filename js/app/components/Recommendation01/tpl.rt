@@ -7,7 +7,7 @@
     <div class="card-body">
       <div class="swiper-container" ref="swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" style="width: auto;" rt-repeat="item in this.props.items" key={item.index} >
+          <div class="swiper-slide" style="width: auto;" rt-repeat="item in this.props.payload" key={item.index} >
             <a href={item.href} class="recommendation-01-item">
               <img src={item.img} class="recommendation-01-item-img">
               <div class="recommendation-01-item-text">{item.text}</div>

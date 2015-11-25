@@ -6,19 +6,15 @@
 
 <div class="app">
   <div class="layer-01" ref="parallaxLayer">
-    <BrandProfile
-      background={"/images/profile-bg-01.jpg"}
-      avatar={"../images/profile-avatar.png"}
-      name={"北京首都机场"}
-      location={"顺义区机场路1号"} />
+    <BrandProfile payload={this.state.appState.brandProfile} />
   </div>
 
   <div class="layer-02">
-    <Nav />
+    <Nav payload={this.state.appState.nav} />
     <div class="layer-03">
-      <Recommendation02 items={this.recommendation02} />
-      <Recommendation01 items={this.recommendation01} />
-      <RestaurantList />
+      <Recommendation02 payload={this.state.appState.recommendation02} />
+      <Recommendation01 payload={this.state.appState.recommendation01} />
+      <RestaurantList initialRestaurantList={this.state.appState.initialRestaurantList} />
     </div>
   </div>
 </div>

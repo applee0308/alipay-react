@@ -48,49 +48,42 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var _ = __webpack_require__(159);
 	var tpl = __webpack_require__(161);
 	var initParallax = __webpack_require__(191);
+	var reqwest = __webpack_require__(192);
+	var dataSrc = __webpack_require__(194);
 
-	var recommendation01 = [];
-	var i = 10;
-	while (i) {
-	  recommendation01.push({
-	    href: '##',
-	    img: i % 2 === 0 ? '/images/recommendation-01-01.png' : '/images/recommendation-01-02.png',
-	    text: i % 2 === 0 ? '买一送一' : '满百减三'
-	  });
-	  i--;
-	}
-
-	var recommendation02 = [];
-	var i = 5;
-	while (i) {
-	  recommendation02.push({
-	    href: '##',
-	    img: i % 2 === 0 ? '/images/recommendation-02-01.png' : '/images/recommendation-02-02.png'
-	  });
-	  i--;
-	}
+	var store = {};
 
 	var App = React.createClass({
 	  displayName: 'App',
 
+	  getInitialState: function getInitialState() {
+	    // 可能使用 immutable，所以 state 多加了一层
+	    var ret = {};
+	    ret.recommendation01 = store.recommendation01;
+	    ret.recommendation02 = store.recommendation02;
+	    ret.brandProfile = store.brandProfile;
+	    ret.nav = store.nav;
+	    ret.initialRestaurantList = store.restaurantList;
+
+	    return { appState: ret };
+	  },
+
 	  componentDidMount: function componentDidMount() {
-	    // this.refs.parallaxLayer.classList.add('parallax');
 	    // initParallax(this.refs.parallaxLayer);
 	  },
 
 	  render: function render() {
-
-	    this.recommendation01 = recommendation01;
-	    this.recommendation02 = recommendation02;
-
 	    return tpl.call(this);
 	  }
 	});
 
-	ReactDOM.render(React.createElement(App, null), document.querySelector('.app-container'));
+	Promise.all([reqwest({ url: dataSrc.index, type: 'jsonp' }), reqwest({ url: dataSrc.restaurantList, type: 'jsonp', data: { page: 1 } })]).then(function (res) {
+	  store = res[0];
+	  store.restaurantList = res[1];
+	  ReactDOM.render(React.createElement(App, null), document.querySelector('.app-container'));
+	});
 
 /***/ },
 /* 1 */
@@ -32071,12 +32064,7 @@
 	        return React.createElement('div', { 'className': 'app' }, React.createElement('div', {
 	            'className': 'layer-01',
 	            'ref': 'parallaxLayer'
-	        }, React.createElement(BrandProfile, {
-	            'background': '/images/profile-bg-01.jpg',
-	            'avatar': '../images/profile-avatar.png',
-	            'name': '北京首都机场',
-	            'location': '顺义区机场路1号'
-	        })), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, {}), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, { 'items': this.recommendation02 }), React.createElement(Recommendation01, { 'items': this.recommendation01 }), React.createElement(RestaurantList, {}))));
+	        }, React.createElement(BrandProfile, { 'payload': this.state.appState.brandProfile })), React.createElement('div', { 'className': 'layer-02' }, React.createElement(Nav, { 'payload': this.state.appState.nav }), React.createElement('div', { 'className': 'layer-03' }, React.createElement(Recommendation02, { 'payload': this.state.appState.recommendation02 }), React.createElement(Recommendation01, { 'payload': this.state.appState.recommendation01 }), React.createElement(RestaurantList, { 'initialRestaurantList': this.state.appState.initialRestaurantList }))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34166,13 +34154,13 @@
 	    'use strict';
 	    return function () {
 	        return React.createElement('a', {
-	            'href': '##',
+	            'href': this.props.payload.href,
 	            'className': 'brand-profile',
-	            'style': { backgroundImage: 'url(' + this.props.background + ')' }
+	            'style': { backgroundImage: 'url(' + (this.props.payload.background || '') + ')' }
 	        }, React.createElement('img', {
-	            'src': this.props.avatar,
+	            'src': this.props.payload.avatar,
 	            'className': 'brand-profile-avatar'
-	        }), React.createElement('div', { 'className': 'brand-profile-name' }, this.props.name), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, this.props.location)));
+	        }), React.createElement('div', { 'className': 'brand-profile-name' }, this.props.payload.name), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('i', { 'className': 'fa fa-map-marker' }), React.createElement('span', {}, this.props.payload.location)));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34185,6 +34173,7 @@
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(184);
 
+	var init = false;
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
@@ -34232,7 +34221,7 @@
 	        }, React.createElement.apply(this, [
 	            'div',
 	            { 'className': 'swiper-wrapper' },
-	            _.map(this.props.items, repeatItem1.bind(this))
+	            _.map(this.props.payload, repeatItem1.bind(this))
 	        ]), React.createElement('div', {
 	            'className': 'swiper-pagination',
 	            'ref': 'swiperPagination'
@@ -34300,7 +34289,7 @@
 	        }, React.createElement.apply(this, [
 	            'div',
 	            { 'className': 'swiper-wrapper' },
-	            _.map(this.props.items, repeatItem1.bind(this))
+	            _.map(this.props.payload, repeatItem1.bind(this))
 	        ]), React.createElement('div', {
 	            'className': 'swiper-pagination',
 	            'ref': 'swiperPagination'
@@ -34316,60 +34305,42 @@
 
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(188);
-
-	var data = {
-	  "code": 0,
-	  "hasNext": true,
-	  "payload": [{
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "哈根达斯",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }, {
-	    "href": "##",
-	    "name": "ffff",
-	    "img": "/images/restaurant-01.jpg",
-	    "location": "2F",
-	    "discount": "9",
-	    "meta": "满100减10"
-	  }]
-	};
+	var dataSrc = __webpack_require__(194);
+	var init = false;
+	var reqwest = __webpack_require__(192);
 
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
+	  getInitialState: function getInitialState() {
+	    return {
+	      items: this.props.initialRestaurantList,
+	      loadingStatus: '查看更多',
+	      currentPage: 1
+	    };
+	  },
+
+	  loadMore: function loadMore(event) {
+	    event.preventDefault();
+	    var self = this;
+	    self.setState({
+	      loadingStatus: '加载中...'
+	    });
+
+	    reqwest({
+	      url: dataSrc.restaurantList,
+	      type: 'jsonp',
+	      data: { page: this.state.currentPage + 1 }
+	    }).then(function (res) {
+	      self.setState({
+	        items: self.state.items.concat(res),
+	        currentPage: self.state.currentPage + 1,
+	        loadingStatus: '查看更多'
+	      });
+	    });
+	  },
+
 	  render: function render() {
-	    this.items = data.payload;
 	    return tpl.call(this);
 	  }
 	});
@@ -34399,11 +34370,13 @@
 	        return React.createElement('section', { 'className': 'card restaurant-list' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-header' }, React.createElement('div', { 'className': 'card-header-title' }, '热门餐饮')), React.createElement.apply(this, [
 	            'div',
 	            { 'className': 'card-body' },
-	            _.map(this.items, repeatItem1.bind(this))
+	            _.map(this.state.items, repeatItem1.bind(this))
 	        ]), React.createElement('div', { 'className': 'card-footer' }, React.createElement('div', { 'className': 'card-footer-actions' }, React.createElement('a', {
+	            'ref': 'restaurant-list-loadTrigger',
 	            'className': 'card-footer-actions-item restaurant-list-loadTrigger',
-	            'href': '##'
-	        }, '查看更多')))));
+	            'href': '##',
+	            'onClick': this.loadMore
+	        }, this.state.loadingStatus)))));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34417,15 +34390,12 @@
 	var tpl = __webpack_require__(190);
 	var _ = __webpack_require__(159);
 
-	var items = [{ href: '##', img: '/images/nav-icons/iconfont-baoxian.png', text: '保险' }, { href: '##', img: '/images/nav-icons/iconfont-bus.png', text: '交通' }, { href: '##', img: '/images/nav-icons/iconfont-dianhua.png', text: '电话' }, { href: '##', img: '/images/nav-icons/iconfont-ditu.png', text: '地图' }, { href: '##', img: '/images/nav-icons/iconfont-feiji.png', text: '航班' }];
-
-	var placeholder = _.assign({}, items[0], { isPlaceholder: true });
-
 	var Elem = React.createClass({
 	  displayName: 'Elem',
 
 	  render: function render() {
-
+	    var items = this.props.payload;
+	    var placeholder = _.assign({}, items[0], { isPlaceholder: true });
 	    var len = items.length;
 	    var size;
 	    if (len < 5) {} else if (len >= 5 && len < 7) {
@@ -34473,12 +34443,15 @@
 	        }, React.createElement('img', {
 	            'src': item.img,
 	            'className': 'site-nav-item-icon'
-	        }    /*  <i class="site-nav-item-icon fa fa-cutlery"></i>  */), React.createElement('span', { 'className': 'site-nav-item-text' }, item.text));
+	        }), React.createElement('span', { 'className': 'site-nav-item-text' }, item.text));
 	    }
 	    function repeatGroup2(group, groupIndex) {
 	        return React.createElement.apply(this, [
 	            'div',
-	            { 'className': 'row' },
+	            {
+	                'className': 'row',
+	                'key': group.index
+	            },
 	            _.map(group, repeatItem1.bind(this, group, groupIndex))
 	        ]);
 	    }
@@ -34502,6 +34475,8 @@
 	}
 
 	module.exports = function (elem) {
+	  elem.classList.add('parallax');
+
 	  var timer;
 	  var startScrolling = false;
 	  window.addEventListener('scroll', function () {
@@ -34540,6 +34515,661 @@
 	    requestAnimationFrame(loop);
 	  }
 	};
+
+/***/ },
+/* 192 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  * Reqwest! A general purpose XHR connection manager
+	  * license MIT (c) Dustin Diaz 2015
+	  * https://github.com/ded/reqwest
+	  */
+
+	!function (name, context, definition) {
+	  if (typeof module != 'undefined' && module.exports) module.exports = definition()
+	  else if (true) !(__WEBPACK_AMD_DEFINE_FACTORY__ = (definition), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+	  else context[name] = definition()
+	}('reqwest', this, function () {
+
+	  var context = this
+
+	  if ('window' in context) {
+	    var doc = document
+	      , byTag = 'getElementsByTagName'
+	      , head = doc[byTag]('head')[0]
+	  } else {
+	    var XHR2
+	    try {
+	      XHR2 = __webpack_require__(193)
+	    } catch (ex) {
+	      throw new Error('Peer dependency `xhr2` required! Please npm install xhr2')
+	    }
+	  }
+
+
+	  var httpsRe = /^http/
+	    , protocolRe = /(^\w+):\/\//
+	    , twoHundo = /^(20\d|1223)$/ //http://stackoverflow.com/questions/10046972/msie-returns-status-code-of-1223-for-ajax-request
+	    , readyState = 'readyState'
+	    , contentType = 'Content-Type'
+	    , requestedWith = 'X-Requested-With'
+	    , uniqid = 0
+	    , callbackPrefix = 'reqwest_' + (+new Date())
+	    , lastValue // data stored by the most recent JSONP callback
+	    , xmlHttpRequest = 'XMLHttpRequest'
+	    , xDomainRequest = 'XDomainRequest'
+	    , noop = function () {}
+
+	    , isArray = typeof Array.isArray == 'function'
+	        ? Array.isArray
+	        : function (a) {
+	            return a instanceof Array
+	          }
+
+	    , defaultHeaders = {
+	          'contentType': 'application/x-www-form-urlencoded'
+	        , 'requestedWith': xmlHttpRequest
+	        , 'accept': {
+	              '*':  'text/javascript, text/html, application/xml, text/xml, */*'
+	            , 'xml':  'application/xml, text/xml'
+	            , 'html': 'text/html'
+	            , 'text': 'text/plain'
+	            , 'json': 'application/json, text/javascript'
+	            , 'js':   'application/javascript, text/javascript'
+	          }
+	      }
+
+	    , xhr = function(o) {
+	        // is it x-domain
+	        if (o['crossOrigin'] === true) {
+	          var xhr = context[xmlHttpRequest] ? new XMLHttpRequest() : null
+	          if (xhr && 'withCredentials' in xhr) {
+	            return xhr
+	          } else if (context[xDomainRequest]) {
+	            return new XDomainRequest()
+	          } else {
+	            throw new Error('Browser does not support cross-origin requests')
+	          }
+	        } else if (context[xmlHttpRequest]) {
+	          return new XMLHttpRequest()
+	        } else if (XHR2) {
+	          return new XHR2()
+	        } else {
+	          return new ActiveXObject('Microsoft.XMLHTTP')
+	        }
+	      }
+	    , globalSetupOptions = {
+	        dataFilter: function (data) {
+	          return data
+	        }
+	      }
+
+	  function succeed(r) {
+	    var protocol = protocolRe.exec(r.url)
+	    protocol = (protocol && protocol[1]) || context.location.protocol
+	    return httpsRe.test(protocol) ? twoHundo.test(r.request.status) : !!r.request.response
+	  }
+
+	  function handleReadyState(r, success, error) {
+	    return function () {
+	      // use _aborted to mitigate against IE err c00c023f
+	      // (can't read props on aborted request objects)
+	      if (r._aborted) return error(r.request)
+	      if (r._timedOut) return error(r.request, 'Request is aborted: timeout')
+	      if (r.request && r.request[readyState] == 4) {
+	        r.request.onreadystatechange = noop
+	        if (succeed(r)) success(r.request)
+	        else
+	          error(r.request)
+	      }
+	    }
+	  }
+
+	  function setHeaders(http, o) {
+	    var headers = o['headers'] || {}
+	      , h
+
+	    headers['Accept'] = headers['Accept']
+	      || defaultHeaders['accept'][o['type']]
+	      || defaultHeaders['accept']['*']
+
+	    var isAFormData = typeof FormData !== 'undefined' && (o['data'] instanceof FormData);
+	    // breaks cross-origin requests with legacy browsers
+	    if (!o['crossOrigin'] && !headers[requestedWith]) headers[requestedWith] = defaultHeaders['requestedWith']
+	    if (!headers[contentType] && !isAFormData) headers[contentType] = o['contentType'] || defaultHeaders['contentType']
+	    for (h in headers)
+	      headers.hasOwnProperty(h) && 'setRequestHeader' in http && http.setRequestHeader(h, headers[h])
+	  }
+
+	  function setCredentials(http, o) {
+	    if (typeof o['withCredentials'] !== 'undefined' && typeof http.withCredentials !== 'undefined') {
+	      http.withCredentials = !!o['withCredentials']
+	    }
+	  }
+
+	  function generalCallback(data) {
+	    lastValue = data
+	  }
+
+	  function urlappend (url, s) {
+	    return url + (/\?/.test(url) ? '&' : '?') + s
+	  }
+
+	  function handleJsonp(o, fn, err, url) {
+	    var reqId = uniqid++
+	      , cbkey = o['jsonpCallback'] || 'callback' // the 'callback' key
+	      , cbval = o['jsonpCallbackName'] || reqwest.getcallbackPrefix(reqId)
+	      , cbreg = new RegExp('((^|\\?|&)' + cbkey + ')=([^&]+)')
+	      , match = url.match(cbreg)
+	      , script = doc.createElement('script')
+	      , loaded = 0
+	      , isIE10 = navigator.userAgent.indexOf('MSIE 10.0') !== -1
+
+	    if (match) {
+	      if (match[3] === '?') {
+	        url = url.replace(cbreg, '$1=' + cbval) // wildcard callback func name
+	      } else {
+	        cbval = match[3] // provided callback func name
+	      }
+	    } else {
+	      url = urlappend(url, cbkey + '=' + cbval) // no callback details, add 'em
+	    }
+
+	    context[cbval] = generalCallback
+
+	    script.type = 'text/javascript'
+	    script.src = url
+	    script.async = true
+	    if (typeof script.onreadystatechange !== 'undefined' && !isIE10) {
+	      // need this for IE due to out-of-order onreadystatechange(), binding script
+	      // execution to an event listener gives us control over when the script
+	      // is executed. See http://jaubourg.net/2010/07/loading-script-as-onclick-handler-of.html
+	      script.htmlFor = script.id = '_reqwest_' + reqId
+	    }
+
+	    script.onload = script.onreadystatechange = function () {
+	      if ((script[readyState] && script[readyState] !== 'complete' && script[readyState] !== 'loaded') || loaded) {
+	        return false
+	      }
+	      script.onload = script.onreadystatechange = null
+	      script.onclick && script.onclick()
+	      // Call the user callback with the last value stored and clean up values and scripts.
+	      fn(lastValue)
+	      lastValue = undefined
+	      head.removeChild(script)
+	      loaded = 1
+	    }
+
+	    // Add the script to the DOM head
+	    head.appendChild(script)
+
+	    // Enable JSONP timeout
+	    return {
+	      abort: function () {
+	        script.onload = script.onreadystatechange = null
+	        err({}, 'Request is aborted: timeout', {})
+	        lastValue = undefined
+	        head.removeChild(script)
+	        loaded = 1
+	      }
+	    }
+	  }
+
+	  function getRequest(fn, err) {
+	    var o = this.o
+	      , method = (o['method'] || 'GET').toUpperCase()
+	      , url = typeof o === 'string' ? o : o['url']
+	      // convert non-string objects to query-string form unless o['processData'] is false
+	      , data = (o['processData'] !== false && o['data'] && typeof o['data'] !== 'string')
+	        ? reqwest.toQueryString(o['data'])
+	        : (o['data'] || null)
+	      , http
+	      , sendWait = false
+
+	    // if we're working on a GET request and we have data then we should append
+	    // query string to end of URL and not post data
+	    if ((o['type'] == 'jsonp' || method == 'GET') && data) {
+	      url = urlappend(url, data)
+	      data = null
+	    }
+
+	    if (o['type'] == 'jsonp') return handleJsonp(o, fn, err, url)
+
+	    // get the xhr from the factory if passed
+	    // if the factory returns null, fall-back to ours
+	    http = (o.xhr && o.xhr(o)) || xhr(o)
+
+	    http.open(method, url, o['async'] === false ? false : true)
+	    setHeaders(http, o)
+	    setCredentials(http, o)
+	    if (context[xDomainRequest] && http instanceof context[xDomainRequest]) {
+	        http.onload = fn
+	        http.onerror = err
+	        // NOTE: see
+	        // http://social.msdn.microsoft.com/Forums/en-US/iewebdevelopment/thread/30ef3add-767c-4436-b8a9-f1ca19b4812e
+	        http.onprogress = function() {}
+	        sendWait = true
+	    } else {
+	      http.onreadystatechange = handleReadyState(this, fn, err)
+	    }
+	    o['before'] && o['before'](http)
+	    if (sendWait) {
+	      setTimeout(function () {
+	        http.send(data)
+	      }, 200)
+	    } else {
+	      http.send(data)
+	    }
+	    return http
+	  }
+
+	  function Reqwest(o, fn) {
+	    this.o = o
+	    this.fn = fn
+
+	    init.apply(this, arguments)
+	  }
+
+	  function setType(header) {
+	    // json, javascript, text/plain, text/html, xml
+	    if (header === null) return undefined; //In case of no content-type.
+	    if (header.match('json')) return 'json'
+	    if (header.match('javascript')) return 'js'
+	    if (header.match('text')) return 'html'
+	    if (header.match('xml')) return 'xml'
+	  }
+
+	  function init(o, fn) {
+
+	    this.url = typeof o == 'string' ? o : o['url']
+	    this.timeout = null
+
+	    // whether request has been fulfilled for purpose
+	    // of tracking the Promises
+	    this._fulfilled = false
+	    // success handlers
+	    this._successHandler = function(){}
+	    this._fulfillmentHandlers = []
+	    // error handlers
+	    this._errorHandlers = []
+	    // complete (both success and fail) handlers
+	    this._completeHandlers = []
+	    this._erred = false
+	    this._responseArgs = {}
+
+	    var self = this
+
+	    fn = fn || function () {}
+
+	    if (o['timeout']) {
+	      this.timeout = setTimeout(function () {
+	        timedOut()
+	      }, o['timeout'])
+	    }
+
+	    if (o['success']) {
+	      this._successHandler = function () {
+	        o['success'].apply(o, arguments)
+	      }
+	    }
+
+	    if (o['error']) {
+	      this._errorHandlers.push(function () {
+	        o['error'].apply(o, arguments)
+	      })
+	    }
+
+	    if (o['complete']) {
+	      this._completeHandlers.push(function () {
+	        o['complete'].apply(o, arguments)
+	      })
+	    }
+
+	    function complete (resp) {
+	      o['timeout'] && clearTimeout(self.timeout)
+	      self.timeout = null
+	      while (self._completeHandlers.length > 0) {
+	        self._completeHandlers.shift()(resp)
+	      }
+	    }
+
+	    function success (resp) {
+	      var type = o['type'] || resp && setType(resp.getResponseHeader('Content-Type')) // resp can be undefined in IE
+	      resp = (type !== 'jsonp') ? self.request : resp
+	      // use global data filter on response text
+	      var filteredResponse = globalSetupOptions.dataFilter(resp.responseText, type)
+	        , r = filteredResponse
+	      try {
+	        resp.responseText = r
+	      } catch (e) {
+	        // can't assign this in IE<=8, just ignore
+	      }
+	      if (r) {
+	        switch (type) {
+	        case 'json':
+	          try {
+	            resp = context.JSON ? context.JSON.parse(r) : eval('(' + r + ')')
+	          } catch (err) {
+	            return error(resp, 'Could not parse JSON in response', err)
+	          }
+	          break
+	        case 'js':
+	          resp = eval(r)
+	          break
+	        case 'html':
+	          resp = r
+	          break
+	        case 'xml':
+	          resp = resp.responseXML
+	              && resp.responseXML.parseError // IE trololo
+	              && resp.responseXML.parseError.errorCode
+	              && resp.responseXML.parseError.reason
+	            ? null
+	            : resp.responseXML
+	          break
+	        }
+	      }
+
+	      self._responseArgs.resp = resp
+	      self._fulfilled = true
+	      fn(resp)
+	      self._successHandler(resp)
+	      while (self._fulfillmentHandlers.length > 0) {
+	        resp = self._fulfillmentHandlers.shift()(resp)
+	      }
+
+	      complete(resp)
+	    }
+
+	    function timedOut() {
+	      self._timedOut = true
+	      self.request.abort()
+	    }
+
+	    function error(resp, msg, t) {
+	      resp = self.request
+	      self._responseArgs.resp = resp
+	      self._responseArgs.msg = msg
+	      self._responseArgs.t = t
+	      self._erred = true
+	      while (self._errorHandlers.length > 0) {
+	        self._errorHandlers.shift()(resp, msg, t)
+	      }
+	      complete(resp)
+	    }
+
+	    this.request = getRequest.call(this, success, error)
+	  }
+
+	  Reqwest.prototype = {
+	    abort: function () {
+	      this._aborted = true
+	      this.request.abort()
+	    }
+
+	  , retry: function () {
+	      init.call(this, this.o, this.fn)
+	    }
+
+	    /**
+	     * Small deviation from the Promises A CommonJs specification
+	     * http://wiki.commonjs.org/wiki/Promises/A
+	     */
+
+	    /**
+	     * `then` will execute upon successful requests
+	     */
+	  , then: function (success, fail) {
+	      success = success || function () {}
+	      fail = fail || function () {}
+	      if (this._fulfilled) {
+	        this._responseArgs.resp = success(this._responseArgs.resp)
+	      } else if (this._erred) {
+	        fail(this._responseArgs.resp, this._responseArgs.msg, this._responseArgs.t)
+	      } else {
+	        this._fulfillmentHandlers.push(success)
+	        this._errorHandlers.push(fail)
+	      }
+	      return this
+	    }
+
+	    /**
+	     * `always` will execute whether the request succeeds or fails
+	     */
+	  , always: function (fn) {
+	      if (this._fulfilled || this._erred) {
+	        fn(this._responseArgs.resp)
+	      } else {
+	        this._completeHandlers.push(fn)
+	      }
+	      return this
+	    }
+
+	    /**
+	     * `fail` will execute when the request fails
+	     */
+	  , fail: function (fn) {
+	      if (this._erred) {
+	        fn(this._responseArgs.resp, this._responseArgs.msg, this._responseArgs.t)
+	      } else {
+	        this._errorHandlers.push(fn)
+	      }
+	      return this
+	    }
+	  , 'catch': function (fn) {
+	      return this.fail(fn)
+	    }
+	  }
+
+	  function reqwest(o, fn) {
+	    return new Reqwest(o, fn)
+	  }
+
+	  // normalize newline variants according to spec -> CRLF
+	  function normalize(s) {
+	    return s ? s.replace(/\r?\n/g, '\r\n') : ''
+	  }
+
+	  function serial(el, cb) {
+	    var n = el.name
+	      , t = el.tagName.toLowerCase()
+	      , optCb = function (o) {
+	          // IE gives value="" even where there is no value attribute
+	          // 'specified' ref: http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-862529273
+	          if (o && !o['disabled'])
+	            cb(n, normalize(o['attributes']['value'] && o['attributes']['value']['specified'] ? o['value'] : o['text']))
+	        }
+	      , ch, ra, val, i
+
+	    // don't serialize elements that are disabled or without a name
+	    if (el.disabled || !n) return
+
+	    switch (t) {
+	    case 'input':
+	      if (!/reset|button|image|file/i.test(el.type)) {
+	        ch = /checkbox/i.test(el.type)
+	        ra = /radio/i.test(el.type)
+	        val = el.value
+	        // WebKit gives us "" instead of "on" if a checkbox has no value, so correct it here
+	        ;(!(ch || ra) || el.checked) && cb(n, normalize(ch && val === '' ? 'on' : val))
+	      }
+	      break
+	    case 'textarea':
+	      cb(n, normalize(el.value))
+	      break
+	    case 'select':
+	      if (el.type.toLowerCase() === 'select-one') {
+	        optCb(el.selectedIndex >= 0 ? el.options[el.selectedIndex] : null)
+	      } else {
+	        for (i = 0; el.length && i < el.length; i++) {
+	          el.options[i].selected && optCb(el.options[i])
+	        }
+	      }
+	      break
+	    }
+	  }
+
+	  // collect up all form elements found from the passed argument elements all
+	  // the way down to child elements; pass a '<form>' or form fields.
+	  // called with 'this'=callback to use for serial() on each element
+	  function eachFormElement() {
+	    var cb = this
+	      , e, i
+	      , serializeSubtags = function (e, tags) {
+	          var i, j, fa
+	          for (i = 0; i < tags.length; i++) {
+	            fa = e[byTag](tags[i])
+	            for (j = 0; j < fa.length; j++) serial(fa[j], cb)
+	          }
+	        }
+
+	    for (i = 0; i < arguments.length; i++) {
+	      e = arguments[i]
+	      if (/input|select|textarea/i.test(e.tagName)) serial(e, cb)
+	      serializeSubtags(e, [ 'input', 'select', 'textarea' ])
+	    }
+	  }
+
+	  // standard query string style serialization
+	  function serializeQueryString() {
+	    return reqwest.toQueryString(reqwest.serializeArray.apply(null, arguments))
+	  }
+
+	  // { 'name': 'value', ... } style serialization
+	  function serializeHash() {
+	    var hash = {}
+	    eachFormElement.apply(function (name, value) {
+	      if (name in hash) {
+	        hash[name] && !isArray(hash[name]) && (hash[name] = [hash[name]])
+	        hash[name].push(value)
+	      } else hash[name] = value
+	    }, arguments)
+	    return hash
+	  }
+
+	  // [ { name: 'name', value: 'value' }, ... ] style serialization
+	  reqwest.serializeArray = function () {
+	    var arr = []
+	    eachFormElement.apply(function (name, value) {
+	      arr.push({name: name, value: value})
+	    }, arguments)
+	    return arr
+	  }
+
+	  reqwest.serialize = function () {
+	    if (arguments.length === 0) return ''
+	    var opt, fn
+	      , args = Array.prototype.slice.call(arguments, 0)
+
+	    opt = args.pop()
+	    opt && opt.nodeType && args.push(opt) && (opt = null)
+	    opt && (opt = opt.type)
+
+	    if (opt == 'map') fn = serializeHash
+	    else if (opt == 'array') fn = reqwest.serializeArray
+	    else fn = serializeQueryString
+
+	    return fn.apply(null, args)
+	  }
+
+	  reqwest.toQueryString = function (o, trad) {
+	    var prefix, i
+	      , traditional = trad || false
+	      , s = []
+	      , enc = encodeURIComponent
+	      , add = function (key, value) {
+	          // If value is a function, invoke it and return its value
+	          value = ('function' === typeof value) ? value() : (value == null ? '' : value)
+	          s[s.length] = enc(key) + '=' + enc(value)
+	        }
+	    // If an array was passed in, assume that it is an array of form elements.
+	    if (isArray(o)) {
+	      for (i = 0; o && i < o.length; i++) add(o[i]['name'], o[i]['value'])
+	    } else {
+	      // If traditional, encode the "old" way (the way 1.3.2 or older
+	      // did it), otherwise encode params recursively.
+	      for (prefix in o) {
+	        if (o.hasOwnProperty(prefix)) buildParams(prefix, o[prefix], traditional, add)
+	      }
+	    }
+
+	    // spaces should be + according to spec
+	    return s.join('&').replace(/%20/g, '+')
+	  }
+
+	  function buildParams(prefix, obj, traditional, add) {
+	    var name, i, v
+	      , rbracket = /\[\]$/
+
+	    if (isArray(obj)) {
+	      // Serialize array item.
+	      for (i = 0; obj && i < obj.length; i++) {
+	        v = obj[i]
+	        if (traditional || rbracket.test(prefix)) {
+	          // Treat each array item as a scalar.
+	          add(prefix, v)
+	        } else {
+	          buildParams(prefix + '[' + (typeof v === 'object' ? i : '') + ']', v, traditional, add)
+	        }
+	      }
+	    } else if (obj && obj.toString() === '[object Object]') {
+	      // Serialize object item.
+	      for (name in obj) {
+	        buildParams(prefix + '[' + name + ']', obj[name], traditional, add)
+	      }
+
+	    } else {
+	      // Serialize scalar item.
+	      add(prefix, obj)
+	    }
+	  }
+
+	  reqwest.getcallbackPrefix = function () {
+	    return callbackPrefix
+	  }
+
+	  // jQuery and Zepto compatibility, differences can be remapped here so you can call
+	  // .ajax.compat(options, callback)
+	  reqwest.compat = function (o, fn) {
+	    if (o) {
+	      o['type'] && (o['method'] = o['type']) && delete o['type']
+	      o['dataType'] && (o['type'] = o['dataType'])
+	      o['jsonpCallback'] && (o['jsonpCallbackName'] = o['jsonpCallback']) && delete o['jsonpCallback']
+	      o['jsonp'] && (o['jsonpCallback'] = o['jsonp'])
+	    }
+	    return new Reqwest(o, fn)
+	  }
+
+	  reqwest.ajaxSetup = function (options) {
+	    options = options || {}
+	    for (var k in options) {
+	      globalSetupOptions[k] = options[k]
+	    }
+	  }
+
+	  return reqwest
+	});
+
+
+/***/ },
+/* 193 */
+/***/ function(module, exports) {
+
+	/* (ignored) */
+
+/***/ },
+/* 194 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var src = {
+	  index: 'http://192.168.0.1:3030/jsonp',
+	  restaurantList: 'http://192.168.0.1:3030/restaurantList'
+	};
+
+	module.exports = src;
 
 /***/ }
 /******/ ]);

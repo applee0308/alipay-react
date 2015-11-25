@@ -5,24 +5,24 @@
     </div>
 
     <div class="card-body">
-      <a class="restaurant-list-item" rt-repeat="item in this.items" key={item.index} href={item.href}>
+      <a class="restaurant-list-item" rt-repeat="item in this.state.items" key={item.index} href={item.href}>
         <div class="restaurant-list-item-top">
-            <img class="restaurant-list-item-img" src={item.img}>
-            <div class="restaurant-list-item-mask">
-              <div class="restaurant-list-item-mask-left">
-                <div class="restaurant-list-item-name">{item.name}</div>
-                <div class="restaurant-list-item-location">
-                  <i class="fa fa-map-marker"></i>
-                  <span>{item.location}</span>
-                </div>
-              </div>
-              <div class="restaurant-list-item-mask-right">
-                <div class="restaurant-list-item-discount">
-                  <span class="restaurant-list-item-discount-num">{item.discount}</span>
-                  <span>折</span>
-                </div>
+          <img class="restaurant-list-item-img" src={item.img}>
+          <div class="restaurant-list-item-mask">
+            <div class="restaurant-list-item-mask-left">
+              <div class="restaurant-list-item-name">{item.name}</div>
+              <div class="restaurant-list-item-location">
+                <i class="fa fa-map-marker"></i>
+                <span>{item.location}</span>
               </div>
             </div>
+            <div class="restaurant-list-item-mask-right">
+              <div class="restaurant-list-item-discount">
+                <span class="restaurant-list-item-discount-num">{item.discount}</span>
+                <span>折</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="restaurant-list-item-bottom">
           <div class="restaurant-list-item-meta">{item.meta}</div>
@@ -36,7 +36,10 @@
 
     <div class="card-footer">
       <div class="card-footer-actions">
-        <a class="card-footer-actions-item restaurant-list-loadTrigger" href="##">查看更多</a>
+        <a ref="restaurant-list-loadTrigger"
+          class="card-footer-actions-item restaurant-list-loadTrigger"
+          href="##"
+          onClick={this.loadMore}>{this.state.loadingStatus}</a>
       </div>
     </div>
   </div>

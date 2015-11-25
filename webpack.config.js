@@ -1,3 +1,11 @@
+var webpack = require('webpack');
+var definePlugin = new webpack.DefinePlugin({
+  'process.env': {
+    'NODE_ENV': '"production"'
+  }
+});
+
+
 module.exports = {
   entry: {
     index: './js/app/pages/index/index.jsx',
@@ -20,5 +28,7 @@ module.exports = {
 
       { test: /\.css$/, loader: 'style-loader!css-loader' },
      ]
-   }
+   },
+
+  plugins: [definePlugin]
 };

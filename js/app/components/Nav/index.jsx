@@ -2,20 +2,10 @@ var React = require('react');
 var tpl = require('./tpl.rt');
 var _ = require('lodash');
 
-var items = [
-  { href: '##', img: '/images/nav-icons/iconfont-baoxian.png', text: '保险' },
-  { href: '##', img: '/images/nav-icons/iconfont-bus.png', text: '交通' },
-  { href: '##', img: '/images/nav-icons/iconfont-dianhua.png', text: '电话' },
-  { href: '##', img: '/images/nav-icons/iconfont-ditu.png', text: '地图' },
-  { href: '##', img: '/images/nav-icons/iconfont-feiji.png', text: '航班' },
-];
-
-var placeholder = _.assign({}, items[0], { isPlaceholder: true });
-
-
 var Elem = React.createClass({
   render: function() {
-
+    var items = this.props.payload;
+    var placeholder = _.assign({}, items[0], { isPlaceholder: true });
     var len = items.length;
     var size;
     if (len < 5) {

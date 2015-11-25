@@ -16,7 +16,7 @@ var Elem = React.createClass({
       loop: true,
       // autoplay: 2000,
     });
-  }
+  },
 });
 
 
