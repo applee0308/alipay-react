@@ -1,9 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var tpl = require('./tpl.rt');
-// var initParallax = require('../../utils/parallax.jsx');
 var reqwest = require('reqwest');
 var dataSrc = require('../../dataSrc.jsx');
+
+var Promise = require('es6-promise-polyfill').Promise;
 
 document.documentElement.addEventListener('load', function(event) {
   if (event.target.tagName == 'IMG') {

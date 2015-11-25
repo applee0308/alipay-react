@@ -132,3 +132,11 @@
     }
   };
 }
+
+
+
+@include fixAndroidBrowser {
+  .restaurant-list-item-location svg {
+    width: pr(14);
+  }
+};

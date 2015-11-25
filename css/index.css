@@ -165,6 +165,10 @@
   }
 }
 
+.no-flexbox.flexboxlegacy .restaurant-list-item-location svg {
+  width: 0.7rem;
+}
+
 /**
  * Swiper 3.2.0
  * Most modern mobile touch slider and framework with hardware accelerated transitions
@@ -928,6 +932,10 @@ button.swiper-pagination-bullet {
 
 .brand-profile-location svg path {
   fill: #a5a5a5;
+}
+
+.no-flexbox.flexboxlegacy .brand-profile-location svg {
+  width: 0.7rem;
 }
 
 .app-header {
