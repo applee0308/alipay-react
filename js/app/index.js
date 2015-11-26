@@ -60,8 +60,6 @@
 	  }
 	}, true);
 
-	var store = {};
-
 	var App = React.createClass({
 	  displayName: 'App',
 
@@ -33140,9 +33138,14 @@
 	        spaceBetween: 60,
 	        loop: true,
 	        preloadImages: false, // Disable preloading of all images
-	        lazyLoading: true });
+	        lazyLoading: true, // Enable lazy loading
 
-	      // Enable lazy loading
+	        // If you use slidesPerView "auto" or slidesPerView > 1,
+	        // then you should also enable watchSlidesVisibility and
+	        //  Swiper will load images in currently visible slides
+	        watchSlidesVisibility: true
+	      });
+
 	      // autoplay: 2000,
 	      swiperInitialized = true;
 	    }

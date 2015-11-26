@@ -12,7 +12,6 @@ document.documentElement.addEventListener('load', function(event) {
   }
 }, true);
 
-var store = {};
 
 var App = React.createClass({
   getInitialState: function() {
