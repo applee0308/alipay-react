@@ -844,6 +844,10 @@ button.swiper-pagination-bullet {
   background: #e5e5e5;
 }
 
+.recommendation-01-item-text {
+  font-size: 0.7rem;
+}
+
 .recommendation-01 .swiper-pagination {
   position: static;
   padding-bottom: 10px;
@@ -853,12 +857,12 @@ button.swiper-pagination-bullet {
   display: block;
   padding-bottom: 23.4375%;
   height: 0;
+  background: #e5e5e5;
 }
 
 .recommendation-02-item-img {
   width: 100%;
   display: block;
-  background: #e5e5e5;
 }
 
 .recommendation-02 .swiper-pagination {

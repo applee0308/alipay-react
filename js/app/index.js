@@ -33050,30 +33050,27 @@
 	    return tpl.call(this);
 	  },
 
-	  componentDidUpdate: function componentDidUpdate() {
+	  tryToInitSwiper: function tryToInitSwiper() {
 	    if (this.props.payload && !swiperInitialized) {
 	      new Swiper(this.refs.swiper, {
 	        pagination: this.refs.swiperPagination,
 	        paginationClickable: true,
-	        loop: true
-	      });
+	        loop: true,
+	        preloadImages: false, // Disable preloading of all images
+	        lazyLoading: true });
 
+	      // Enable lazy loading
 	      // autoplay: 2000,
 	      swiperInitialized = true;
 	    }
 	  },
 
-	  componentDidMount: function componentDidMount() {
-	    if (this.props.payload && !swiperInitialized) {
-	      new Swiper(this.refs.swiper, {
-	        pagination: this.refs.swiperPagination,
-	        paginationClickable: true,
-	        loop: true
-	      });
+	  componentDidUpdate: function componentDidUpdate() {
+	    this.tryToInitSwiper();
+	  },
 
-	      // autoplay: 2000,
-	      swiperInitialized = true;
-	    }
+	  componentDidMount: function componentDidMount() {
+	    this.tryToInitSwiper();
 	  }
 	});
 
@@ -33096,8 +33093,8 @@
 	            'href': item.href,
 	            'className': 'recommendation-02-item'
 	        }, React.createElement('img', {
-	            'src': item.img,
-	            'className': 'recommendation-02-item-img'
+	            'data-src': item.img,
+	            'className': 'recommendation-02-item-img swiper-lazy'
 	        })));
 	    }
 	    return function () {
@@ -33133,7 +33130,7 @@
 	    return tpl.call(this);
 	  },
 
-	  componentDidUpdate: function componentDidUpdate() {
+	  tryToInitSwiper: function tryToInitSwiper() {
 	    if (this.props.payload && !swiperInitialized) {
 	      new Swiper(this.refs.swiper, {
 	        pagination: this.refs.swiperPagination,
@@ -33141,28 +33138,22 @@
 	        centeredSlides: true,
 	        paginationClickable: true,
 	        spaceBetween: 60,
-	        loop: true
-	      });
+	        loop: true,
+	        preloadImages: false, // Disable preloading of all images
+	        lazyLoading: true });
 
+	      // Enable lazy loading
 	      // autoplay: 2000,
 	      swiperInitialized = true;
 	    }
 	  },
 
-	  componentDidMount: function componentDidMount() {
-	    if (this.props.payload && !swiperInitialized) {
-	      new Swiper(this.refs.swiper, {
-	        pagination: this.refs.swiperPagination,
-	        slidesPerView: 'auto',
-	        centeredSlides: true,
-	        paginationClickable: true,
-	        spaceBetween: 60,
-	        loop: true
-	      });
+	  componentDidUpdate: function componentDidUpdate() {
+	    this.tryToInitSwiper();
+	  },
 
-	      // autoplay: 2000,
-	      swiperInitialized = true;
-	    }
+	  componentDidMount: function componentDidMount() {
+	    this.tryToInitSwiper();
 	  }
 	});
 
@@ -33186,8 +33177,8 @@
 	            'href': item.href,
 	            'className': 'recommendation-01-item'
 	        }, React.createElement('img', {
-	            'src': item.img,
-	            'className': 'recommendation-01-item-img'
+	            'data-src': item.img,
+	            'className': 'recommendation-01-item-img swiper-lazy'
 	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, item.text)));
 	    }
 	    return function () {

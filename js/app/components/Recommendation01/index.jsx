@@ -8,7 +8,7 @@ var Elem = React.createClass({
     return tpl.call(this);
   },
 
-  componentDidUpdate: function() {
+  tryToInitSwiper: function() {
     if (this.props.payload && !swiperInitialized) {
       new Swiper(this.refs.swiper, {
         pagination: this.refs.swiperPagination,
@@ -17,6 +17,8 @@ var Elem = React.createClass({
         paginationClickable: true,
         spaceBetween: 60,
         loop: true,
+        preloadImages: false, // Disable preloading of all images
+        lazyLoading: true, // Enable lazy loading
         // autoplay: 2000,
       });
 
@@ -24,20 +26,12 @@ var Elem = React.createClass({
     }
   },
 
-  componentDidMount: function() {
-    if (this.props.payload && !swiperInitialized) {
-      new Swiper(this.refs.swiper, {
-        pagination: this.refs.swiperPagination,
-        slidesPerView: 'auto',
-        centeredSlides: true,
-        paginationClickable: true,
-        spaceBetween: 60,
-        loop: true,
-        // autoplay: 2000,
-      });
+  componentDidUpdate: function() {
+    this.tryToInitSwiper();
+  },
 
-      swiperInitialized = true;
-    }
+  componentDidMount: function() {
+    this.tryToInitSwiper();
   },
 });
 

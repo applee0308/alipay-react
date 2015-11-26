@@ -39,6 +39,10 @@
       transform: translateZ(0);
       background: $borderGray;
     }
+
+    &-text {
+      font-size: pr(14);
+    }
   }
 
   .swiper-pagination {
