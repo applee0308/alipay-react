@@ -4,14 +4,13 @@
 
 .restaurant-list {
   .card-body {
-    padding: $gutter;
-    padding-top: $gutter/3*2;
+    padding: $gutter--small;
     border-top: 0;
   }
 
   .card-header {
-    padding-top: $gutter;
     padding-bottom: 0;
+    border-bottom: 0;
   }
 
   &-item {
@@ -46,7 +45,7 @@
       background: linear-gradient(to bottom, transparent, black);
       display: flex;
       align-items: center;
-      padding: $gutter/3*2 $gutter;
+      padding: $gutter--small $gutter;
       @include fontColor(white);
 
       &-left {
@@ -86,7 +85,7 @@
     }
 
     &-bottom {
-      padding: $gutter/3*2 $gutter;
+      padding: $gutter--small $gutter;
       color: $fontBlack;
       font-size: pr(12);
       border: 1px solid $borderGray;
@@ -106,7 +105,7 @@
       justify-content: flex-end;
 
       &-item {
-        margin-right: $gutter/3*2;
+        margin-right: $gutter--small;
         height: pr(14);
         &:last-of-type {
           margin-right: 0;
