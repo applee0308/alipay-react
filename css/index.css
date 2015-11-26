@@ -1,12 +1,11 @@
 .restaurant-list .card-body {
-  padding: 0.75rem;
-  padding-top: 0.5rem;
+  padding: 0.5rem;
   border-top: 0;
 }
 
 .restaurant-list .card-header {
-  padding-top: 0.75rem;
   padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .restaurant-list-item {
@@ -736,6 +735,7 @@ button.swiper-pagination-bullet {
 .site-nav-item-icon {
   height: 1.2rem;
   margin-bottom: 3px;
+  display: block;
 }
 
 .site-nav-item-text {
@@ -755,8 +755,8 @@ button.swiper-pagination-bullet {
 }
 
 .recommendation-01 .card-header {
-  padding-top: 0.75rem;
   padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .recommendation-01 .card-body {
@@ -781,8 +781,8 @@ button.swiper-pagination-bullet {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 0.75rem;
-  padding-bottom: 0.5rem;
+  padding-top: 1rem;
+  margin-bottom: 0.75rem;
   color: #333333;
 }
 
@@ -793,19 +793,35 @@ button.swiper-pagination-bullet {
   border-radius: 50%;
   -webkit-transition: 300ms;
           transition: 300ms;
-  margin-bottom: 15.6px;
+  margin-bottom: 12px;
+  background: #e5e5e5;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
-  background: #e5e5e5;
+  will-change: transform;
 }
 
 .recommendation-01-item-text {
   font-size: 0.7rem;
+  -webkit-transition: 300ms;
+          transition: 300ms;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+}
+
+.swiper-slide-active .recommendation-01-item-img {
+  -webkit-transform: scale(1.3) translateZ(0);
+          transform: scale(1.3) translateZ(0);
+}
+
+.swiper-slide-active .recommendation-01-item-text {
+  -webkit-transform: translateY(0.6rem) translateZ(0);
+          transform: translateY(0.6rem) translateZ(0);
 }
 
 .recommendation-01 .swiper-pagination {
   position: static;
-  padding-bottom: 10px;
+  padding-bottom: 0.5rem;
 }
 
 .recommendation-02-item {

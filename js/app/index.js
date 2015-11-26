@@ -33135,7 +33135,7 @@
 	        slidesPerView: 'auto',
 	        centeredSlides: true,
 	        paginationClickable: true,
-	        spaceBetween: 60,
+	        spaceBetween: 48,
 	        loop: true,
 	        preloadImages: false, // Disable preloading of all images
 	        lazyLoading: true, // Enable lazy loading
