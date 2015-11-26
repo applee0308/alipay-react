@@ -2,8 +2,7 @@
 @import '../base/util';
 
 .swiper-slide-active .recommendation-01-item img {
-  transform: scale(1.3);
-  transition: 300ms;
+  // transform: scale(1.3);
 }
 
 .recommendation-01 {
@@ -38,6 +37,10 @@
       margin-bottom: 12px * $scale;
       transform: translateZ(0);
       background: $borderGray;
+    }
+
+    &-text {
+      font-size: pr(14);
     }
   }
 
