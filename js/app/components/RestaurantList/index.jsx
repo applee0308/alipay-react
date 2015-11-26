@@ -5,11 +5,19 @@ var reqwest = require('reqwest');
 
 var Elem = React.createClass({
   getInitialState: function() {
-    return {
-      items: [],
-      loadingStatus: '加载中...',
-      currentPage: 1
-    };
+    if (this.props.payload) {
+      return {
+        items: this.props.payload,
+        loadingStatus: '查看更多',
+        currentPage: 1
+      };
+    } else {
+      return {
+        items: [],
+        loadingStatus: '加载中...',
+        currentPage: 1
+      };
+    }
   },
 
   loadMore: function(event) {

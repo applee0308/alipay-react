@@ -21,6 +21,19 @@ var Elem = React.createClass({
       swiperInitialized = true;
     }
   },
+
+  componentDidMount: function() {
+    if (this.props.payload && !swiperInitialized) {
+      new Swiper(this.refs.swiper, {
+          pagination: this.refs.swiperPagination,
+          paginationClickable: true,
+          loop: true,
+          // autoplay: 2000,
+        });
+
+      swiperInitialized = true;
+    }
+  },
 });
 
 

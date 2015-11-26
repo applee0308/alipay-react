@@ -67,18 +67,7 @@
 
 	  getInitialState: function getInitialState() {
 	    // 可能使用 immutable，所以 state 多加了一层
-	    return { appState: {} };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    var self = this;
-
-	    Promise.all([reqwest({ url: dataSrc.index, type: 'jsonp' }), reqwest({ url: dataSrc.restaurantList, type: 'jsonp', data: { page: 1 } })]).then(function (res) {
-	      var state = res[0];
-	      state.restaurantList = res[1];
-	      state.ready = true;
-	      self.setState({ appState: state });
-	    });
+	    return { appState: this.props.initialState };
 	  },
 
 	  render: function render() {
@@ -86,7 +75,12 @@
 	  }
 	});
 
-	ReactDOM.render(React.createElement(App, null), document.querySelector('.app-container'));
+	Promise.all([reqwest({ url: dataSrc.index, type: 'jsonp' }), reqwest({ url: dataSrc.restaurantList, type: 'jsonp', data: { page: 1 } })]).then(function (res) {
+	  var state = res[0];
+	  state.restaurantList = res[1];
+	  state.ready = true;
+	  ReactDOM.render(React.createElement(App, { initialState: state }), document.querySelector('.app-container'));
+	});
 
 /***/ },
 /* 1 */
@@ -33067,6 +33061,19 @@
 	      // autoplay: 2000,
 	      swiperInitialized = true;
 	    }
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    if (this.props.payload && !swiperInitialized) {
+	      new Swiper(this.refs.swiper, {
+	        pagination: this.refs.swiperPagination,
+	        paginationClickable: true,
+	        loop: true
+	      });
+
+	      // autoplay: 2000,
+	      swiperInitialized = true;
+	    }
 	  }
 	});
 
@@ -33140,6 +33147,22 @@
 	      // autoplay: 2000,
 	      swiperInitialized = true;
 	    }
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    if (this.props.payload && !swiperInitialized) {
+	      new Swiper(this.refs.swiper, {
+	        pagination: this.refs.swiperPagination,
+	        slidesPerView: 'auto',
+	        centeredSlides: true,
+	        paginationClickable: true,
+	        spaceBetween: 60,
+	        loop: true
+	      });
+
+	      // autoplay: 2000,
+	      swiperInitialized = true;
+	    }
 	  }
 	});
 
@@ -33197,11 +33220,19 @@
 	  displayName: 'Elem',
 
 	  getInitialState: function getInitialState() {
-	    return {
-	      items: [],
-	      loadingStatus: '加载中...',
-	      currentPage: 1
-	    };
+	    if (this.props.payload) {
+	      return {
+	        items: this.props.payload,
+	        loadingStatus: '查看更多',
+	        currentPage: 1
+	      };
+	    } else {
+	      return {
+	        items: [],
+	        loadingStatus: '加载中...',
+	        currentPage: 1
+	      };
+	    }
 	  },
 
 	  loadMore: function loadMore(event) {
