@@ -8,7 +8,7 @@ var Promise = require('es6-promise-polyfill').Promise;
 
 document.documentElement.addEventListener('load', function(event) {
   if (event.target.tagName == 'IMG') {
-    event.target.classList.add('loaded');
+    event.target.classList.add('img--loaded');
   }
 }, true);
 
@@ -17,6 +17,16 @@ var App = React.createClass({
   getInitialState: function() {
     // 可能使用 immutable，所以 state 多加了一层
     return { appState: this.props.initialState };
+  },
+
+  componentDidMount: function() {
+
+    document.querySelector('.splashScreen').classList.add('hidden');
+
+    var self = this;
+    setTimeout(function() {
+      self.refs.body.classList.add('ready');
+    }, 500);
   },
 
   render: function() {
@@ -32,7 +42,7 @@ Promise.all([
 ]).then(function(res) {
   var state = res[0];
   state.restaurantList = res[1];
-  state.ready = true;
+  // state.ready = true;
   ReactDOM.render(<App initialState={state} />, document.querySelector('.app-container'));
 });
 

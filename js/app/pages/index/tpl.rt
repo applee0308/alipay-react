@@ -4,7 +4,7 @@
 <rt-require dependency="../../components/RestaurantList/index.jsx" as="RestaurantList"/>
 <rt-require dependency="../../components/Nav/index.jsx" as="Nav"/>
 
-<div class="app" rt-class="{ready: this.state.appState.ready }">
+<div ref="body" class="app">
   <div class="app-header">
     <BrandProfile payload={this.state.appState.brandProfile} />
     <Nav payload={this.state.appState.nav} />

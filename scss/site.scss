@@ -2,6 +2,7 @@
 @import './base/util';
 @import './base/reset';
 @import './components/card';
+@import './components/button';
 
 .container {
   max-width: 640px;
@@ -26,26 +27,28 @@ body {
                'Helvetica Neue',
                Helvetica,
                Arial,sans-serif;
-  line-height: 1.2;
   background: $pageGray;
   color: $fontBlack;
 }
 
-.app {
-  visibility: hidden;
+a {
+  color: $blue;
+}
 
+.app {
+  // display: none;
   &.ready {
-    visibility: visible;
+    // display: block;
   }
 }
 
-// img {
-//   visibility: hidden;
-//   transition: 600ms;
-//   opacity: 0;
+img {
+  visibility: hidden;
+  transition: 600ms;
+  opacity: 0;
+}
 
-//   &.loaded {
-//     visibility: visible;
-//     opacity: 1;
-//   }
-// }
+.img--loaded {
+  visibility: visible;
+  opacity: 1;
+}

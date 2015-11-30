@@ -1,5 +1,6 @@
 var React = require('react');
 var tpl = require('./tpl.rt');
+var Swiper = require('swiper');
 
 var swiperInitialized = false;
 

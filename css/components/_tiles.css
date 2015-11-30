@@ -1,0 +1,36 @@
+.tiles .card-body {
+  padding: 0;
+}
+
+.tiles .row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.tiles .row:last-of-type {
+  border-bottom: none;
+}
+
+.tiles-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-right: 1px solid #e5e5e5;
+}
+
+.tiles-item:nth-of-type(2n) {
+  border-right: none;
+}
+
+.tiles-item img {
+  display: block;
+  width: 100%;
+}
+
+.no-flexbox.flexboxlegacy .tiles-item {
+  display: block;
+}

@@ -1,0 +1,109 @@
+@import '../base/vars';
+@import '../base/util';
+
+@function decreaseLightness($color, $amount) {
+  $h: hue($color);
+  $s: saturation($color);
+  $l: lightness($color) - $amount;
+  @return hsl($h, $s, $l);
+};
+
+%btn {
+  background: none;
+  outline: none;
+  border-radius: 4px;
+  padding: 0;
+  border: 1px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  text-align: center;
+}
+
+// style
+.btn {
+  &--default {
+    @extend %btn;
+    border-color: #DDDDDD;
+    color: $fontBlack;
+    &:active {
+      background: #F8F8F8;
+      border-color: #D8D8D8;
+    }
+  }
+
+  &--blue {
+    @extend %btn;
+    background: $blue;
+    color: white;
+    &:active {
+      background: decreaseLightness($blue, 7%);
+    }
+  }
+
+  &--green {
+    @extend %btn;
+    background: $green;
+    color: white;
+    &:active {
+      background: decreaseLightness($green, 7%);
+    }
+  }
+
+  &--red {
+    @extend %btn;
+    background: $red;
+    color: white;
+    &:active {
+      background: decreaseLightness($red, 7%);
+    }
+  }
+
+  &--disabled {
+    @extend %btn;
+    background: #EBEBF0;
+    color: #D2D2D2;
+    cursor: not-allowed;
+  }
+
+  &-line--default {
+    @extend %btn;
+    border-color: $fontBlack;
+    color: $fontBlack;
+  }
+
+  &-line--blue {
+    @extend %btn;
+    border-color: $blue;
+    color: $blue;
+  }
+
+  &-line--green {
+    @extend %btn;
+    border-color: $green;
+    color: $green;
+  }
+
+  &-line--red {
+    @extend %btn;
+    border-color: $red;
+    color: $red;
+  }
+
+  &-line--disabled {
+    @extend %btn;
+    border-color: #D2D2D2;
+    color: #D2D2D2;
+    cursor: not-allowed;
+  }
+}
+
+
+// size
+.btn {
+  &--block {
+    display: block;
+    width: 100%;
+    padding: $gutter--small $gutter;
+    font-size: 20px;
+  }
+}
