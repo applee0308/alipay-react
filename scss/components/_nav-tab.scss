@@ -1,0 +1,39 @@
+@import '../base/vars';
+@import '../base/util';
+
+.nav-tab {
+  &-body {
+    display: flex;
+    border-bottom: 1px solid $borderGray;
+    width: 100%;
+    overflow: auto;
+  }
+
+  &-item {
+    background: white;
+    color: $fontBlack;
+    font-size: pr(14);
+    flex: 1 0;
+    flex-basis: 6em;
+    padding-top: pr(12);
+    padding-bottom: pr(14);
+    display: block;
+    position: relative;
+    text-align: center;
+    @include clipText;
+
+    &.active {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        left: 0;
+        bottom: 0;
+        background: $blue;
+      }
+
+      color: $blue;
+    }
+  }
+}
