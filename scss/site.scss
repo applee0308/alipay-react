@@ -3,6 +3,7 @@
 @import './base/reset';
 @import './components/card';
 @import './components/button';
+@import './components/ionicons';
 
 .container {
   max-width: 640px;
@@ -42,11 +43,11 @@ a {
   }
 }
 
-img {
-  visibility: hidden;
-  transition: 600ms;
-  opacity: 0;
-}
+// img {
+//   visibility: hidden;
+//   transition: 600ms;
+//   opacity: 0;
+// }
 
 .img--loaded {
   visibility: visible;

@@ -1,0 +1,92 @@
+@import './base/vars';
+@import './base/util';
+
+.list {
+  .card-body {
+    // padding-bottom: $gutter--small;
+  }
+
+  &-item {
+    display: flex;
+
+    &:last-of-type &-right {
+      border-bottom: 0;
+    }
+
+    &:last-of-type &-left {
+      padding-bottom: $gutter--small;
+    }
+
+    &-left {
+      padding-left: $gutter;
+      padding-bottom: $gutter--small;
+      padding-top: $gutter--small;
+      position: relative;
+    }
+
+    &-thumbnail {
+      display: block;
+
+      img {
+        display: block;
+        width: pr(45);
+        height: pr(45);
+      }
+    }
+
+    &-right {
+      flex: 1;
+      display: flex;
+      border-bottom: 1px solid $borderGray;
+      margin-left: $gutter;
+      // padding-right: $gutter;
+    }
+
+
+    &-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+
+      padding-top: $gutter--small;
+      padding-right: $gutter;
+      padding-bottom: $gutter--small;
+
+
+      word-wrap: break-word;
+
+      &-title {
+        font-size: pr(16);
+        color: $fontBlack;
+      }
+
+      &-subtitle {
+        &:not(:empty) {
+          padding-top: pr(3);
+        }
+
+        font-size: pr(12);
+        color: $fontGray;
+      }
+    }
+  }
+}
+
+a.list-item-text {
+  padding-right: $gutter * 2;
+
+  &::after {
+    content: "\f3d1";
+    font-family: "Ionicons";
+    color: $fontGray;
+    position: absolute;
+    right: $gutter;
+    top: 50%;
+    height: pr(20);
+    line-height: pr(20);
+    margin-top: pr(-10);
+  }
+}
+
