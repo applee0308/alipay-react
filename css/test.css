@@ -31,3 +31,29 @@
 a.list-item-text { padding-right: 1.5rem; }
 
 a.list-item-text::after { content: "\f3d1"; font-family: "Ionicons"; color: #a5a5a5; position: absolute; right: 0.75rem; top: 50%; height: 1rem; line-height: 1rem; margin-top: -0.5rem; }
+
+.article { font-size: 0.7rem; }
+
+.article--noWhiteBg .card-body { background: none; border-top: 0; border-bottom: 0; }
+
+.article .card-body { padding: 0.75rem; }
+
+.article-header { margin-bottom: 0.75rem; }
+
+.article-header-title { font-size: 1rem; margin-top: 0; margin-bottom: 0.5rem; }
+
+.article-header-meta { color: #a5a5a5; font-size: 0.6rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
+
+.article-header-meta-item { margin-right: 0.25rem; padding-right: 0.25rem; }
+
+.article-header-meta-item:last-of-type { margin-right: 0; }
+
+.article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6 { margin-top: 0; margin-bottom: 0.75rem; }
+
+.article-content p { margin-top: 0; margin-bottom: 0.75rem; line-height: 1.5; }
+
+.article-content img, .article-content video, .article-content object { max-width: 100%; }
+
+.article-content figure { margin: 0; margin-bottom: 0.75rem; }
+
+.article-content figcaption { text-align: center; color: #a5a5a5; }

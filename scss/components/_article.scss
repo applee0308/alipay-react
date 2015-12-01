@@ -5,24 +5,67 @@
 .article {
   font-size: pr(14);
 
+  &--noWhiteBg {
+    .card-body {
+      background: none;
+      border-top: 0;
+      border-bottom: 0;
+    }
+  }
+
   .card-body {
     padding: $gutter;
   }
 
-  article {
+  &-header {
+    margin-bottom: $gutter;
+
+    &-title {
+      font-size: pr(20);
+      margin-top: 0;
+      margin-bottom: $gutter--small;
+    }
+
+    &-meta {
+      color: $fontGray;
+      font-size: pr(12);
+      display: flex;
+
+      &-item {
+        margin-right: $gutter--small / 2;
+        padding-right: $gutter--small / 2;
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &-content {
     h1, h2, h3, h4, h5, h6 {
       margin-top: 0;
+      margin-bottom: $gutter;
     }
 
     p {
       margin-top: 0;
+      margin-bottom: $gutter;
+      line-height: 1.5;
     }
 
-    img {
+    img, video, object {
       max-width: 100%;
     }
+
+    figure {
+      margin: 0;
+      margin-bottom: $gutter;
+    }
+
+    figcaption {
+      text-align: center;
+      color: $fontGray;
+    }
   }
-
-
-
 }
