@@ -1,5 +1,5 @@
 @import '../base/vars';
-@import '../base/util';
+@import '../base/utils';
 
 .brand-profile {
   display: flex;
@@ -24,12 +24,18 @@
   &-avatar {
     position: relative;
     z-index: 10;
-    display: block;
     margin-bottom: 6px;
     background: $borderGray;
     width: pr(48);
     height: pr(48);
     border-radius: 50%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
   }
 
   &-name {

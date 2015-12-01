@@ -1,5 +1,5 @@
 @import '../base/vars';
-@import '../base/util';
+@import '../base/utils';
 
 @function decreaseLightness($color, $amount) {
   $h: hue($color);

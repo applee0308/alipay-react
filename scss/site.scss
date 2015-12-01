@@ -1,9 +1,9 @@
 @import './base/vars';
-@import './base/util';
+@import './base/utils';
 @import './base/reset';
 @import './components/card';
-@import './components/button';
 @import './components/ionicons';
+@import './components/fadeInImg';
 
 .container {
   max-width: 640px;
@@ -41,15 +41,4 @@ a {
   &.ready {
     // display: block;
   }
-}
-
-// img {
-//   visibility: hidden;
-//   transition: 600ms;
-//   opacity: 0;
-// }
-
-.img--loaded {
-  visibility: visible;
-  opacity: 1;
 }

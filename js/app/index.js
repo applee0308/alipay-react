@@ -54,12 +54,6 @@
 
 	var Promise = __webpack_require__(189).Promise;
 
-	document.documentElement.addEventListener('load', function (event) {
-	  if (event.target.tagName == 'IMG') {
-	    event.target.classList.add('img--loaded');
-	  }
-	}, true);
-
 	var App = React.createClass({
 	  displayName: 'App',
 
@@ -33022,10 +33016,10 @@
 	            'href': this.props.payload.href,
 	            'className': 'brand-profile',
 	            'style': { backgroundImage: 'url(' + this.props.payload.background + ')' }
-	        }, React.createElement('img', {
+	        }, React.createElement('div', { 'className': 'brand-profile-avatar' }, React.createElement('img', {
 	            'src': this.props.payload.avatar,
-	            'className': 'brand-profile-avatar'
-	        }), React.createElement('div', { 'className': 'brand-profile-name' }, this.props.payload.name), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('svg', {
+	            'className': 'fadeInImg'
+	        })), React.createElement('div', { 'className': 'brand-profile-name' }, this.props.payload.name), React.createElement('div', { 'className': 'brand-profile-location' }, React.createElement('svg', {
 	            'version': '1.1',
 	            'xmlns': 'http://www.w3.org/2000/svg',
 	            'xmlns:xlink': 'http://www.w3.org/1999/xlink',
@@ -33106,7 +33100,7 @@
 	            'className': 'recommendation-02-item'
 	        }, React.createElement('img', {
 	            'data-src': item.img,
-	            'className': 'recommendation-02-item-img swiper-lazy'
+	            'className': 'fadeInImg recommendation-02-item-img swiper-lazy'
 	        })));
 	    }
 	    return function () {
@@ -37413,10 +37407,10 @@
 	        }, React.createElement('a', {
 	            'href': item.href,
 	            'className': 'recommendation-01-item'
-	        }, React.createElement('img', {
+	        }, React.createElement('div', { 'className': 'recommendation-01-item-img' }, React.createElement('img', {
 	            'data-src': item.img,
-	            'className': 'recommendation-01-item-img swiper-lazy'
-	        }), React.createElement('div', { 'className': 'recommendation-01-item-text' }, item.text)));
+	            'className': 'fadeInImg swiper-lazy'
+	        })), React.createElement('div', { 'className': 'recommendation-01-item-text' }, item.text)));
 	    }
 	    return function () {
 	        return React.createElement('section', { 'className': 'card recommendation-01' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-header' }, React.createElement('div', { 'className': 'card-header-title' }, '推荐品牌')), React.createElement('div', { 'className': 'card-body' }, React.createElement('div', {
@@ -37518,7 +37512,7 @@
 	            'key': item.index,
 	            'href': item.href
 	        }, React.createElement('div', { 'className': 'restaurant-list-item-top' }, React.createElement('img', {
-	            'className': 'restaurant-list-item-img',
+	            'className': 'restaurant-list-item-img fadeInImg',
 	            'src': item.img
 	        }), React.createElement('div', { 'className': 'restaurant-list-item-mask' }, React.createElement('div', { 'className': 'restaurant-list-item-mask-left' }, React.createElement('div', { 'className': 'restaurant-list-item-name' }, item.name), React.createElement('div', { 'className': 'restaurant-list-item-location' }, React.createElement('svg', {
 	            'version': '1.1',
@@ -38275,7 +38269,7 @@
 	            'className': 'site-nav-item' + ' ' + _.keys(_.pick({ 'site-nav-item--placeholder': item.isPlaceholder }, _.identity)).join(' ')
 	        }, React.createElement('img', {
 	            'src': item.img,
-	            'className': 'site-nav-item-icon'
+	            'className': 'site-nav-item-icon fadeInImg'
 	        }), React.createElement('span', { 'className': 'site-nav-item-text' }, item.text));
 	    }
 	    function repeatGroup2(group, groupIndex) {

@@ -6,12 +6,6 @@ var dataSrc = require('../../dataSrc.jsx');
 
 var Promise = require('es6-promise-polyfill').Promise;
 
-document.documentElement.addEventListener('load', function(event) {
-  if (event.target.tagName == 'IMG') {
-    event.target.classList.add('img--loaded');
-  }
-}, true);
-
 
 var App = React.createClass({
   getInitialState: function() {

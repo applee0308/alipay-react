@@ -9,6 +9,7 @@ var definePlugin = new webpack.DefinePlugin({
 module.exports = {
   entry: {
     index: './js/app/pages/index/index.jsx',
+    site: './js/app/pages/site.jsx',
   },
   output: {
     filename: './js/app/[name].js' // Template based on keys in entry above

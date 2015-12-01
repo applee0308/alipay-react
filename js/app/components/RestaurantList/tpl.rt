@@ -7,7 +7,7 @@
     <div class="card-body">
       <a class="restaurant-list-item" rt-repeat="item in this.state.items" key={item.index} href={item.href}>
         <div class="restaurant-list-item-top">
-          <img class="restaurant-list-item-img" src={item.img}>
+          <img class="restaurant-list-item-img fadeInImg" src={item.img}>
           <div class="restaurant-list-item-mask">
             <div class="restaurant-list-item-mask-left">
               <div class="restaurant-list-item-name">{item.name}</div>

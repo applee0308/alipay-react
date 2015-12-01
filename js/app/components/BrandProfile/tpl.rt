@@ -1,5 +1,7 @@
 <a href={this.props.payload.href} class="brand-profile" style="background-image: url({this.props.payload.background})">
-  <img src={this.props.payload.avatar} class="brand-profile-avatar">
+  <div class="brand-profile-avatar">
+    <img src={this.props.payload.avatar} class="fadeInImg">
+  </div>
   <div class="brand-profile-name">{this.props.payload.name}</div>
   <div class="brand-profile-location">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" xml:space="preserve">
