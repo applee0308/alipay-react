@@ -28,6 +28,14 @@
 
 .list-item-text-subtitle:not(:empty) { padding-top: 0.15rem; }
 
+.list-item-actions { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; }
+
+.list-item-actions:not(:empty) { padding-right: 0.75rem; }
+
+.list-item-actions-item { margin-right: 0.5rem; }
+
+.list-item-actions-item:last-of-type { margin-right: 0; }
+
 a.list-item-text { padding-right: 1.5rem; }
 
 a.list-item-text::after { content: "\f3d1"; font-family: "Ionicons"; color: #a5a5a5; position: absolute; right: 0.75rem; top: 50%; height: 1rem; line-height: 1rem; margin-top: -0.5rem; }

@@ -2,10 +2,6 @@
 @import './base/util';
 
 .list {
-  .card-body {
-    // padding-bottom: $gutter--small;
-  }
-
   &-item {
     display: flex;
 
@@ -39,9 +35,7 @@
       display: flex;
       border-bottom: 1px solid $borderGray;
       margin-left: $gutter;
-      // padding-right: $gutter;
     }
-
 
     &-text {
       flex: 1;
@@ -53,7 +47,6 @@
       padding-top: $gutter--small;
       padding-right: $gutter;
       padding-bottom: $gutter--small;
-
 
       word-wrap: break-word;
 
@@ -69,6 +62,23 @@
 
         font-size: pr(12);
         color: $fontGray;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:not(:empty) {
+        padding-right: $gutter;
+      }
+
+      &-item {
+        margin-right: $gutter--small ;
+        &:last-of-type {
+          margin-right: 0;
+        }
       }
     }
   }

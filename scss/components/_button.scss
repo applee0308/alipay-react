@@ -9,88 +9,121 @@
 };
 
 %btn {
-  background: none;
   outline: none;
   border-radius: 4px;
-  padding: 0;
   border: 1px solid transparent;
   -webkit-tap-highlight-color: transparent;
   display: inline-block;
   text-align: center;
+  padding: $gutter--small/2 $gutter--small;
+  font-size: pr(14);
 }
 
 // style
 .btn {
-  &--default {
-    @extend %btn;
-    border-color: #DDDDDD;
-    color: $fontBlack;
-    &:active {
-      background: #F8F8F8;
-      border-color: #D8D8D8;
-    }
+  @extend %btn;
+  background: white;
+  border-color: #DDDDDD;
+  color: $fontBlack;
+
+  &:active {
+    background: #F8F8F8;
+    border-color: #D8D8D8;
   }
 
   &--blue {
-    @extend %btn;
     background: $blue;
+    border-color: $blue;
     color: white;
     &:active {
       background: decreaseLightness($blue, 7%);
+      border-color: decreaseLightness($blue, 7%);
     }
   }
 
   &--green {
-    @extend %btn;
     background: $green;
+    border-color: $green;
     color: white;
     &:active {
       background: decreaseLightness($green, 7%);
+      border-color: decreaseLightness($green, 7%);
+    }
+  }
+
+  &--yellow {
+    background: $yellow;
+    border-color: $yellow;
+    color: white;
+    &:active {
+      background: decreaseLightness($yellow, 7%);
+      border-color: decreaseLightness($yellow, 7%);
+    }
+  }
+
+  &--orange {
+    background: $orange;
+    border-color: $orange;
+    color: white;
+    &:active {
+      background: decreaseLightness($orange, 7%);
+      border-color: decreaseLightness($orange, 7%);
     }
   }
 
   &--red {
-    @extend %btn;
     background: $red;
+    border-color: $red;
     color: white;
     &:active {
       background: decreaseLightness($red, 7%);
+      border-color: decreaseLightness($red, 7%);
     }
   }
 
   &--disabled {
-    @extend %btn;
     background: #EBEBF0;
     color: #D2D2D2;
     cursor: not-allowed;
+    &:active {
+      background: #EBEBF0;
+      color: #D2D2D2;
+    }
   }
+}
 
-  &-line--default {
-    @extend %btn;
-    border-color: $fontBlack;
-    color: $fontBlack;
-  }
+.btn-line {
+  @extend %btn;
+  background: transparent;
+  border-color: $blue;
+  color: $blue;
 
-  &-line--blue {
-    @extend %btn;
+  &--blue {
     border-color: $blue;
     color: $blue;
   }
 
-  &-line--green {
-    @extend %btn;
+  &--green {
     border-color: $green;
     color: $green;
   }
 
-  &-line--red {
-    @extend %btn;
+  &--red {
     border-color: $red;
     color: $red;
   }
 
-  &-line--disabled {
-    @extend %btn;
+  &--yellow {
+    border-color: $yellow;
+    color: $yellow;
+  }
+
+  &--orange {
+    border-color: $orange;
+    color: $orange;
+  }
+
+  &--disabled {
     border-color: #D2D2D2;
     color: #D2D2D2;
     cursor: not-allowed;
@@ -100,10 +133,38 @@
 
 // size
 .btn {
+  &--sm {
+    font-size: pr(12);
+    padding: $gutter--small/4 $gutter--small/2;
+  }
+
+  &--lg {
+    font-size: pr(16);
+  }
+
   &--block {
     display: block;
     width: 100%;
     padding: $gutter--small $gutter;
-    font-size: 20px;
+    font-size: pr(20);
+  }
+}
+
+.btn-line {
+  &--sm {
+    font-size: pr(12);
+    padding: $gutter--small/4 $gutter--small/2;
+  }
+
+  &--lg {
+    font-size: pr(16);
+    padding: $gutter--small $gutter;
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+    padding: $gutter--small $gutter;
+    font-size: pr(20);
   }
 }
