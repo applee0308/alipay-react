@@ -48,7 +48,7 @@
       padding-right: $gutter;
       padding-bottom: $gutter--small;
 
-      word-wrap: break-word;
+      word-break: break-word;
 
       &-title {
         font-size: pr(16);
@@ -86,17 +86,14 @@
 
 a.list-item-text {
   padding-right: $gutter * 2;
+  background: url(../images/ui/ios-arrow-forward.svg) no-repeat;
+  background-size: pr(14);
+  background-position: calc(100% - #{$gutter}) 50%;
+}
 
-  &::after {
-    content: "\f3d1";
-    font-family: "Ionicons";
-    color: $fontGray;
-    position: absolute;
-    right: $gutter;
-    top: 50%;
-    height: pr(20);
-    line-height: pr(20);
-    margin-top: pr(-10);
-  }
+.no-csscalc a.list-item-text {
+  margin-right: $gutter;
+  padding-right: 0;
+  background-position: 100% 50%;
 }
 

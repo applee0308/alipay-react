@@ -2,7 +2,6 @@
 @import './base/utils';
 @import './base/reset';
 @import './components/card';
-@import './components/ionicons';
 @import './components/fadeInImg';
 
 .container {
@@ -27,7 +26,9 @@ body {
                'Helvetica Neue Light',
                'Helvetica Neue',
                Helvetica,
-               Arial,sans-serif;
+               Arial,
+               sans-serif;
+
   background: $pageGray;
   color: $fontBlack;
 }
