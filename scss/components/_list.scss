@@ -26,11 +26,11 @@
 
     &-thumbnail {
       display: block;
+      width: pr(45);
 
       img {
         display: block;
-        width: pr(45);
-        height: pr(45);
+        width: 100%;
       }
     }
 
