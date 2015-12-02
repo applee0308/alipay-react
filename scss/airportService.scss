@@ -1,0 +1,19 @@
+@import './components/nav-tab';
+@import './components/list';
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-body {
+  // flex: 1;
+  // display: flex;
+  // margin-bottom: 0;
+
+  // > .container {
+  //   flex: 1;
+  //   background: white;
+  // }
+}

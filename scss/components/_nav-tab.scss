@@ -2,19 +2,22 @@
 @import '../base/utils';
 
 .nav-tab {
-  &-body {
+  .card-body {
     display: flex;
-    border-bottom: 1px solid $borderGray;
     width: 100%;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   &-item {
     background: white;
     color: $fontBlack;
     font-size: pr(14);
-    flex: 1 0;
-    flex-basis: 6em;
+    flex: 1;
+    min-width: 4em;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    box-sizing: content-box;
     padding-top: pr(12);
     padding-bottom: pr(14);
     display: block;
