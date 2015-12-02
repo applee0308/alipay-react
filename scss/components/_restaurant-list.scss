@@ -134,7 +134,7 @@
 
 
 
-@include fixAndroidBrowser {
+@include androidLegacy {
   .restaurant-list-item-location svg {
     width: pr(14);
   }

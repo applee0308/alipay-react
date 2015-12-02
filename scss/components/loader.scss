@@ -1,93 +1,61 @@
 @import '../base/vars';
-
-$size: 30px;
-$color: $blue;
+@import '../base/utils';
 
 .splashScreen {
   position: fixed;
-  z-index: -1;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
+
+  &.hidden {
+    display: none;
+  }
 }
 
-.splashScreen.hidden {
-  /*transform: translateY(100%);*/
-  visibility: hidden;
-  /*opacity: 0;*/
-  /*display: none;*/
-}
+.x-spinner {
+  display: flex;
 
-.circle-loader {
-  width: $size;
-  height: $size;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  border-radius: 50%;
+  &-item {
+    width: 8px;
+    height: 15px;
+    background: silver;
+    margin-right: 1px;
+    animation: bounce-middle 0.3s ease-in-out infinite alternate;
+  }
 
-  &-dot {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation-duration: 1.8s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    &::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: $color;
-    }
-
-    @for $i from 1 through 5 {
-      &:nth-of-type(#{$i}) {
-        transform: rotate( 30 - ($i - 1) * 15deg );
-        animation-name: spin#{$i};
-        // animation-name: spin3;
-        animation-delay: ($i - 1) * 0.12s;
-      }
+  @for $i from 1 through 5 {
+    &-item:nth-of-type(#{$i}) {
+      animation-delay: $i * 0.1s;
     }
   }
 }
 
-@keyframes spin1 {
-  to {
-    transform: rotate(390deg);
+
+@keyframes bounce-middle {
+  0% {
+    transform: scaleY(1);
+    // opacity: 0.2;
+    // transform: translateZ(0);
+  }
+
+  100% {
+    // opacity: 1;
+    // transform: translateZ(0);
+    transform: scaleY(2.5);
   }
 }
 
-@keyframes spin2 {
-  to {
-    transform: rotate(375deg);
+@include androidLegacy {
+  .splashScreen::after {
+    content: '正在加载...';
   }
-}
 
-@keyframes spin3 {
-  to {
-    transform: rotate(360deg);
+  .x-spinner {
+    display: none;
   }
-}
-
-@keyframes spin4 {
-  to {
-    transform: rotate(345deg);
-  }
-}
-
-@keyframes spin5 {
-  to {
-    transform: rotate(330deg);
-  }
-}
+};

@@ -75,7 +75,7 @@
       }
 
       &-item {
-        margin-right: $gutter--small ;
+        margin-right: $gutter--small/2;
         &:last-of-type {
           margin-right: 0;
         }
@@ -86,14 +86,19 @@
 
 a.list-item-text {
   padding-right: $gutter * 2;
-  background: url(../images/ui/ios-arrow-forward.svg) no-repeat;
-  background-size: pr(14);
-  background-position: calc(100% - #{$gutter}) 50%;
+  background-image: url(../images/ui/ios-arrow-forward.svg);
+  background-repeat: no-repeat;
+  background-size: pr(16);
+  background-position: right $gutter--small bottom 50% ;
 }
 
-.no-csscalc a.list-item-text {
-  margin-right: $gutter;
-  padding-right: 0;
-  background-position: 100% 50%;
+.no-bgpositionshorthand {
+  a.list-item-text {
+    margin-right: $gutter--small;
+    padding-right: 0;
+    background-position-x: 100%;
+    background-position-y: 50%;
+  }
 }
+
 

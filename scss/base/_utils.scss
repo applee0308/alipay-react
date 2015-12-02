@@ -99,7 +99,7 @@
 }
 
 // assume modernizr exist
-@mixin fixAndroidBrowser() {
+@mixin androidLegacy() {
   .no-flexbox.flexboxlegacy {
     @content;
   }

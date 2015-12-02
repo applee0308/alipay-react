@@ -30,7 +30,7 @@
   }
 }
 
-@include fixAndroidBrowser {
+@include androidLegacy {
   .tiles-item {
     display: block;
   }

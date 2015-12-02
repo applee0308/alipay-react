@@ -1,3 +1,5 @@
+@import '../base/utils';
+
 .fadeInImg {
   visibility: hidden;
   transition: 800ms;
@@ -7,3 +9,12 @@
     opacity: 1;
   }
 }
+
+@include androidLegacy {
+  .fadeInImg {
+    visibility: visible;
+    opacity: 1;
+    transition: none;
+  }
+};
+

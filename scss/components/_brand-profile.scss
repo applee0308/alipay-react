@@ -64,7 +64,7 @@
   }
 }
 
-@include fixAndroidBrowser {
+@include androidLegacy {
   .brand-profile-location svg {
     width: pr(14);
   }
