@@ -97,30 +97,40 @@
   background: transparent;
   border-color: $blue;
   color: $blue;
-
-  &--blue {
-    border-color: $blue;
-    color: $blue;
+  &:active {
+    background: rgba($blue, 0.3);
   }
 
   &--green {
     border-color: $green;
     color: $green;
+    &:active {
+      background: rgba($green, 0.3);
+    }
   }
 
   &--red {
     border-color: $red;
     color: $red;
+    &:active {
+      background: rgba($red, 0.3);
+    }
   }
 
   &--yellow {
     border-color: $yellow;
     color: $yellow;
+    &:active {
+      background: rgba($yellow, 0.3);
+    }
   }
 
   &--orange {
     border-color: $orange;
     color: $orange;
+    &:active {
+      background: rgba($orange, 0.3);
+    }
   }
 
   &--disabled {
