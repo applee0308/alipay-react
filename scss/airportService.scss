@@ -2,6 +2,12 @@
 @import './components/nav-segment';
 @import './components/tab';
 
+body {
+  padding-top: $gutter;
+  padding-bottom: $gutter;
+}
+
+
 @include media-md-up {
   // body {
   //   display: flex;
