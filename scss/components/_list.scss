@@ -2,6 +2,15 @@
 @import './base/utils';
 
 .list {
+  .card-header {
+    background: none;
+    border-top-width: 0;
+    &-title {
+      font-size: pr(12);
+      color: $fontGray;
+    }
+  }
+
   &-item {
     display: flex;
 
