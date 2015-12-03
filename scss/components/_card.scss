@@ -51,7 +51,7 @@
   }
 
   @include media-md-up {
-    .container {
+    .card-body, .card-header, .card-footer {
       border-left: 1px solid $borderGray;
       border-right: 1px solid $borderGray;
     }

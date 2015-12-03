@@ -1,4 +1,4 @@
-.list .card-header { background: none; border-top-width: 0; }
+.list .card-header { background: none; border-top-width: 0; border-left-width: 0; border-right-width: 0; }
 
 .list .card-header-title { font-size: 0.6rem; color: #a5a5a5; }
 
