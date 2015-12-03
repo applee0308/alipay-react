@@ -12,14 +12,19 @@ var Elem = React.createClass({
 
   tryToInitSwiper: function() {
     if (this.props.payload && !swiperInitialized) {
-      new Swiper(this.refs.swiper, {
-          pagination: this.refs.swiperPagination,
-          paginationClickable: true,
-          loop: true,
-          preloadImages: false, // Disable preloading of all images
-          lazyLoading: true, // Enable lazy loading
-          // autoplay: 2000,
-        });
+      var option = {
+        pagination: this.refs.swiperPagination,
+        paginationClickable: true,
+        loop: true,
+        preloadImages: false, // Disable preloading of all images
+        lazyLoading: true, // Enable lazy loading
+      };
+
+      if (process.env.NODE_ENV == 'production') {
+        option.autoplay = 2000;
+      }
+
+      new Swiper(this.refs.swiper, option);
 
       swiperInitialized = true;
     }

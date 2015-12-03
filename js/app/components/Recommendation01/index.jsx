@@ -11,7 +11,7 @@ var Elem = React.createClass({
 
   tryToInitSwiper: function() {
     if (this.props.payload && !swiperInitialized) {
-      new Swiper(this.refs.swiper, {
+      var option = {
         pagination: this.refs.swiperPagination,
         slidesPerView: 'auto',
         centeredSlides: true,
@@ -25,9 +25,13 @@ var Elem = React.createClass({
         // then you should also enable watchSlidesVisibility and
         //  Swiper will load images in currently visible slides
         watchSlidesVisibility: true,
-        // autoplay: 2000,
-      });
+      };
 
+      if (process.env.NODE_ENV == 'production') {
+        option.autoplay = 2000;
+      }
+
+      new Swiper(this.refs.swiper, option);
       swiperInitialized = true;
     }
   },
