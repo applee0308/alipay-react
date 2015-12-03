@@ -20,7 +20,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $gutter--small/2 0;
+    padding-top: $gutter--small/1.5;
+    padding-bottom: $gutter--small/1.5;
     border-right: 1px solid $blue;
 
     -webkit-tap-highlight-color: transparent;

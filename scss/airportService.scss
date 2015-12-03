@@ -1,0 +1,42 @@
+@import './components/list';
+@import './components/nav-segment';
+@import './components/tab';
+
+body {
+  padding-top: $gutter;
+  padding-bottom: $gutter;
+}
+
+
+@include media-md-up {
+  // body {
+  //   display: flex;
+  //   flex-direction: column;
+  //   height: 100vh;
+  // }
+
+  // .app-body {
+  //   flex: 1;
+  //   background: white;
+  //   width: 640px;
+  //   margin: auto;
+  //   border: 1px solid $borderGray;
+
+  //   .container {
+  //     border-left-width: 0;
+  //     border-right-width: 0;
+  //   }
+
+  //   .list {
+  //     margin-bottom: 0;
+  //     .card-body {
+  //       border-bottom: 0;
+  //       border-top: 0;
+  //     }
+  //   }
+
+  //   .list-item:last-of-type .list-item-right {
+  //     border-bottom-width: 1px;
+  //   }
+  // }
+};

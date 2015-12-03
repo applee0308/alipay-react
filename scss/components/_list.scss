@@ -15,7 +15,7 @@
     display: flex;
 
     &:last-of-type &-right {
-      border-bottom: 0;
+      border-bottom-width: 0;
     }
 
     &:last-of-type &-left {
