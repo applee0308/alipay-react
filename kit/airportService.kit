@@ -15,21 +15,13 @@
   <link rel="stylesheet" href="../css/site.css">
   <link rel="stylesheet" href="../css/airportService.css">
 </head>
-<body class="tab">
-  <nav class="nav-segment">
-    <div class="container">
-      <div class="nav-segment-body tab-control">
-        <a href="##" class="tab-control-item nav-segment-item active">机场交通</a>
-        <a href="##" class="tab-control-item nav-segment-item">机场地图</a>
-        <a href="##" class="tab-control-item nav-segment-item">便民服务</a>
-        <a href="##" class="tab-control-item nav-segment-item">机场电话</a>
-      </div>
-    </div>
-  </nav>
-
-  <div class="app-body tab-pane">
-    <div class="tab-pane-item active list card">
+<body>
+  <div class="app-body">
+    <div class="list card">
       <div class="container">
+        <div class="card-header">
+          <div class="card-header-title">机场交通</div>
+        </div>
         <div class="card-body">
           <div class="list-item">
             <div class="list-item-right">
@@ -74,8 +66,12 @@
       </div>
     </div>
 
-    <div class="tab-pane-item list card">
+    <div class="list card">
       <div class="container">
+        <div class="card-header">
+          <div class="card-header-title">机场地图</div>
+        </div>
+
         <div class="card-body">
           <div class="list-item">
             <div class="list-item-right">
@@ -104,8 +100,12 @@
       </div>
     </div>
 
-    <div class="tab-pane-item list card">
+    <div class="list card">
       <div class="container">
+        <div class="card-header">
+          <div class="card-header-title">便民服务</div>
+        </div>
+
         <div class="card-body">
           <div class="list-item">
             <div class="list-item-right">
@@ -134,8 +134,12 @@
       </div>
     </div>
 
-    <div class="tab-pane-item list card">
+    <div class="list card">
       <div class="container">
+        <div class="card-header">
+          <div class="card-header-title">机场电话</div>
+        </div>
+
         <div class="card-body">
           <div class="list-item">
             <div class="list-item-right">
@@ -164,49 +168,6 @@
       </div>
     </div>
   </div>
-
-  <script>
-  (function (ELEMENT) {
-      ELEMENT.matches = ELEMENT.matches || ELEMENT.mozMatchesSelector || ELEMENT.msMatchesSelector || ELEMENT.oMatchesSelector || ELEMENT.webkitMatchesSelector;
-
-      ELEMENT.closest = ELEMENT.closest || function closest(selector) {
-        var element = this;
-
-        while (element) {
-          if (element.matches(selector)) {
-            break;
-          }
-
-          element = element.parentElement;
-        }
-
-        return element;
-      };
-    }(Element.prototype));
-
-    document.body.addEventListener('click', function(event) {
-      var target = event.target;
-
-      if ( target.matches('.tab-control-item') ) {
-        event.preventDefault();
-        var parent = target.closest('.tab');
-        var tabCtrls = parent.querySelectorAll('.tab-control-item');
-        var tabPanes = parent.querySelectorAll('.tab-pane-item');
-
-        var activeTabCtrl = parent.querySelector('.tab-control-item.active');
-        var activeTabPane = parent.querySelector('.tab-pane-item.active');
-
-        var index = [].indexOf.call(tabCtrls, target);
-
-        activeTabCtrl.classList.remove('active');
-        activeTabPane.classList.remove('active');
-
-        tabPanes[index].classList.add('active');
-        target.classList.add('active');
-      }
-    }, false);
-
-  </script>
 
   <script src="../js/app/site.js"></script>
 </body>
