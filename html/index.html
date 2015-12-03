@@ -7,11 +7,11 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
 
-  <style>
-
-  </style>
+  <script src="../js/plugins/modernizr-bgpositionshorthand-csscalc-flexbox-flexboxlegacy-addtest-prefixed-setclasses.js"></script>
 
   <link rel="stylesheet" href="../css/components/loader.css">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
 
@@ -23,11 +23,22 @@
     </div>
   </div>
 
+  <div class="loadInitialDataError">
+    <div class="loadInitialDataError-msg">出错了</div>
+    <button class="loadInitialDataError-btn btn">再试一次</button>
+  </div>
+
+  <script>
+    document.querySelector('.loadInitialDataError-btn').
+    addEventListener('click', function(event) {
+      event.preventDefault();
+      location.reload();
+    }, false);
+  </script>
+
   <div class="app-container"></div>
 
-  <script src="../js/plugins/modernizr-bgpositionshorthand-csscalc-flexbox-flexboxlegacy-addtest-prefixed-setclasses.js"></script>
-  <link rel="stylesheet" href="../css/site.css">
-  <link rel="stylesheet" href="../css/index.css">
+
   <script src="../js/app/site.js"></script>
   <script src="../js/app/index.js"></script>
 </body>
