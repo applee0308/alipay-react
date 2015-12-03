@@ -40,6 +40,5 @@ Promise.all([
     ReactDOM.render(<App initialState={state} />, document.querySelector('.app-container'));
 }).catch(function(errs) {
   document.querySelector('.loadInitialDataError').classList.add('active');
-  console.log(errs);
 });
 

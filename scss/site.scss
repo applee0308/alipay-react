@@ -35,6 +35,12 @@
   }
 }
 
+@include androidLegacy {
+  .loadInitialDataError {
+    transition: none;
+  }
+};
+
 .container {
   max-width: 640px;
   margin-left: auto;

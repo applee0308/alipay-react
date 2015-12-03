@@ -1,6 +1,7 @@
 var jsonp = require('superagent-jsonpx');
 var request = require('superagent');
 var dataSrc = require('../dataSrc.jsx');
+var Promise = require('es6-promise-polyfill').Promise;
 
 module.exports = function() {
   var p = new Promise(function(resolve, reject) {

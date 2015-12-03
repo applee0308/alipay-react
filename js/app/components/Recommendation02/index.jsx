@@ -21,7 +21,7 @@ var Elem = React.createClass({
       };
 
       if (process.env.NODE_ENV == 'production') {
-        option.autoplay = 2000;
+        option.autoplay = 4000;
       }
 
       new Swiper(this.refs.swiper, option);
