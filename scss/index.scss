@@ -5,17 +5,17 @@
 @import './components/recommendation-02';
 @import './components/brand-profile';
 
-.app {
-  visibility: hidden;
-  opacity: 0;
-  transition: 300ms;
-  // display: none;
-  &.ready {
-    opacity: 1;
-    visibility: visible;
-    // display: block;
-  }
-}
+// .app {
+//   visibility: hidden;
+//   opacity: 0;
+//   transition: 300ms;
+//   // display: none;
+//   &.ready {
+//     opacity: 1;
+//     visibility: visible;
+//     // display: block;
+//   }
+// }
 
 
 .app {
