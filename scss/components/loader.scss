@@ -26,11 +26,12 @@
     background: silver;
     margin-right: 1px;
     animation: bounce-middle 0.3s ease-in-out infinite alternate;
+    visibility: hidden;
   }
 
   @for $i from 1 through 5 {
     &-item:nth-of-type(#{$i}) {
-      animation-delay: $i * 0.1s;
+      animation-delay: 0.3s +  $i * 0.1s;
     }
   }
 }
@@ -38,15 +39,17 @@
 
 @keyframes bounce-middle {
   0% {
-    transform: scaleY(1);
+    visibility: visible;
+    transform: scaleY(1) translateZ(0);
     // opacity: 0.2;
     // transform: translateZ(0);
   }
 
   100% {
+    visibility: visible;
     // opacity: 1;
     // transform: translateZ(0);
-    transform: scaleY(2.5);
+    transform: scaleY(2.5) translateZ(0);
   }
 }
 
