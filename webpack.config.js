@@ -1,9 +1,9 @@
-var webpack = require('webpack');
-var definePlugin = new webpack.DefinePlugin({
-  'process.env': {
-    'NODE_ENV': process.env.NODE_ENV
-  }
-});
+// var webpack = require('webpack');
+// var definePlugin = new webpack.DefinePlugin({
+//   'process.env': {
+//     'NODE_ENV': process.env.NODE_ENV
+//   }
+// });
 
 
 module.exports = {
@@ -31,5 +31,5 @@ module.exports = {
      ]
    },
 
-  plugins: [definePlugin]
+  // plugins: [definePlugin]
 };

@@ -7,11 +7,9 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
 
-  <script src="../js/plugins/modernizr-bgpositionshorthand-csscalc-flexbox-flexboxlegacy-addtest-prefixed-setclasses.js"></script>
+  <script src="../js/plugins/modernizr-bgpositionshorthand-csscalc-flexbox-flexboxlegacy-addtest-prefixed-setclasses.js" critical></script>
 
-  <link rel="stylesheet" href="../css/components/loader.css">
-  <link rel="stylesheet" href="../css/site.css">
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/components/loader.css" critical>
 </head>
 <body>
 
@@ -25,16 +23,10 @@
 
   <div class="loadInitialDataError">
     <div class="loadInitialDataError-msg">出错了</div>
-    <button class="loadInitialDataError-btn btn">再试一次</button>
+    <button class="loadInitialDataError-btn btn" onclick="location.reload()">再试一次</button>
   </div>
 
-  <script>
-    document.querySelector('.loadInitialDataError-btn').
-    addEventListener('click', function(event) {
-      event.preventDefault();
-      location.reload();
-    }, false);
-  </script>
+
 
   <script>
     var __dataSrc = {
@@ -48,12 +40,14 @@
         src: 'http://' + location.hostname +':3030/restaurantList'
       }
     };
-
   </script>
+
+
 
   <div class="app-container"></div>
 
-
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/index.css">
   <script src="../js/app/site.js"></script>
   <script src="../js/app/index.js"></script>
 </body>
