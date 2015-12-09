@@ -1,0 +1,90 @@
+{
+  "code": 0,
+  "payload": {
+    "recommendation01": [
+      {
+        "href": "##",
+        "img": "/images/recommendation-01-01.png",
+        "text": "买一送一"
+      },
+      {
+        "href": "##",
+        "img": "/images/recommendation-01-02.png",
+        "text": "满百减三"
+      },
+      {
+        "href": "##",
+        "img": "/images/recommendation-01-01.png",
+        "text": "买一送一"
+      },
+      {
+        "href": "##",
+        "img": "/images/recommendation-01-02.png",
+        "text": "满百减三"
+      },
+      {
+        "href": "##",
+        "img": "/images/recommendation-01-01.png",
+        "text": "买一送一"
+      },
+      {
+        "href": "##",
+        "img": "/images/recommendation-01-02.png",
+        "text": "满百减三"
+      }
+    ],
+    "recommendation02": [
+      {
+        "href": "##",
+        "img": "/images/recommendation-02-02.jpg"
+      },
+      {
+        "href": "##",
+        "img": "/images/recommendation-02-01.jpg"
+      },
+      {
+        "href": "##",
+        "img": "/images/recommendation-02-02.jpg"
+      },
+      {
+        "href": "##",
+        "img": "/images/recommendation-02-01.jpg"
+      },
+      {
+        "href": "##",
+        "img": "/images/recommendation-02-02.jpg"
+      }
+    ],
+    "nav": [
+      {
+        "href": "##",
+        "img": "/images/nav-icons/iconfont-bus.png",
+        "text": "交通"
+      },
+      {
+        "href": "##",
+        "img": "/images/nav-icons/iconfont-baoxian.png",
+        "text": "保险"
+      },
+      {
+        "href": "##",
+        "img": "/images/nav-icons/iconfont-meishi.png",
+        "text": "美食"
+      },
+      {
+        "href": "##",
+        "img": "/images/nav-icons/iconfont-ditu.png",
+        "text": "地图"
+      }
+    ],
+    "brandProfile": {
+      "href": "###",
+      "background": "/images/profile-bg-01.jpg",
+      "avatar": "/images/profile-avatar.jpg",
+      "name": "北京首都机场",
+      "location": "顺义区机场路1号"
+    }
+  },
+  "errMsg": null,
+  "meta": null
+}

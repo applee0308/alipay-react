@@ -1,0 +1,33 @@
+{
+  "code": 0,
+  "payload": {
+    "hasNext": true,
+    "restaurantList": [
+      {
+        "href": "##",
+        "name": "哈根达斯",
+        "img": "/images/restaurant-01.jpg",
+        "location": "2F",
+        "discount": "9",
+        "meta": "满100减10",
+        "badges": [
+          "/images/badge-icons/iconfont-tingche.png",
+          "/images/badge-icons/iconfont-wifi.png"
+        ]
+      },
+      {
+        "href": "##",
+        "name": "星巴克",
+        "img": "/images/restaurant-02.jpg",
+        "location": "2F",
+        "discount": "9",
+        "meta": "满100减10",
+        "badges": [
+          "/images/badge-icons/iconfont-wifi.png"
+        ]
+      }
+    ]
+  },
+  "errMsg": null,
+  "meta": null
+}
