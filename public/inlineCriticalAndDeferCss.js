@@ -52,29 +52,13 @@ function deferCss(html) {
   var functionStr = `` +
   `<script>
     (function() {
-      var raf;
-      if (!window.requestAnimationFrame) {
-        raf = function(callback, element) {
-          var currTime = new Date().getTime();
-          var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-          var id = window.setTimeout(function() { callback(currTime + timeToCall); },
-            timeToCall);
-          lastTime = currTime + timeToCall;
-          return id;
-        };
-      } else {
-        raf = window.requestAnimationFrame;
-      }
-
       document.addEventListener('DOMContentLoaded', function() {
-        raf(function() {
-          var hrefs = ${hrefs};
-          hrefs.forEach(function(item) {
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = item;
-            document.head.appendChild(link);
-          });
+        var hrefs = ${hrefs};
+        hrefs.forEach(function(item) {
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = item;
+          document.head.appendChild(link);
         });
       }, false);
     })();
