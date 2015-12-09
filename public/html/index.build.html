@@ -30,7 +30,7 @@ body{font-size:0.8rem;font-family:Roboto,
         hrefs.forEach(function(item) {
           var link = document.createElement('link');
           link.rel = 'stylesheet';
-          link.href = item + '?v=' + Date.now();
+          link.href = item;
           document.head.appendChild(link);
         });
       }, false);
