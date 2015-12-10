@@ -8,7 +8,7 @@ module.exports = function() {
     if (dataSrc.index.type == 'jsonp') {
       request.get(dataSrc.index.src)
       .timeout(3000)
-      .use( jsonp({ timeout: 3000 }) )
+      .use( jsonp({ timeout: 3000, callbackKey: 'jsonpCallback' }) )
       .end(function(err, res) {
         if (err) {
           reject(err);

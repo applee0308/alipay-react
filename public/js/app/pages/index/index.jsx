@@ -2,11 +2,13 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var tpl = require('./tpl.rt');
 var dataSrc = require('../../dataSrc.jsx');
-var makeShopHref = require('../../utils/makeShopHref.jsx');
 
+var transformRestaurantListData = require('../../utils/transformRestaurantListData.jsx');
+var transformIndexData = require('../../utils/transformIndexData.jsx');
 
 var getIndexData = require('../../utils/getIndexData.jsx');
 var getRestaurantList = require('../../utils/getRestaurantList.jsx');
+
 var Promise = require('es6-promise-polyfill').Promise;
 
 
@@ -36,22 +38,15 @@ var App = React.createClass({
 Promise.all([
   getIndexData(),
   getRestaurantList(0)
-]).then(function(res) {
-    res[0].recommendList = res[0].recommendList.map(function(item) {
-      item.href = makeShopHref(item.shopId);
-      return item;
-    });
-
-    res[1].shopList = res[1].shopList.map(function(item) {
-      item.href = makeShopHref(item.shopId);
-      return item;
-    });
-
-    var state = res[0];
-    state.restaurantList = res[1];
+]).then(
+  function(res) {
+    var state = transformIndexData(res[0]);
+    state.restaurantList = transformRestaurantListData(res[1]);
     ReactDOM.render(<App initialState={state} />, document.querySelector('.app-container'));
-}).catch(function(errs) {
-  console.log(errs);
-  document.querySelector('.loadInitialDataError').classList.add('active');
-});
+  },
+  function(errs) {
+    console.log(errs);
+    document.querySelector('.loadInitialDataError').classList.add('active');
+  });
+
 
