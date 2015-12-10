@@ -1,8 +1,10 @@
 var express = require('express');
 var fs = require('fs-extra');
+var compression = require('compression');
 
 var app = express();
 
+app.use( compression() );
 app.use(express.static('./public'));
 
 app.use(function(req, res, next){
