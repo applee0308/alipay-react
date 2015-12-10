@@ -5,13 +5,20 @@ var getRestaurantList = require('../../utils/getRestaurantList.jsx');
 
 var Elem = React.createClass({
   getInitialState: function() {
-    console.log(this.props.payload);
-    return {
-      items: this.props.payload.shopList,
-      currentPage: this.props.payload.pageNo,
-      hasNext: this.props.payload.isNext,
-      loadingStatus: this.props.payload.isNext == true ? '查看更多' : '没有更多了',
-    };
+    if (this.props.payload) {
+      return {
+        items: this.props.payload.shopList,
+        currentPage: 0,
+        hasNext: this.props.payload.isNext,
+        loadingStatus: this.props.payload.isNext == true ? '查看更多' : '没有更多了',
+      };
+    } else {
+      return {
+        items: [],
+        loadingStatus: '加载中...',
+        currentPage: 0
+      }
+    }
   },
 
   loadMore: function(event) {
@@ -37,6 +44,14 @@ var Elem = React.createClass({
       self.setState({
         loadingStatus: '出错了，再试一次'
       });
+    });
+  },
+
+  componentWillReceiveProps : function(nextProps) {
+    this.setState({
+      items: nextProps.payload.shopList,
+      hasNext: nextProps.payload.isNext,
+      loadingStatus: nextProps.payload.isNext == true ? '查看更多' : '没有更多了',
     });
   },
 

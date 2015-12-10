@@ -50,9 +50,9 @@
 	var ReactDOM = __webpack_require__(158);
 	var tpl = __webpack_require__(159);
 	var dataSrc = __webpack_require__(190);
-	var makeShopHref = __webpack_require__(201);
+	var makeShopHref = __webpack_require__(200);
 
-	var getIndexData = __webpack_require__(200);
+	var getIndexData = __webpack_require__(201);
 	var getRestaurantList = __webpack_require__(191);
 	var Promise = __webpack_require__(196).Promise;
 
@@ -79,7 +79,7 @@
 	  }
 	});
 
-	Promise.all([getIndexData(), getRestaurantList(1)]).then(function (res) {
+	Promise.all([getIndexData(), getRestaurantList(0)]).then(function (res) {
 	  res[0].recommendList = res[0].recommendList.map(function (item) {
 	    item.href = makeShopHref(item.shopId);
 	    return item;
@@ -19697,13 +19697,13 @@
 	    __webpack_require__(186),
 	    __webpack_require__(188),
 	    __webpack_require__(198)
-	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation02, Recommendation01, RestaurantList, Nav) {
+	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _, BrandProfile, Recommendation01, Recommendation03, RestaurantList, Nav) {
 	    'use strict';
 	    return function () {
 	        return React.createElement('div', {
 	            'ref': 'body',
 	            'className': 'app'
-	        }, React.createElement('div', { 'className': 'app-header' }, React.createElement(BrandProfile, { 'payload': this.state.appState.areaInfo }), React.createElement(Nav, { 'payload': this.state.appState.funList })), React.createElement('div', { 'className': 'app-body' }, React.createElement('div', { 'className': 'recommendation02' })    /*  <Recommendation02 payload={this.state.appState.recommendation02} />  */, React.createElement(Recommendation01, { 'payload': this.state.appState.recommendList }), React.createElement(RestaurantList, { 'payload': this.state.appState.restaurantList })));
+	        }, React.createElement('div', { 'className': 'app-header' }, React.createElement(BrandProfile, { 'payload': this.state.appState.areaInfo }), React.createElement(Nav, { 'payload': this.state.appState.funList })), React.createElement('div', { 'className': 'app-body' }, React.createElement('div', { 'className': 'recommendation02' }), React.createElement(Recommendation03, {}), React.createElement(Recommendation01, { 'payload': this.state.appState.recommendList }), React.createElement(RestaurantList, { 'payload': this.state.appState.restaurantList })));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -34226,18 +34226,25 @@
 	    if (this.props.payload && !swiperInitialized) {
 	      var option = {
 	        pagination: this.refs.swiperPagination,
+	        slidesPerView: 'auto',
+	        centeredSlides: true,
 	        paginationClickable: true,
+	        spaceBetween: 48,
 	        loop: true,
 	        preloadImages: false, // Disable preloading of all images
-	        lazyLoading: true };
+	        lazyLoading: true, // Enable lazy loading
 
-	      // Enable lazy loading
+	        // If you use slidesPerView "auto" or slidesPerView > 1,
+	        // then you should also enable watchSlidesVisibility and
+	        //  Swiper will load images in currently visible slides
+	        watchSlidesVisibility: true
+	      };
+
 	      if (process.env.NODE_ENV == 'production') {
 	        option.autoplay = 4000;
 	      }
 
 	      new Swiper(this.refs.swiper, option);
-
 	      swiperInitialized = true;
 	    }
 	  },
@@ -34266,17 +34273,18 @@
 	    function repeatItem1(item, itemIndex) {
 	        return React.createElement('div', {
 	            'className': 'swiper-slide',
+	            'style': { width: 'auto' },
 	            'key': item.index
 	        }, React.createElement('a', {
 	            'href': item.href,
-	            'className': 'recommendation-02-item'
-	        }, React.createElement('img', {
-	            'data-src': item.img,
-	            'className': 'fadeInImg recommendation-02-item-img swiper-lazy'
-	        })));
+	            'className': 'recommendation-01-item'
+	        }, React.createElement('div', { 'className': 'recommendation-01-item-img' }, React.createElement('img', {
+	            'data-src': item.image,
+	            'className': 'fadeInImg swiper-lazy'
+	        })), React.createElement('div', { 'className': 'recommendation-01-item-text' }, item.text)));
 	    }
 	    return function () {
-	        return React.createElement('section', { 'className': 'card recommendation-02' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-body' }, React.createElement('div', {
+	        return React.createElement('section', { 'className': 'card recommendation-01' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-header' }, React.createElement('div', { 'className': 'card-header-title' }, '推荐品牌')), React.createElement('div', { 'className': 'card-body' }, React.createElement('div', {
 	            'className': 'swiper-container',
 	            'ref': 'swiper'
 	        }, React.createElement.apply(this, [
@@ -38513,13 +38521,10 @@
 /* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	'use strict';
 
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(187);
-	var Swiper = __webpack_require__(185);
-
-	var swiperInitialized = false;
 
 	var Elem = React.createClass({
 	  displayName: 'Elem',
@@ -38528,44 +38533,14 @@
 	    return tpl.call(this);
 	  },
 
-	  tryToInitSwiper: function tryToInitSwiper() {
-	    if (this.props.payload && !swiperInitialized) {
-	      var option = {
-	        pagination: this.refs.swiperPagination,
-	        slidesPerView: 'auto',
-	        centeredSlides: true,
-	        paginationClickable: true,
-	        spaceBetween: 48,
-	        loop: true,
-	        preloadImages: false, // Disable preloading of all images
-	        lazyLoading: true, // Enable lazy loading
-
-	        // If you use slidesPerView "auto" or slidesPerView > 1,
-	        // then you should also enable watchSlidesVisibility and
-	        //  Swiper will load images in currently visible slides
-	        watchSlidesVisibility: true
-	      };
-
-	      if (process.env.NODE_ENV == 'production') {
-	        option.autoplay = 4000;
-	      }
-
-	      new Swiper(this.refs.swiper, option);
-	      swiperInitialized = true;
-	    }
-	  },
-
-	  componentDidUpdate: function componentDidUpdate() {
-	    this.tryToInitSwiper();
-	  },
-
 	  componentDidMount: function componentDidMount() {
-	    this.tryToInitSwiper();
+	    var content = document.getElementById('recommendation-03-content');
+	    this.refs.contentContainer.appendChild(content);
+	    content.style.display = 'block';
 	  }
 	});
 
 	module.exports = Elem;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 187 */
@@ -38576,31 +38551,11 @@
 	    __webpack_require__(179)
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function (React, _) {
 	    'use strict';
-	    function repeatItem1(item, itemIndex) {
-	        return React.createElement('div', {
-	            'className': 'swiper-slide',
-	            'style': { width: 'auto' },
-	            'key': item.index
-	        }, React.createElement('a', {
-	            'href': item.href,
-	            'className': 'recommendation-01-item'
-	        }, React.createElement('div', { 'className': 'recommendation-01-item-img' }, React.createElement('img', {
-	            'data-src': item.image,
-	            'className': 'fadeInImg swiper-lazy'
-	        })), React.createElement('div', { 'className': 'recommendation-01-item-text' }, item.text)));
-	    }
 	    return function () {
-	        return React.createElement('section', { 'className': 'card recommendation-01' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', { 'className': 'card-header' }, React.createElement('div', { 'className': 'card-header-title' }, '推荐品牌')), React.createElement('div', { 'className': 'card-body' }, React.createElement('div', {
-	            'className': 'swiper-container',
-	            'ref': 'swiper'
-	        }, React.createElement.apply(this, [
-	            'div',
-	            { 'className': 'swiper-wrapper' },
-	            _.map(this.props.payload, repeatItem1.bind(this))
-	        ]), React.createElement('div', {
-	            'className': 'swiper-pagination',
-	            'ref': 'swiperPagination'
-	        })))));
+	        return React.createElement('section', { 'className': 'card recommendation-03' }, React.createElement('div', { 'className': 'container' }, React.createElement('div', {
+	            'className': 'card-body',
+	            'ref': 'contentContainer'
+	        })));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -38619,13 +38574,20 @@
 	  displayName: 'Elem',
 
 	  getInitialState: function getInitialState() {
-	    console.log(this.props.payload);
-	    return {
-	      items: this.props.payload.shopList,
-	      currentPage: this.props.payload.pageNo,
-	      hasNext: this.props.payload.isNext,
-	      loadingStatus: this.props.payload.isNext == true ? '查看更多' : '没有更多了'
-	    };
+	    if (this.props.payload) {
+	      return {
+	        items: this.props.payload.shopList,
+	        currentPage: 0,
+	        hasNext: this.props.payload.isNext,
+	        loadingStatus: this.props.payload.isNext == true ? '查看更多' : '没有更多了'
+	      };
+	    } else {
+	      return {
+	        items: [],
+	        loadingStatus: '加载中...',
+	        currentPage: 0
+	      };
+	    }
 	  },
 
 	  loadMore: function loadMore(event) {
@@ -38651,6 +38613,14 @@
 	      self.setState({
 	        loadingStatus: '出错了，再试一次'
 	      });
+	    });
+	  },
+
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    this.setState({
+	      items: nextProps.payload.shopList,
+	      hasNext: nextProps.payload.isNext,
+	      loadingStatus: nextProps.payload.isNext == true ? '查看更多' : '没有更多了'
 	    });
 	  },
 
@@ -40742,6 +40712,17 @@
 
 /***/ },
 /* 200 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var template = window['__shopHrefTemplate'];
+	module.exports = function (shopId) {
+	  return template.replace(/\[shopId\]/g, shopId);
+	};
+
+/***/ },
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40777,17 +40758,6 @@
 	  });
 
 	  return p;
-	};
-
-/***/ },
-/* 201 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	var template = window['__shopHrefTemplate'];
-	module.exports = function (shopId) {
-	  return template.replace(/\[shopId\]/g, shopId);
 	};
 
 /***/ }

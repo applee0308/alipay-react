@@ -1,10 +1,10 @@
 {
-    "isNext":"true",
+    "isNext":true,
     "retCode":"1",
     "shopList":[
         {
-            "parking":"true",
-            "wifi":"true",
+            "parking":true,
+            "wifi":true,
             "text":"测试门店文本1",
             "address":"3F 501室",
             "shopId":"2015062400077000000000389832",
@@ -16,7 +16,7 @@
         },
         {
             "parking":"false",
-            "wifi":"true",
+            "wifi":true,
             "text":"测试门店文本2",
             "address":"门店地址2",
             "shopId":"2015072700077000000001678055",
@@ -46,20 +46,20 @@
             "shopId":"2015051400077000000000087788",
             "name":"门店名称4",
             "image":"http://192.168.110.8:9300/A1/test/shop4.jpg",
-            "box":"true",
-            "noSmoking":"true",
+            "box":true,
+            "noSmoking":true,
             "discount":"8"
         },
         {
-            "parking":"true",
-            "wifi":"true",
+            "parking":true,
+            "wifi":true,
             "text":"测试门店文本5",
             "address":"门店地址5",
             "shopId":"2015061000077000000000194426",
             "name":"门店名称5",
             "image":"http://192.168.110.8:9300/A1/test/shop5.jpg",
-            "box":"true",
-            "noSmoking":"true",
+            "box":true,
+            "noSmoking":true,
             "discount":"2"
         }
     ],

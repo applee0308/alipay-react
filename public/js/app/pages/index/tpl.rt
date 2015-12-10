@@ -1,6 +1,6 @@
 <rt-require dependency="../../components/BrandProfile/index.jsx" as="BrandProfile"/>
-<rt-require dependency="../../components/Recommendation02/index.jsx" as="Recommendation02"/>
 <rt-require dependency="../../components/Recommendation01/index.jsx" as="Recommendation01"/>
+<rt-require dependency="../../components/Recommendation03/index.jsx" as="Recommendation03"/>
 <rt-require dependency="../../components/RestaurantList/index.jsx" as="RestaurantList"/>
 <rt-require dependency="../../components/Nav/index.jsx" as="Nav"/>
 
@@ -12,7 +12,7 @@
 
   <div class="app-body">
     <div class="recommendation02"></div>
-    <!-- <Recommendation02 payload={this.state.appState.recommendation02} /> -->
+    <Recommendation03 />
     <Recommendation01 payload={this.state.appState.recommendList} />
     <RestaurantList payload={this.state.appState.restaurantList} />
   </div>

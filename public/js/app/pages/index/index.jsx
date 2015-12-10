@@ -35,7 +35,7 @@ var App = React.createClass({
 
 Promise.all([
   getIndexData(),
-  getRestaurantList(1)
+  getRestaurantList(0)
 ]).then(function(res) {
     res[0].recommendList = res[0].recommendList.map(function(item) {
       item.href = makeShopHref(item.shopId);

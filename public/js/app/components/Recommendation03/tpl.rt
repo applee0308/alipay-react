@@ -1,0 +1,6 @@
+<section class="card recommendation-03">
+  <div class="container">
+    <div class="card-body" ref="contentContainer">
+    </div>
+  </div>
+</section>
