@@ -50,10 +50,13 @@
 	var ReactDOM = __webpack_require__(158);
 	var tpl = __webpack_require__(159);
 	var dataSrc = __webpack_require__(190);
-	var makeShopHref = __webpack_require__(200);
+
+	var transformRestaurantListData = __webpack_require__(202);
+	var transformIndexData = __webpack_require__(203);
 
 	var getIndexData = __webpack_require__(201);
 	var getRestaurantList = __webpack_require__(191);
+
 	var Promise = __webpack_require__(196).Promise;
 
 	var App = React.createClass({
@@ -80,20 +83,10 @@
 	});
 
 	Promise.all([getIndexData(), getRestaurantList(0)]).then(function (res) {
-	  res[0].recommendList = res[0].recommendList.map(function (item) {
-	    item.href = makeShopHref(item.shopId);
-	    return item;
-	  });
-
-	  res[1].shopList = res[1].shopList.map(function (item) {
-	    item.href = makeShopHref(item.shopId);
-	    return item;
-	  });
-
-	  var state = res[0];
-	  state.restaurantList = res[1];
+	  var state = transformIndexData(res[0]);
+	  state.restaurantList = transformRestaurantListData(res[1]);
 	  ReactDOM.render(React.createElement(App, { initialState: state }), document.querySelector('.app-container'));
-	})['catch'](function (errs) {
+	}, function (errs) {
 	  console.log(errs);
 	  document.querySelector('.loadInitialDataError').classList.add('active');
 	});
@@ -38625,6 +38618,7 @@
 	  },
 
 	  render: function render() {
+	    console.log(this.state);
 	    return tpl.call(this);
 	  }
 	});
@@ -38724,8 +38718,13 @@
 
 	module.exports = function (page) {
 	  var p = new Promise(function (resolve, reject) {
+	    var src = dataSrc.restaurantList.src.trim();
+	    if (src.lastIndexOf('/') != src.length - 1) {
+	      src += '/';
+	    }
+
 	    if (dataSrc.restaurantList.type == 'jsonp') {
-	      request.get(dataSrc.restaurantList.src).timeout(3000).use(jsonp({ timeout: 3000 })).query({ page: page }).end(function (err, res) {
+	      request.get(src + page).timeout(3000).use(jsonp({ timeout: 3000, callbackKey: 'jsonpCallback' })).end(function (err, res) {
 	        if (err) {
 	          reject(err);
 	        } else if (+res.body.retCode !== 1) {
@@ -38735,7 +38734,7 @@
 	        }
 	      });
 	    } else {
-	      request.get(dataSrc.restaurantList.src).timeout(3000).query({ page: page }).end(function (err, res) {
+	      request.get(src + page).timeout(3000).end(function (err, res) {
 	        if (err) {
 	          reject(err);
 	        } else if (+res.body.retCode !== 1) {
@@ -40735,7 +40734,7 @@
 	module.exports = function () {
 	  var p = new Promise(function (resolve, reject) {
 	    if (dataSrc.index.type == 'jsonp') {
-	      request.get(dataSrc.index.src).timeout(3000).use(jsonp({ timeout: 3000 })).end(function (err, res) {
+	      request.get(dataSrc.index.src).timeout(3000).use(jsonp({ timeout: 3000, callbackKey: 'jsonpCallback' })).end(function (err, res) {
 	        if (err) {
 	          reject(err);
 	        } else if (+res.body.retCode !== 1) {
@@ -40758,6 +40757,40 @@
 	  });
 
 	  return p;
+	};
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var makeShopHref = __webpack_require__(200);
+
+	module.exports = function (restaurantList) {
+	  restaurantList.shopList = restaurantList.shopList.map(function (item) {
+	    item.href = makeShopHref(item.shopId);
+	    return item;
+	  });
+
+	  return restaurantList;
+	};
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var makeShopHref = __webpack_require__(200);
+
+	module.exports = function (indexData) {
+	  indexData.recommendList = indexData.recommendList.map(function (item) {
+	    item.href = makeShopHref(item.shopId);
+	    return item;
+	  });
+
+	  return indexData;
 	};
 
 /***/ }

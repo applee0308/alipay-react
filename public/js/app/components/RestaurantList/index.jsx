@@ -56,6 +56,7 @@ var Elem = React.createClass({
   },
 
   render: function() {
+    console.log(this.state);
     return tpl.call(this);
   },
 });
