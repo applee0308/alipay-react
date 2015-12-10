@@ -4,7 +4,7 @@
       <div class="row" rt-repeat="group in this.items" key={group.index}>
         <a rt-repeat="item in group" key={item.index} href={item.href} class="site-nav-item"
         rt-class="{'site-nav-item--placeholder': item.isPlaceholder}">
-          <img src={item.img} class="site-nav-item-icon fadeInImg">
+          <img src={item.image} class="site-nav-item-icon fadeInImg">
           <span class="site-nav-item-text">{item.text}</span>
         </a>
       </div>

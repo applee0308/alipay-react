@@ -10,7 +10,7 @@
           <div class="swiper-slide" style="width: auto;" rt-repeat="item in this.props.payload" key={item.index} >
             <a href={item.href} class="recommendation-01-item">
               <div class="recommendation-01-item-img">
-                <img data-src={item.img} class="fadeInImg swiper-lazy">
+                <img data-src={item.image} class="fadeInImg swiper-lazy">
               </div>
               <div class="recommendation-01-item-text">{item.text}</div>
             </a>

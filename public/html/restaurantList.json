@@ -1,33 +1,68 @@
 {
-  "code": 0,
-  "payload": {
-    "hasNext": true,
-    "restaurantList": [
-      {
-        "href": "##",
-        "name": "哈根达斯",
-        "img": "/images/restaurant-01.jpg",
-        "location": "2F",
-        "discount": "9",
-        "meta": "满100减10",
-        "badges": [
-          "/images/badge-icons/iconfont-tingche.png",
-          "/images/badge-icons/iconfont-wifi.png"
-        ]
-      },
-      {
-        "href": "##",
-        "name": "星巴克",
-        "img": "/images/restaurant-02.jpg",
-        "location": "2F",
-        "discount": "9",
-        "meta": "满100减10",
-        "badges": [
-          "/images/badge-icons/iconfont-wifi.png"
-        ]
-      }
-    ]
-  },
-  "errMsg": null,
-  "meta": null
+    "isNext":"true",
+    "retCode":"1",
+    "shopList":[
+        {
+            "parking":"true",
+            "wifi":"true",
+            "text":"测试门店文本1",
+            "address":"3F 501室",
+            "shopId":"2015062400077000000000389832",
+            "name":"肯德基",
+            "image":"http://192.168.110.8:9300/A1/test/shop1.jpg",
+            "box":"false",
+            "noSmoking":"false",
+            "discount":"3"
+        },
+        {
+            "parking":"false",
+            "wifi":"true",
+            "text":"测试门店文本2",
+            "address":"门店地址2",
+            "shopId":"2015072700077000000001678055",
+            "name":"门店名称2",
+            "image":"http://192.168.110.8:9300/A1/test/shop2.jpg",
+            "box":"false",
+            "noSmoking":"false",
+            "discount":"1"
+        },
+        {
+            "parking":"false",
+            "wifi":"false",
+            "text":"测试门店文本3",
+            "address":"门店地址3",
+            "shopId":"2015061000077000000000194426",
+            "name":"门店名称3",
+            "image":"http://192.168.110.8:9300/A1/test/shop3.jpg",
+            "box":"false",
+            "noSmoking":"false",
+            "discount":""
+        },
+        {
+            "parking":"false",
+            "wifi":"false",
+            "text":"测试门店文本4",
+            "address":"门店地址4",
+            "shopId":"2015051400077000000000087788",
+            "name":"门店名称4",
+            "image":"http://192.168.110.8:9300/A1/test/shop4.jpg",
+            "box":"true",
+            "noSmoking":"true",
+            "discount":"8"
+        },
+        {
+            "parking":"true",
+            "wifi":"true",
+            "text":"测试门店文本5",
+            "address":"门店地址5",
+            "shopId":"2015061000077000000000194426",
+            "name":"门店名称5",
+            "image":"http://192.168.110.8:9300/A1/test/shop5.jpg",
+            "box":"true",
+            "noSmoking":"true",
+            "discount":"2"
+        }
+    ],
+    "pageNo":"2",
+    "retMsg":"成功"
 }

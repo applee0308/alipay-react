@@ -1,90 +1,50 @@
 {
-  "code": 0,
-  "payload": {
-    "recommendation01": [
-      {
-        "href": "##",
-        "img": "/images/recommendation-01-01.png",
-        "text": "买一送一"
-      },
-      {
-        "href": "##",
-        "img": "/images/recommendation-01-02.png",
-        "text": "满百减三"
-      },
-      {
-        "href": "##",
-        "img": "/images/recommendation-01-01.png",
-        "text": "买一送一"
-      },
-      {
-        "href": "##",
-        "img": "/images/recommendation-01-02.png",
-        "text": "满百减三"
-      },
-      {
-        "href": "##",
-        "img": "/images/recommendation-01-01.png",
-        "text": "买一送一"
-      },
-      {
-        "href": "##",
-        "img": "/images/recommendation-01-02.png",
-        "text": "满百减三"
-      }
+    "recommendList":[
+        {
+            "text":"买一送一",
+            "shopId":"2015062400077000000000389832",
+            "image":"http://192.168.110.8:9300/A1/test/re1.jpg"
+        },
+        {
+            "text":"满100见10",
+            "shopId":"2015072700077000000001678055",
+            "image":"http://192.168.110.8:9300/A1/test/re2.jpg"
+        },
+        {
+            "text":"第二份半价",
+            "shopId":"2015061000077000000000194426",
+            "image":"http://192.168.110.8:9300/A1/test/re3.jpg"
+        },
+        {
+            "text":"折后力减5元",
+            "shopId":"2015051400077000000000087788",
+            "image":"http://192.168.110.8:9300/A1/test/re4.png"
+        },
+        {
+            "text":"满10减2",
+            "shopId":"2015061000077000000000194426",
+            "image":"http://192.168.110.8:9300/A1/test/re5.png"
+        }
     ],
-    "recommendation02": [
-      {
-        "href": "##",
-        "img": "/images/recommendation-02-02.jpg"
-      },
-      {
-        "href": "##",
-        "img": "/images/recommendation-02-01.jpg"
-      },
-      {
-        "href": "##",
-        "img": "/images/recommendation-02-02.jpg"
-      },
-      {
-        "href": "##",
-        "img": "/images/recommendation-02-01.jpg"
-      },
-      {
-        "href": "##",
-        "img": "/images/recommendation-02-02.jpg"
-      }
-    ],
-    "nav": [
-      {
-        "href": "##",
-        "img": "/images/nav-icons/iconfont-bus.png",
-        "text": "交通"
-      },
-      {
-        "href": "##",
-        "img": "/images/nav-icons/iconfont-baoxian.png",
-        "text": "保险"
-      },
-      {
-        "href": "##",
-        "img": "/images/nav-icons/iconfont-meishi.png",
-        "text": "美食"
-      },
-      {
-        "href": "##",
-        "img": "/images/nav-icons/iconfont-ditu.png",
-        "text": "地图"
-      }
-    ],
-    "brandProfile": {
-      "href": "###",
-      "background": "/images/profile-bg-01.jpg",
-      "avatar": "/images/profile-avatar.jpg",
-      "name": "北京首都机场",
-      "location": "顺义区机场路1号"
-    }
-  },
-  "errMsg": null,
-  "meta": null
+    "areaInfo":{
+        "areaLogo":"http://192.168.110.8:9300/A1/test/area-logo.png",
+        "mapHref":"http://m.amap.com/navi/?dest=116.9702200000,31.9862100000&destName=北京建飞科联&hideRouteIcon=1&key=be5026d9cee4a22d453a4aa14c416097",
+        "areaName":"深圳机场",
+        "areaAddress":"深圳机场深圳区机场1号",
+        "mainImage":"http://192.168.110.8:9300/A1/test/main-image.jpg"
+    },
+    "retCode":"1",
+    "retMsg":"成功",
+    "funList":[
+        {
+            "text":"机场信息",
+            "image":"http://192.168.110.8:9300/A1/test/iconfont-feiji.png",
+            "href":""
+        },
+        {
+            "text":"关注",
+            "image":"http://192.168.110.8:9300/A1/test/iconfont-fuwu.png",
+            "href":""
+        }
+    ]
 }

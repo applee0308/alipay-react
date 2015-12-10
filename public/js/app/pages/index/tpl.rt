@@ -6,13 +6,14 @@
 
 <div ref="body" class="app">
   <div class="app-header">
-    <BrandProfile payload={this.state.appState.brandProfile} />
-    <Nav payload={this.state.appState.nav} />
+    <BrandProfile payload={this.state.appState.areaInfo} />
+    <Nav payload={this.state.appState.funList} />
   </div>
 
   <div class="app-body">
-    <Recommendation02 payload={this.state.appState.recommendation02} />
-    <Recommendation01 payload={this.state.appState.recommendation01} />
+    <div class="recommendation02"></div>
+    <!-- <Recommendation02 payload={this.state.appState.recommendation02} /> -->
+    <Recommendation01 payload={this.state.appState.recommendList} />
     <RestaurantList payload={this.state.appState.restaurantList} />
   </div>
 </div>

@@ -13,8 +13,8 @@ module.exports = function(page) {
       .end(function(err, res) {
         if (err) {
           reject(err);
-        } else if (+res.body.code !== 0) {
-          reject(res.body.errMsg);
+        } else if (+res.body.retCode !== 1) {
+          reject(res.body.retMsg);
         } else {
           resolve(res.body);
         }
@@ -26,8 +26,8 @@ module.exports = function(page) {
       .end(function(err, res) {
         if (err) {
           reject(err);
-        } else if (+res.body.code !== 0) {
-          reject(res.body.errMsg);
+        } else if (+res.body.retCode !== 1) {
+          reject(res.body.retMsg);
         } else {
           resolve(res.body);
         }

@@ -2,6 +2,8 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var tpl = require('./tpl.rt');
 var dataSrc = require('../../dataSrc.jsx');
+var makeShopHref = require('../../utils/makeShopHref.jsx');
+
 
 var getIndexData = require('../../utils/getIndexData.jsx');
 var getRestaurantList = require('../../utils/getRestaurantList.jsx');
@@ -35,10 +37,21 @@ Promise.all([
   getIndexData(),
   getRestaurantList(1)
 ]).then(function(res) {
-    var state = res[0].payload;
-    state.restaurantList = res[1].payload;
+    res[0].recommendList = res[0].recommendList.map(function(item) {
+      item.href = makeShopHref(item.shopId);
+      return item;
+    });
+
+    res[1].shopList = res[1].shopList.map(function(item) {
+      item.href = makeShopHref(item.shopId);
+      return item;
+    });
+
+    var state = res[0];
+    state.restaurantList = res[1];
     ReactDOM.render(<App initialState={state} />, document.querySelector('.app-container'));
 }).catch(function(errs) {
+  console.log(errs);
   document.querySelector('.loadInitialDataError').classList.add('active');
 });
 
