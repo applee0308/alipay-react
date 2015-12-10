@@ -6,9 +6,9 @@ var Promise = require('es6-promise-polyfill').Promise;
 module.exports = function(page) {
   var p = new Promise(function(resolve, reject) {
     var src = dataSrc.restaurantList.src.trim();
-    // if ( src.lastIndexOf('/') != (src.length - 1) ) {
-    //   src += '/';
-    // }
+    if ( !src.match(/.*?json$/) && src.lastIndexOf('/') != (src.length - 1) ) {
+      src += '/';
+    }
 
     if (dataSrc.restaurantList.type == 'jsonp') {
       request.get(src + page)
@@ -24,7 +24,6 @@ module.exports = function(page) {
         }
       });
     } else {
-      // request.get(src + page)
       request.get(src)
       .timeout(3000)
       .end(function(err, res) {

@@ -10,24 +10,47 @@ var Elem = React.createClass({
   },
 
   componentDidMount: function() {
-    var self = this;
+    function afterScriptExecute(cb) {
+
+      // 广告脚本执行完之后会把 window.tosAdspaceInfo 设为 null
+      function loop() {
+        if (window.tosAdspaceInfo) {
+          setTimeout(loop, 20);
+        } else {
+          cb();
+        }
+      }
+
+      loop();
+    }
+
+    var container = this.refs.contentContainer;
     function loadScript(id, onload = function() {}) {
-      window.tosAdspaceInfo = {aid: id, 'serverbaseurl':'jf.wiplatform.com/','staticbaseurl':'res.wiplatform.com/'};
+      window.tosAdspaceInfo = _.assign({}, __tosAdspaceInfo, { aid: id });
       var script = document.createElement('script');
       script.src = 'http://res.wiplatform.com/tr.js';
       script.addEventListener('load', function() {
-        setTimeout(function() {
-          onload();
-        }, 100);
+        afterScriptExecute(onload);
       }, false);
-      self.refs.contentContainer.appendChild(script);
+      container.appendChild(script);
     }
 
-    loadScript(10011188, function() {
-      loadScript(10011446, function() {
-        loadScript(10010396);
-      });
-    });
+    var ids = this.props.payload.map( (item) => +item.text );
+    function load() {
+      var i = 0;
+      function loop() {
+        if (i <= ids.length - 1) {
+          loadScript(ids[i], function() {
+            i += 1;
+            loop();
+          });
+        }
+      }
+
+      loop();
+    }
+
+    load();
   }
 });
 

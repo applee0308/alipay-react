@@ -12,7 +12,7 @@
 
   <div class="app-body">
     <div class="recommendation02"></div>
-    <Recommendation03 />
+    <Recommendation03 payload={this.state.appState.adList} />
     <Recommendation01 payload={this.state.appState.recommendList} />
     <RestaurantList payload={this.state.appState.restaurantList} />
   </div>

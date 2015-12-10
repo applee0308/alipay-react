@@ -19696,7 +19696,7 @@
 	        return React.createElement('div', {
 	            'ref': 'body',
 	            'className': 'app'
-	        }, React.createElement('div', { 'className': 'app-header' }, React.createElement(BrandProfile, { 'payload': this.state.appState.areaInfo }), React.createElement(Nav, { 'payload': this.state.appState.funList })), React.createElement('div', { 'className': 'app-body' }, React.createElement('div', { 'className': 'recommendation02' }), React.createElement(Recommendation03, {}), React.createElement(Recommendation01, { 'payload': this.state.appState.recommendList }), React.createElement(RestaurantList, { 'payload': this.state.appState.restaurantList })));
+	        }, React.createElement('div', { 'className': 'app-header' }, React.createElement(BrandProfile, { 'payload': this.state.appState.areaInfo }), React.createElement(Nav, { 'payload': this.state.appState.funList })), React.createElement('div', { 'className': 'app-body' }, React.createElement('div', { 'className': 'recommendation02' }), React.createElement(Recommendation03, { 'payload': this.state.appState.adList }), React.createElement(Recommendation01, { 'payload': this.state.appState.recommendList }), React.createElement(RestaurantList, { 'payload': this.state.appState.restaurantList })));
 	    };
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -38528,26 +38528,51 @@
 	  },
 
 	  componentDidMount: function componentDidMount() {
-	    var self = this;
+	    function afterScriptExecute(cb) {
+
+	      // 广告脚本执行完之后会把 window.tosAdspaceInfo 设为 null
+	      function loop() {
+	        if (window.tosAdspaceInfo) {
+	          setTimeout(loop, 20);
+	        } else {
+	          cb();
+	        }
+	      }
+
+	      loop();
+	    }
+
+	    var container = this.refs.contentContainer;
 	    function loadScript(id) {
 	      var onload = arguments.length <= 1 || arguments[1] === undefined ? function () {} : arguments[1];
 
-	      window.tosAdspaceInfo = { aid: id, 'serverbaseurl': 'jf.wiplatform.com/', 'staticbaseurl': 'res.wiplatform.com/' };
+	      window.tosAdspaceInfo = _.assign({}, __tosAdspaceInfo, { aid: id });
 	      var script = document.createElement('script');
 	      script.src = 'http://res.wiplatform.com/tr.js';
 	      script.addEventListener('load', function () {
-	        setTimeout(function () {
-	          onload();
-	        }, 100);
+	        afterScriptExecute(onload);
 	      }, false);
-	      self.refs.contentContainer.appendChild(script);
+	      container.appendChild(script);
 	    }
 
-	    loadScript(10011188, function () {
-	      loadScript(10011446, function () {
-	        loadScript(10010396);
-	      });
+	    var ids = this.props.payload.map(function (item) {
+	      return +item.text;
 	    });
+	    function load() {
+	      var i = 0;
+	      function loop() {
+	        if (i <= ids.length - 1) {
+	          loadScript(ids[i], function () {
+	            i += 1;
+	            loop();
+	          });
+	        }
+	      }
+
+	      loop();
+	    }
+
+	    load();
 	  }
 	});
 
@@ -38636,7 +38661,6 @@
 	  },
 
 	  render: function render() {
-	    console.log(this.state);
 	    return tpl.call(this);
 	  }
 	});
@@ -38737,9 +38761,9 @@
 	module.exports = function (page) {
 	  var p = new Promise(function (resolve, reject) {
 	    var src = dataSrc.restaurantList.src.trim();
-	    // if ( src.lastIndexOf('/') != (src.length - 1) ) {
-	    //   src += '/';
-	    // }
+	    if (!src.match(/.*?json$/) && src.lastIndexOf('/') != src.length - 1) {
+	      src += '/';
+	    }
 
 	    if (dataSrc.restaurantList.type == 'jsonp') {
 	      request.get(src + page).timeout(3000).use(jsonp({ timeout: 3000, callbackKey: 'jsonpCallback' })).end(function (err, res) {
@@ -38752,7 +38776,6 @@
 	        }
 	      });
 	    } else {
-	      // request.get(src + page)
 	      request.get(src).timeout(3000).end(function (err, res) {
 	        if (err) {
 	          reject(err);
@@ -40737,6 +40760,7 @@
 	var makeShopHref = __webpack_require__(201);
 
 	module.exports = function (restaurantList) {
+	  restaurantList.isNext = JSON.parse(restaurantList.isNext);
 	  restaurantList.shopList = restaurantList.shopList.map(function (item) {
 	    item.href = makeShopHref(item.shopId);
 	    return item;
