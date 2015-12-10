@@ -51,10 +51,10 @@
 	var tpl = __webpack_require__(159);
 	var dataSrc = __webpack_require__(190);
 
-	var transformRestaurantListData = __webpack_require__(202);
-	var transformIndexData = __webpack_require__(203);
+	var transformRestaurantListData = __webpack_require__(200);
+	var transformIndexData = __webpack_require__(202);
 
-	var getIndexData = __webpack_require__(201);
+	var getIndexData = __webpack_require__(203);
 	var getRestaurantList = __webpack_require__(191);
 
 	var Promise = __webpack_require__(196).Promise;
@@ -38518,6 +38518,7 @@
 
 	var React = __webpack_require__(1);
 	var tpl = __webpack_require__(187);
+	var _ = __webpack_require__(179);
 
 	var Elem = React.createClass({
 	  displayName: 'Elem',
@@ -38527,9 +38528,18 @@
 	  },
 
 	  componentDidMount: function componentDidMount() {
-	    var content = document.getElementById('recommendation-03-content');
-	    this.refs.contentContainer.appendChild(content);
-	    content.style.display = 'block';
+	    var script = '<script type="text/javascript">\n      window.tosAdspaceInfo = {\'aid\':10011188,\'serverbaseurl\':\'jf.wiplatform.com/\',\'staticbaseurl\':\'res.wiplatform.com/\'}\n    </script>\n    <script type="text/javascript" src="http://res.wiplatform.com/tr.js"></script>';
+
+	    // var content = document.getElementById('recommendation-03-content');
+	    // this.refs.contentContainer.appendChild( content );
+	    // content.style.display = 'block';
+
+	    this.refs.contentContainer.innerHTML = script;
+	    eval(this.refs.contentContainer.querySelector('script').innerHTML);
+
+	    // _.forEach(this.refs.contentContainer.querySelectorAll('script'), function(item) {
+	    //   eval( item.innerHTML );
+	    // });
 	  }
 	});
 
@@ -40711,6 +40721,23 @@
 
 /***/ },
 /* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var makeShopHref = __webpack_require__(201);
+
+	module.exports = function (restaurantList) {
+	  restaurantList.shopList = restaurantList.shopList.map(function (item) {
+	    item.href = makeShopHref(item.shopId);
+	    return item;
+	  });
+
+	  return restaurantList;
+	};
+
+/***/ },
+/* 201 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40721,7 +40748,24 @@
 	};
 
 /***/ },
-/* 201 */
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var makeShopHref = __webpack_require__(201);
+
+	module.exports = function (indexData) {
+	  indexData.recommendList = indexData.recommendList.map(function (item) {
+	    item.href = makeShopHref(item.shopId);
+	    return item;
+	  });
+
+	  return indexData;
+	};
+
+/***/ },
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40757,40 +40801,6 @@
 	  });
 
 	  return p;
-	};
-
-/***/ },
-/* 202 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var makeShopHref = __webpack_require__(200);
-
-	module.exports = function (restaurantList) {
-	  restaurantList.shopList = restaurantList.shopList.map(function (item) {
-	    item.href = makeShopHref(item.shopId);
-	    return item;
-	  });
-
-	  return restaurantList;
-	};
-
-/***/ },
-/* 203 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var makeShopHref = __webpack_require__(200);
-
-	module.exports = function (indexData) {
-	  indexData.recommendList = indexData.recommendList.map(function (item) {
-	    item.href = makeShopHref(item.shopId);
-	    return item;
-	  });
-
-	  return indexData;
 	};
 
 /***/ }
