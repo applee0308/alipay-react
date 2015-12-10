@@ -43,4 +43,15 @@
 }
 
 
+@include androidLegacy {
+  body > ins {
+    display: none !important;
+  }
+
+  .recommendation-03 ins {
+    display: inital;
+  }
+};
+
+
 
