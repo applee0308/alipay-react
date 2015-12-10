@@ -31,17 +31,20 @@
   <script>
     var __dataSrc = {
       index: {
-        type: 'jsonp',
-        src: 'http://192.168.110.31:9999/isv-api-webapp/market/area/1'
+        // type: 'jsonp',
+        // src: 'http://192.168.110.31:9999/isv-api-webapp/market/area/1'
+        src: 'index.json'
       },
 
       restaurantList: {
-        type: 'jsonp',
-        src: 'http://192.168.110.31:9999/isv-api-webapp/market/shop/1'
+        // type: 'jsonp',
+        // src: 'http://192.168.110.31:9999/isv-api-webapp/market/shop/1'
+        src: 'restaurantList.json'
       }
     };
 
     var __shopHrefTemplate = 'alipays://platformapi/startapp?appId=20000238&target=merchant&shopId=[shopId]';
+    var tosAdspaceInfo = {'serverbaseurl':'jf.wiplatform.com/','staticbaseurl':'res.wiplatform.com/'};
   </script>
 
 <!--   <div id="recommendation-03-content" style="display: none;">

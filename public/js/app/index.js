@@ -38528,18 +38528,26 @@
 	  },
 
 	  componentDidMount: function componentDidMount() {
-	    var script = '<script type="text/javascript">\n      window.tosAdspaceInfo = {\'aid\':10011188,\'serverbaseurl\':\'jf.wiplatform.com/\',\'staticbaseurl\':\'res.wiplatform.com/\'}\n    </script>\n    <script type="text/javascript" src="http://res.wiplatform.com/tr.js"></script>';
+	    var self = this;
+	    function loadScript(id) {
+	      var onload = arguments.length <= 1 || arguments[1] === undefined ? function () {} : arguments[1];
 
-	    // var content = document.getElementById('recommendation-03-content');
-	    // this.refs.contentContainer.appendChild( content );
-	    // content.style.display = 'block';
+	      window.tosAdspaceInfo = { aid: id, 'serverbaseurl': 'jf.wiplatform.com/', 'staticbaseurl': 'res.wiplatform.com/' };
+	      var script = document.createElement('script');
+	      script.src = 'http://res.wiplatform.com/tr.js';
+	      script.addEventListener('load', function () {
+	        setTimeout(function () {
+	          onload();
+	        }, 100);
+	      }, false);
+	      self.refs.contentContainer.appendChild(script);
+	    }
 
-	    this.refs.contentContainer.innerHTML = script;
-	    eval(this.refs.contentContainer.querySelector('script').innerHTML);
-
-	    // _.forEach(this.refs.contentContainer.querySelectorAll('script'), function(item) {
-	    //   eval( item.innerHTML );
-	    // });
+	    loadScript(10011188, function () {
+	      loadScript(10011446, function () {
+	        loadScript(10010396);
+	      });
+	    });
 	  }
 	});
 
@@ -38729,9 +38737,9 @@
 	module.exports = function (page) {
 	  var p = new Promise(function (resolve, reject) {
 	    var src = dataSrc.restaurantList.src.trim();
-	    if (src.lastIndexOf('/') != src.length - 1) {
-	      src += '/';
-	    }
+	    // if ( src.lastIndexOf('/') != (src.length - 1) ) {
+	    //   src += '/';
+	    // }
 
 	    if (dataSrc.restaurantList.type == 'jsonp') {
 	      request.get(src + page).timeout(3000).use(jsonp({ timeout: 3000, callbackKey: 'jsonpCallback' })).end(function (err, res) {
@@ -38744,7 +38752,8 @@
 	        }
 	      });
 	    } else {
-	      request.get(src + page).timeout(3000).end(function (err, res) {
+	      // request.get(src + page)
+	      request.get(src).timeout(3000).end(function (err, res) {
 	        if (err) {
 	          reject(err);
 	        } else if (+res.body.retCode !== 1) {
