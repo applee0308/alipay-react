@@ -1,0 +1,18 @@
+@import '../base/vars';
+@import '../base/utils';
+
+.recommendation-03 {
+  .card-body {
+    @include clearfix;
+    border-top-width: 0;
+  }
+
+  ins:not([id*="tos_acr"]) {
+    float: left;
+    width: 50%;
+
+    img {
+      display: block;
+    }
+  }
+}
