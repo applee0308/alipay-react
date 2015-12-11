@@ -60,7 +60,11 @@ var Elem = React.createClass({
           });
         } else if (i == ids.length - 1) {
           // all script executed
-          loadScript(ids[i], fixAndroidLegacy);
+          loadScript(ids[i], function() {
+            setTimeout(function() {
+              fixAndroidLegacy();
+            }, 3000);
+          });
         }
       }
 
