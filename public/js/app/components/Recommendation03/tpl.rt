@@ -1,6 +1,11 @@
 <section class="card recommendation-03">
   <div class="container">
-    <div class="card-body" ref="contentContainer">
+    <div class="card-body">
+      <div class="swiper-container" ref="swiper">
+        <div class="swiper-pagination" ref="swiperPagination"></div>
+      </div>
+
+      <div ref="contentContainer" style="display: none;"></div>
     </div>
   </div>
 </section>

@@ -1,6 +1,7 @@
 var React = require('react');
 var tpl = require('./tpl.rt');
 var _ = require('lodash');
+var Swiper = require('swiper');
 
 
 
@@ -49,6 +50,45 @@ var Elem = React.createClass({
       }
     }
 
+    var swiper = this.refs.swiper;
+    var pagination = this.refs.swiperPagination;
+    function initSwiper() {
+      var allIns = container.querySelectorAll(':scope > ins');
+
+      var slides = _.filter(allIns, function(item) {
+        return item.style.display == 'block';
+      }).map(function(item) {
+        var slide = document.createElement('div');
+        slide.classList.add('swiper-slide');
+        slide.appendChild(item);
+        return slide;
+      });
+
+
+      var wrapper = document.createElement('div');
+      wrapper.classList.add('swiper-wrapper');
+
+      _.forEach(slides, function(item) {
+        wrapper.appendChild(item);
+      });
+
+      swiper.appendChild(wrapper);
+
+      var option = {
+        pagination: pagination,
+        paginationClickable: true,
+        loop: true,
+        preloadImages: false, // Disable preloading of all images
+        lazyLoading: true, // Enable lazy loading
+      };
+
+      if (process.env.NODE_ENV == 'production') {
+        option.autoplay = 4000;
+      }
+
+      new Swiper(swiper, option);
+    }
+
     var ids = this.props.payload.map( (item) => +item.text );
     function load() {
       var i = 0;
@@ -60,7 +100,12 @@ var Elem = React.createClass({
           });
         } else if (i == ids.length - 1) {
           // all script executed
-          loadScript(ids[i], fixAndroidLegacy);
+          loadScript(ids[i], function() {
+            setTimeout(function() {
+              fixAndroidLegacy();
+              initSwiper();
+            }, 3000);
+          });
         }
       }
 
