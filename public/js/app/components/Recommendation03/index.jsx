@@ -41,13 +41,15 @@ var Elem = React.createClass({
     // 在 android legacy browser 动态插入脚本时，
     // 不论脚本插入到哪个元素内，元素的 parentNode 总是返回 body
     function fixAndroidLegacy() {
-      if ( document.documentElement.classList.contains('no-flexbox') &&
-           document.documentElement.classList.contains('flexboxlegacy') ) {
-        var ins = document.querySelectorAll('body > ins');
-        _.forEach(ins, function(item) {
-          container.appendChild(item);
-        });
-      }
+      // if ( document.documentElement.classList.contains('no-flexbox') &&
+      //      document.documentElement.classList.contains('flexboxlegacy') ) {
+
+      // }
+
+      var ins = document.querySelectorAll('body > ins');
+      _.forEach(ins, function(item) {
+        container.appendChild(item);
+      });
     }
 
     var swiper = this.refs.swiper;
